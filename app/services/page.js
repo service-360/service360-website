@@ -29,20 +29,33 @@ export default function ServicesPage() {
               "Rental Agreements",
               "Property Registration",
               "Business Registration",
-              "GST & Compliance Support",
+              "GST & Tax Filing",
+              "Audit & Compliance Services",
+              "Government Certifications",
+              "Government Documentation Assistance",
               "Legal Consultation",
               "Contract Drafting",
-              "Government Documentation Assistance",
               "Business Compliance Services"
             ].map((service) => (
 
               <div
                 key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white hover:scale-105 transition duration-300"
               >
-                <h3 className="text-2xl font-semibold leading-10">
+
+                <h3 className="text-2xl font-semibold leading-10 mb-4">
                   {service}
                 </h3>
+
+                <p className="text-gray-400 mb-8 leading-8">
+                  Trusted legal support and documentation
+                  services delivered by verified professionals.
+                </p>
+
+                <button className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition">
+                  Book Now
+                </button>
+
               </div>
 
             ))}
@@ -71,11 +84,22 @@ export default function ServicesPage() {
 
               <div
                 key={service}
-                className="bg-red-950/30 border border-red-800 rounded-3xl p-8 hover:border-red-400 transition"
+                className="bg-red-950/30 border border-red-800 rounded-3xl p-8 hover:border-red-400 hover:scale-105 transition duration-300"
               >
-                <h3 className="text-2xl font-semibold leading-10">
+
+                <h3 className="text-2xl font-semibold leading-10 mb-4">
                   {service}
                 </h3>
+
+                <p className="text-gray-400 mb-8 leading-8">
+                  Fast-response emergency support available
+                  whenever urgent assistance is required.
+                </p>
+
+                <button className="bg-red-500 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-400 transition">
+                  Emergency Booking
+                </button>
+
               </div>
 
             ))}
@@ -108,11 +132,22 @@ export default function ServicesPage() {
 
               <div
                 key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white hover:scale-105 transition duration-300"
               >
-                <h3 className="text-2xl font-semibold leading-10">
+
+                <h3 className="text-2xl font-semibold leading-10 mb-4">
                   {service}
                 </h3>
+
+                <p className="text-gray-400 mb-8 leading-8">
+                  Reliable home and lifestyle services
+                  delivered directly to your doorstep.
+                </p>
+
+                <button className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition">
+                  Book Now
+                </button>
+
               </div>
 
             ))}
@@ -141,11 +176,22 @@ export default function ServicesPage() {
 
               <div
                 key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white hover:scale-105 transition duration-300"
               >
-                <h3 className="text-2xl font-semibold leading-10">
+
+                <h3 className="text-2xl font-semibold leading-10 mb-4">
                   {service}
                 </h3>
+
+                <p className="text-gray-400 mb-8 leading-8">
+                  Compassionate healthcare and elderly support
+                  services provided by trained professionals.
+                </p>
+
+                <button className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition">
+                  Book Now
+                </button>
+
               </div>
 
             ))}
@@ -177,11 +223,22 @@ export default function ServicesPage() {
 
               <div
                 key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white hover:scale-105 transition duration-300"
               >
-                <h3 className="text-2xl font-semibold leading-10">
+
+                <h3 className="text-2xl font-semibold leading-10 mb-4">
                   {service}
                 </h3>
+
+                <p className="text-gray-400 mb-8 leading-8">
+                  Flexible personal assistance services
+                  designed to simplify everyday life.
+                </p>
+
+                <button className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition">
+                  Book Now
+                </button>
+
               </div>
 
             ))}
@@ -207,11 +264,22 @@ export default function ServicesPage() {
 
               <div
                 key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white hover:scale-105 transition duration-300"
               >
-                <h3 className="text-2xl font-semibold leading-10">
+
+                <h3 className="text-2xl font-semibold leading-10 mb-4">
                   {service}
                 </h3>
+
+                <p className="text-gray-400 mb-8 leading-8">
+                  Trusted pet care services for grooming,
+                  boarding, and daily pet support needs.
+                </p>
+
+                <button className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition">
+                  Book Now
+                </button>
+
               </div>
 
             ))}
