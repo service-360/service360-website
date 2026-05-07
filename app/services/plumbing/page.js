@@ -66,6 +66,7 @@ export default function PlumbingServicePage() {
           <div className="grid md:grid-cols-3 gap-8">
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+
               <h3 className="text-2xl font-bold mb-4">
                 Verified Professionals
               </h3>
@@ -73,9 +74,11 @@ export default function PlumbingServicePage() {
               <p className="text-gray-400 leading-8">
                 Trusted and background-verified service experts.
               </p>
+
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+
               <h3 className="text-2xl font-bold mb-4">
                 Fast Response
               </h3>
@@ -83,9 +86,11 @@ export default function PlumbingServicePage() {
               <p className="text-gray-400 leading-8">
                 Quick emergency support and rapid dispatch system.
               </p>
+
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+
               <h3 className="text-2xl font-bold mb-4">
                 Transparent Pricing
               </h3>
@@ -93,6 +98,7 @@ export default function PlumbingServicePage() {
               <p className="text-gray-400 leading-8">
                 Clear pricing without hidden charges.
               </p>
+
             </div>
 
           </div>
