@@ -59,13 +59,25 @@ export default function Home() {
             About Service360
           </h2>
 
-          <p className="text-gray-400 text-xl leading-9">
-            We are building India’s most trusted all-in-one
-            service ecosystem for legal assistance, home
-            services, and personal support. Our mission is
-            to simplify daily life by connecting people with
-            verified professionals through technology.
-          </p>
+        <div className="text-gray-400 text-xl leading-10 space-y-8">
+
+  <p>
+    We are building India’s most trusted platform for everyday services — bringing legal assistance, home services, and personal support together in one seamless ecosystem.
+  </p>
+
+  <p>
+    From legal documentation and compliance support to home repairs, maintenance, and lifestyle assistance, we connect people with verified professionals they can rely on. Our platform is designed to make essential services simple, transparent, and easily accessible through technology.
+  </p>
+
+  <p>
+    We believe finding trusted help should be fast, convenient, and stress-free. That’s why we focus on quality, reliability, and customer experience at every step — from verified professionals and transparent pricing to seamless bookings and dependable support.
+  </p>
+
+  <p>
+    More than a service marketplace, we are creating a technology-driven ecosystem that empowers both customers and service professionals, making everyday life easier for millions across India.
+  </p>
+
+</div>
 
         </div>
 
