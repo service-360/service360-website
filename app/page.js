@@ -10,10 +10,21 @@ export default function Home() {
         </h1>
 
         <div className="hidden md:flex gap-8 text-lg">
-          <a href="#home" className="hover:text-gray-400">Home</a>
-          <a href="#about" className="hover:text-gray-400">About</a>
-          <a href="#services" className="hover:text-gray-400">Services</a>
-          <a href="#contact" className="hover:text-gray-400">Contact</a>
+        <a href="/" className="hover:text-gray-400">
+  Home
+</a>
+
+<a href="/about" className="hover:text-gray-400">
+  About
+</a>
+
+<a href="/services" className="hover:text-gray-400">
+  Services
+</a>
+
+<a href="#contact" className="hover:text-gray-400">
+  Contact
+</a>
         </div>
 
       </nav>
