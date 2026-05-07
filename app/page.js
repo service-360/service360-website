@@ -175,7 +175,7 @@ export default function Home() {
         </h3>
 
         <p className="text-gray-400">
-          +91 98765 43210
+          +91 6369051521
         </p>
       </div>
 
@@ -185,7 +185,7 @@ export default function Home() {
         </h3>
 
         <p className="text-gray-400">
-          Chennai, India
+          Tiruchirappalli, Tamil Nadu, India
         </p>
       </div>
 
