@@ -1,188 +1,94 @@
-export default function ServicesPage() {
+export default function Home() {
   return (
-    <main className="bg-black text-white min-h-screen px-6 py-20">
+    <main className="bg-black text-white min-h-screen">
 
-      <div className="max-w-7xl mx-auto">
+      {/* Navbar */}
+      <nav className="flex justify-between items-center px-8 py-6 border-b border-gray-800 sticky top-0 bg-black/80 backdrop-blur-lg z-50">
 
-        <h1 className="text-6xl md:text-7xl font-bold text-center mb-8">
-          Our Services
+        <h1 className="text-3xl font-bold">
+          Service360
         </h1>
 
-        <p className="text-gray-400 text-xl text-center max-w-4xl mx-auto mb-24 leading-10">
-          Service360 brings together emergency assistance,
-          home services, healthcare support, personal assistance,
-          and lifestyle solutions into one seamless ecosystem.
+        <div className="hidden md:flex gap-8 text-lg">
+
+          <a href="/" className="hover:text-gray-400">
+            Home
+          </a>
+
+          <a href="/about" className="hover:text-gray-400">
+            About
+          </a>
+
+          <a href="/services" className="hover:text-gray-400">
+            Services
+          </a>
+
+          <a href="#contact" className="hover:text-gray-400">
+            Contact
+          </a>
+
+        </div>
+
+      </nav>
+
+      {/* Hero */}
+      <section
+        id="home"
+        className="flex flex-col items-center justify-center text-center py-32 px-6"
+      >
+
+        <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
+          All Human Services <br />
+          Under One Roof
+        </h1>
+
+        <p className="text-gray-400 text-xl max-w-3xl mb-10">
+          Service360 connects people with trusted legal,
+          home, and personal professionals through one
+          premium platform.
         </p>
 
-        {/* Emergency Services */}
-        <section className="mb-28">
+        <div className="flex gap-4">
 
-          <h2 className="text-5xl font-bold mb-12">
-            🚨 Emergency Services
+          <button className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition">
+            Get Started
+          </button>
+
+          <button className="border border-gray-700 px-8 py-4 rounded-2xl hover:bg-gray-900 transition">
+            Learn More
+          </button>
+
+        </div>
+
+      </section>
+
+      {/* About */}
+      <section
+        id="about"
+        className="px-8 py-24 bg-gray-950"
+      >
+
+        <div className="max-w-5xl mx-auto text-center">
+
+          <h2 className="text-5xl font-bold mb-10">
+            About Service360
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <p className="text-gray-400 text-xl leading-9">
+            We are building India’s most trusted platform for
+            everyday services — bringing legal assistance,
+            home services, and personal support together in
+            one seamless ecosystem.
+          </p>
 
-            {[
-              "24/7 Emergency Plumbing",
-              "24/7 Emergency Electrician",
-              "Emergency Locksmith",
-              "Instant Roadside Assistance",
-              "Home Pest Emergency Treatment",
-              "EV Charging Assistance"
-            ].map((service) => (
+        </div>
 
-              <div
-                key={service}
-                className="bg-red-950/30 border border-red-800 rounded-3xl p-8 hover:border-red-400 transition"
-              >
-                <h3 className="text-2xl font-semibold leading-10">
-                  {service}
-                </h3>
-              </div>
+      </section>
 
-            ))}
-
-          </div>
-
-        </section>
-
-        {/* Home & Lifestyle */}
-        <section className="mb-28">
-
-          <h2 className="text-5xl font-bold mb-12">
-            🏠 Home & Lifestyle Services
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              "Home Appliance Repair",
-              "Daily Home Cook",
-              "Part-time Maid",
-              "Home Organization",
-              "Laundry Pickup Service",
-              "Furniture Assembly",
-              "Plant Care & Gardening",
-              "On-demand Car Cleaning",
-              "Digital Setup Help"
-            ].map((service) => (
-
-              <div
-                key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
-              >
-                <h3 className="text-2xl font-semibold leading-10">
-                  {service}
-                </h3>
-              </div>
-
-            ))}
-
-          </div>
-
-        </section>
-
-        {/* Healthcare & Elder Care */}
-        <section className="mb-28">
-
-          <h2 className="text-5xl font-bold mb-12">
-            🏥 Healthcare & Elder Care
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              "Elderly Caregiver",
-              "Home Nursing Services",
-              "Medicine Reminder Assistance",
-              "Hospital Companion Service",
-              "Home Physiotherapy",
-              "Mental Wellness Listener"
-            ].map((service) => (
-
-              <div
-                key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
-              >
-                <h3 className="text-2xl font-semibold leading-10">
-                  {service}
-                </h3>
-              </div>
-
-            ))}
-
-          </div>
-
-        </section>
-
-        {/* Personal Assistance */}
-        <section className="mb-28">
-
-          <h2 className="text-5xl font-bold mb-12">
-            🤝 Personal Assistance
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              "Queue & Errand Running",
-              "Grocery Concierge",
-              "Childcare & Babysitting",
-              "Tutor On-demand",
-              "Event Helpers",
-              "Driver On-demand",
-              "Parking Spot Assistance",
-              "Document Pickup Assistance",
-              "Local Guide Assistance"
-            ].map((service) => (
-
-              <div
-                key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
-              >
-                <h3 className="text-2xl font-semibold leading-10">
-                  {service}
-                </h3>
-              </div>
-
-            ))}
-
-          </div>
-
-        </section>
-
-        {/* Pet Services */}
-        <section className="mb-20">
-
-          <h2 className="text-5xl font-bold mb-12">
-            🐾 Pet Services
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              "Pet Grooming",
-              "Pet Boarding",
-              "Pet Walking"
-            ].map((service) => (
-
-              <div
-                key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
-              >
-                <h3 className="text-2xl font-semibold leading-10">
-                  {service}
-                </h3>
-              </div>
-
-            ))}
-
-          </div>
-
-        </section>
-
-      </div>
+      {/* Footer */}
+      <footer className="border-t border-gray-800 py-8 text-center text-gray-500">
+        © 2026 Service360. All rights reserved.
+      </footer>
 
     </main>
   )
