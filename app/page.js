@@ -83,60 +83,63 @@ export default function Home() {
 
       </section>
 
-      {/* Services */}
-      <section
-        id="services"
-        className="px-8 py-24"
-      >
+     <section
+  id="services"
+  className="py-32 px-6 bg-black text-white"
+>
+  <div className="max-w-7xl mx-auto">
+    
+    <h2 className="text-5xl md:text-6xl font-bold text-center mb-20">
+      Our Services
+    </h2>
 
-        <h2 className="text-5xl font-bold text-center mb-16">
-          Our Services
-        </h2>
+    <div className="grid md:grid-cols-3 gap-10">
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-white transition">
+        <div className="text-5xl mb-6">⚖️</div>
 
-          <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 p-8 rounded-3xl hover:scale-105 transition duration-300">
+        <h3 className="text-3xl font-bold mb-4">
+          Legal Services
+        </h3>
 
-            <h3 className="text-3xl font-bold mb-6">
-              Legal Services
-            </h3>
+        <p className="text-gray-400 text-lg leading-8">
+          Legal documentation, agreements, registrations,
+          compliance support, business filings, and expert
+          legal consultation from trusted professionals.
+        </p>
+      </div>
 
-            <p className="text-gray-400 text-lg">
-              Documentation, registration, legal consultation,
-              agreements, compliance, and expert support.
-            </p>
+      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-white transition">
+        <div className="text-5xl mb-6">🏠</div>
 
-          </div>
+        <h3 className="text-3xl font-bold mb-4">
+          Home Services
+        </h3>
 
-          <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 p-8 rounded-3xl hover:scale-105 transition duration-300">
+        <p className="text-gray-400 text-lg leading-8">
+          Home repairs, plumbing, electrical work,
+          maintenance, appliance support, cleaning,
+          and trusted on-demand home professionals.
+        </p>
+      </div>
 
-            <h3 className="text-3xl font-bold mb-6">
-              Home Services
-            </h3>
+      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-white transition">
+        <div className="text-5xl mb-6">🤝</div>
 
-            <p className="text-gray-400 text-lg">
-              Plumbing, electrical, appliance repair,
-              cleaning, painting, and maintenance.
-            </p>
+        <h3 className="text-3xl font-bold mb-4">
+          Personal Support
+        </h3>
 
-          </div>
+        <p className="text-gray-400 text-lg leading-8">
+          Everyday assistance, lifestyle services,
+          personal support, task management,
+          and trusted professionals for daily needs.
+        </p>
+      </div>
 
-          <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 p-8 rounded-3xl hover:scale-105 transition duration-300">
-
-            <h3 className="text-3xl font-bold mb-6">
-              Personal Support
-            </h3>
-
-            <p className="text-gray-400 text-lg">
-              Daily assistance, verified professionals,
-              premium support, and lifestyle services.
-            </p>
-
-          </div>
-
-        </div>
-
-      </section>
+    </div>
+  </div>
+</section>
 
       {/* Contact */}
       <section
