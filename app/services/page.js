@@ -8,12 +8,39 @@ export default function ServicesPage() {
           Our Services
         </h1>
 
-        <p className="text-gray-400 text-xl text-center max-w-4xl mx-auto mb-24 leading-10">
+        <p className="text-gray-400 text-xl text-center max-w-4xl mx-auto mb-16 leading-10">
           Service360 brings together emergency assistance,
           legal support, home services, healthcare support,
           personal assistance, and lifestyle solutions into
           one seamless ecosystem.
         </p>
+
+        {/* Search & Filters */}
+        <div className="mb-24">
+
+          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+
+            <input
+              type="text"
+              placeholder="Search services..."
+              className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4 w-full md:w-[500px] text-white outline-none"
+            />
+
+            <select
+              className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4 text-white outline-none"
+            >
+              <option>All Categories</option>
+              <option>Legal Services</option>
+              <option>Emergency Services</option>
+              <option>Home Services</option>
+              <option>Healthcare</option>
+              <option>Personal Assistance</option>
+              <option>Pet Services</option>
+            </select>
+
+          </div>
+
+        </div>
 
         {/* Legal Services */}
         <section className="mb-28">
