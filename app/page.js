@@ -1,222 +1,188 @@
-export default function Home() {
+export default function ServicesPage() {
   return (
-    <main className="bg-black text-white min-h-screen">
+    <main className="bg-black text-white min-h-screen px-6 py-20">
 
-      {/* Navbar */}
-      <nav className="flex justify-between items-center px-8 py-6 border-b border-gray-800 sticky top-0 bg-black/80 backdrop-blur-lg z-50">
+      <div className="max-w-7xl mx-auto">
 
-        <h1 className="text-3xl font-bold">
-          Service360
+        <h1 className="text-6xl md:text-7xl font-bold text-center mb-8">
+          Our Services
         </h1>
 
-        <div className="hidden md:flex gap-8 text-lg">
-        <a href="/" className="hover:text-gray-400">
-  Home
-</a>
-
-<a href="/about" className="hover:text-gray-400">
-  About
-</a>
-
-<a href="/services" className="hover:text-gray-400">
-  Services
-</a>
-
-<a href="#contact" className="hover:text-gray-400">
-  Contact
-</a>
-        </div>
-
-      </nav>
-
-      {/* Hero */}
-      <section
-        id="home"
-        className="flex flex-col items-center justify-center text-center py-32 px-6"
-      >
-
-        <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-          All Human Services <br />
-          Under One Roof
-        </h1>
-
-        <p className="text-gray-400 text-xl max-w-3xl mb-10">
-          Service360 connects people with trusted legal,
-          home, and personal professionals through one
-          premium platform.
+        <p className="text-gray-400 text-xl text-center max-w-4xl mx-auto mb-24 leading-10">
+          Service360 brings together emergency assistance,
+          home services, healthcare support, personal assistance,
+          and lifestyle solutions into one seamless ecosystem.
         </p>
 
-        <div className="flex gap-4">
-          <button className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition">
-            Get Started
-          </button>
+        {/* Emergency Services */}
+        <section className="mb-28">
 
-          <button className="border border-gray-700 px-8 py-4 rounded-2xl hover:bg-gray-900 transition">
-            Learn More
-          </button>
-        </div>
-
-      </section>
-
-      {/* About */}
-      <section
-        id="about"
-        className="px-8 py-24 bg-gray-950"
-      >
-
-        <div className="max-w-5xl mx-auto text-center">
-
-          <h2 className="text-5xl font-bold mb-10">
-            About Service360
+          <h2 className="text-5xl font-bold mb-12">
+            🚨 Emergency Services
           </h2>
 
-        <div className="text-gray-400 text-xl leading-10 space-y-8">
+          <div className="grid md:grid-cols-3 gap-8">
 
-  <p>
-    We are building India’s most trusted platform for everyday services — bringing legal assistance, home services, and personal support together in one seamless ecosystem.
-  </p>
+            {[
+              "24/7 Emergency Plumbing",
+              "24/7 Emergency Electrician",
+              "Emergency Locksmith",
+              "Instant Roadside Assistance",
+              "Home Pest Emergency Treatment",
+              "EV Charging Assistance"
+            ].map((service) => (
 
-  <p>
-    From legal documentation and compliance support to home repairs, maintenance, and lifestyle assistance, we connect people with verified professionals they can rely on. Our platform is designed to make essential services simple, transparent, and easily accessible through technology.
-  </p>
+              <div
+                key={service}
+                className="bg-red-950/30 border border-red-800 rounded-3xl p-8 hover:border-red-400 transition"
+              >
+                <h3 className="text-2xl font-semibold leading-10">
+                  {service}
+                </h3>
+              </div>
 
-  <p>
-    We believe finding trusted help should be fast, convenient, and stress-free. That’s why we focus on quality, reliability, and customer experience at every step — from verified professionals and transparent pricing to seamless bookings and dependable support.
-  </p>
+            ))}
 
-  <p>
-    More than a service marketplace, we are creating a technology-driven ecosystem that empowers both customers and service professionals, making everyday life easier for millions across India.
-  </p>
+          </div>
 
-</div>
+        </section>
 
-        </div>
+        {/* Home & Lifestyle */}
+        <section className="mb-28">
 
-      </section>
+          <h2 className="text-5xl font-bold mb-12">
+            🏠 Home & Lifestyle Services
+          </h2>
 
-     <section
-  id="services"
-  className="py-32 px-6 bg-black text-white"
->
-  <div className="max-w-7xl mx-auto">
-    
-    <h2 className="text-5xl md:text-6xl font-bold text-center mb-20">
-      Our Services
-    </h2>
+          <div className="grid md:grid-cols-3 gap-8">
 
-    <div className="grid md:grid-cols-3 gap-10">
+            {[
+              "Home Appliance Repair",
+              "Daily Home Cook",
+              "Part-time Maid",
+              "Home Organization",
+              "Laundry Pickup Service",
+              "Furniture Assembly",
+              "Plant Care & Gardening",
+              "On-demand Car Cleaning",
+              "Digital Setup Help"
+            ].map((service) => (
 
-      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-white transition">
-        <div className="text-5xl mb-6">⚖️</div>
+              <div
+                key={service}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
+              >
+                <h3 className="text-2xl font-semibold leading-10">
+                  {service}
+                </h3>
+              </div>
 
-        <h3 className="text-3xl font-bold mb-4">
-          Legal Services
-        </h3>
+            ))}
 
-        <p className="text-gray-400 text-lg leading-8">
-          Legal documentation, agreements, registrations,
-          compliance support, business filings, and expert
-          legal consultation from trusted professionals.
-        </p>
+          </div>
+
+        </section>
+
+        {/* Healthcare & Elder Care */}
+        <section className="mb-28">
+
+          <h2 className="text-5xl font-bold mb-12">
+            🏥 Healthcare & Elder Care
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            {[
+              "Elderly Caregiver",
+              "Home Nursing Services",
+              "Medicine Reminder Assistance",
+              "Hospital Companion Service",
+              "Home Physiotherapy",
+              "Mental Wellness Listener"
+            ].map((service) => (
+
+              <div
+                key={service}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
+              >
+                <h3 className="text-2xl font-semibold leading-10">
+                  {service}
+                </h3>
+              </div>
+
+            ))}
+
+          </div>
+
+        </section>
+
+        {/* Personal Assistance */}
+        <section className="mb-28">
+
+          <h2 className="text-5xl font-bold mb-12">
+            🤝 Personal Assistance
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            {[
+              "Queue & Errand Running",
+              "Grocery Concierge",
+              "Childcare & Babysitting",
+              "Tutor On-demand",
+              "Event Helpers",
+              "Driver On-demand",
+              "Parking Spot Assistance",
+              "Document Pickup Assistance",
+              "Local Guide Assistance"
+            ].map((service) => (
+
+              <div
+                key={service}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
+              >
+                <h3 className="text-2xl font-semibold leading-10">
+                  {service}
+                </h3>
+              </div>
+
+            ))}
+
+          </div>
+
+        </section>
+
+        {/* Pet Services */}
+        <section className="mb-20">
+
+          <h2 className="text-5xl font-bold mb-12">
+            🐾 Pet Services
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            {[
+              "Pet Grooming",
+              "Pet Boarding",
+              "Pet Walking"
+            ].map((service) => (
+
+              <div
+                key={service}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
+              >
+                <h3 className="text-2xl font-semibold leading-10">
+                  {service}
+                </h3>
+              </div>
+
+            ))}
+
+          </div>
+
+        </section>
+
       </div>
-
-      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-white transition">
-        <div className="text-5xl mb-6">🏠</div>
-
-        <h3 className="text-3xl font-bold mb-4">
-          Home Services
-        </h3>
-
-        <p className="text-gray-400 text-lg leading-8">
-          Home repairs, plumbing, electrical work,
-          maintenance, appliance support, cleaning,
-          and trusted on-demand home professionals.
-        </p>
-      </div>
-
-      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-white transition">
-        <div className="text-5xl mb-6">🤝</div>
-
-        <h3 className="text-3xl font-bold mb-4">
-          Personal Support
-        </h3>
-
-        <p className="text-gray-400 text-lg leading-8">
-          Everyday assistance, lifestyle services,
-          personal support, task management,
-          and trusted professionals for daily needs.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section
-  id="contact"
-  className="py-32 px-6 bg-black text-white"
->
-  <div className="max-w-4xl mx-auto text-center">
-
-    <h2 className="text-5xl md:text-6xl font-bold mb-10">
-      Contact Us
-    </h2>
-
-    <p className="text-gray-400 text-xl leading-9 mb-16">
-      Need legal assistance, home services,
-      or personal support? Reach out to our team
-      and we’ll connect you with trusted professionals.
-    </p>
-
-    <div className="grid md:grid-cols-3 gap-8">
-
-      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-        <h3 className="text-2xl font-bold mb-4">
-          Email
-        </h3>
-
-        <p className="text-gray-400">
-          support@service360.in
-        </p>
-      </div>
-
-      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-        <h3 className="text-2xl font-bold mb-4">
-          Phone
-        </h3>
-
-        <p className="text-gray-400">
-          +91 6369051521
-        </p>
-      </div>
-
-      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-        <h3 className="text-2xl font-bold mb-4">
-          Location
-        </h3>
-
-        <p className="text-gray-400">
-          Tiruchirappalli, Tamil Nadu, India
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-      {/* WhatsApp Floating Button */}
-      <a
-        href="https://wa.me/919999999999"
-        target="_blank"
-        className="fixed bottom-6 right-6 bg-green-500 px-6 py-4 rounded-full shadow-2xl text-black font-bold hover:scale-110 transition"
-      >
-        WhatsApp
-      </a>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-800 py-8 text-center text-gray-500">
-        © 2026 Service360. All rights reserved.
-      </footer>
 
     </main>
   )
