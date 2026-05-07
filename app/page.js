@@ -141,41 +141,58 @@ export default function Home() {
   </div>
 </section>
 
-      {/* Contact */}
-      <section
-        id="contact"
-        className="px-8 py-24 bg-gray-950"
-      >
+<section
+  id="contact"
+  className="py-32 px-6 bg-black text-white"
+>
+  <div className="max-w-4xl mx-auto text-center">
 
-        <div className="max-w-4xl mx-auto text-center">
+    <h2 className="text-5xl md:text-6xl font-bold mb-10">
+      Contact Us
+    </h2>
 
-          <h2 className="text-5xl font-bold mb-10">
-            Contact Us
-          </h2>
+    <p className="text-gray-400 text-xl leading-9 mb-16">
+      Need legal assistance, home services,
+      or personal support? Reach out to our team
+      and we’ll connect you with trusted professionals.
+    </p>
 
-          <p className="text-gray-400 text-xl mb-12">
-            Reach out to us for partnerships, services,
-            or customer support.
-          </p>
+    <div className="grid md:grid-cols-3 gap-8">
 
-          <div className="flex flex-col md:flex-row gap-6 justify-center">
+      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          Email
+        </h3>
 
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="bg-black border border-gray-700 px-6 py-4 rounded-2xl w-full md:w-96"
-            />
+        <p className="text-gray-400">
+          support@service360.in
+        </p>
+      </div>
 
-            <button className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition">
-              Submit
-            </button>
+      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          Phone
+        </h3>
 
-          </div>
+        <p className="text-gray-400">
+          +91 98765 43210
+        </p>
+      </div>
 
-        </div>
+      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          Location
+        </h3>
 
-      </section>
+        <p className="text-gray-400">
+          Chennai, India
+        </p>
+      </div>
 
+    </div>
+
+  </div>
+</section>
       {/* WhatsApp Floating Button */}
       <a
         href="https://wa.me/919999999999"
