@@ -157,10 +157,87 @@ export default function Home() {
 
       </section>
 
+      {/* Why Choose Service360 */}
+      <section
+        className="px-8 py-24 bg-gray-950"
+      >
+
+        <div className="max-w-7xl mx-auto">
+
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-8">
+            Why Choose Service360
+          </h2>
+
+          <p className="text-gray-400 text-xl text-center max-w-3xl mx-auto mb-20 leading-10">
+            Built for reliability, speed, trust, and convenience —
+            Service360 connects people with verified professionals
+            through one seamless technology-driven ecosystem.
+          </p>
+
+          <div className="grid md:grid-cols-4 gap-8">
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition">
+
+              <h3 className="text-3xl font-bold mb-6">
+                ✅ Verified Experts
+              </h3>
+
+              <p className="text-gray-400 leading-8">
+                Trusted professionals with verified backgrounds
+                and quality assurance.
+              </p>
+
+            </div>
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition">
+
+              <h3 className="text-3xl font-bold mb-6">
+                ⚡ Fast Response
+              </h3>
+
+              <p className="text-gray-400 leading-8">
+                Quick emergency dispatch and rapid support
+                whenever assistance is required.
+              </p>
+
+            </div>
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition">
+
+              <h3 className="text-3xl font-bold mb-6">
+                🔒 Trusted Platform
+              </h3>
+
+              <p className="text-gray-400 leading-8">
+                Transparent pricing, trusted services,
+                and customer-first experiences.
+              </p>
+
+            </div>
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition">
+
+              <h3 className="text-3xl font-bold mb-6">
+                🌐 All-in-One Ecosystem
+              </h3>
+
+              <p className="text-gray-400 leading-8">
+                Legal, home, healthcare, and personal
+                services under one premium platform.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
       {/* About */}
       <section
         id="about"
-        className="px-8 py-24 bg-gray-950"
+        className="px-8 py-24 bg-black"
       >
 
         <div className="max-w-5xl mx-auto text-center">
@@ -188,7 +265,7 @@ export default function Home() {
       {/* Contact */}
       <section
         id="contact"
-        className="py-32 px-6 bg-black text-white"
+        className="py-32 px-6 bg-gray-950 text-white"
       >
 
         <div className="max-w-4xl mx-auto text-center">
