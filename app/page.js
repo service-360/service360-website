@@ -98,13 +98,13 @@ export default function Home() {
               {
                 title: "Legal Documentation",
                 desc: "Professional legal drafting, agreements, and compliance support.",
-                link: "/services"
+                link: "/services/legal"
               },
 
               {
                 title: "Home Nursing",
                 desc: "Trusted healthcare and elderly assistance at home.",
-                link: "/services"
+                link: "/services/nursing"
               },
 
               {
@@ -116,7 +116,7 @@ export default function Home() {
               {
                 title: "GST & Tax Filing",
                 desc: "Business taxation, audit, and compliance services.",
-                link: "/services"
+                link: "/services/legal"
               },
 
               {
