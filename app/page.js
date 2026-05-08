@@ -31,32 +31,127 @@ export default function Home() {
 
       </nav>
 
-      {/* Hero */}
+      {/* Hero Section */}
       <section
         id="home"
         className="flex flex-col items-center justify-center text-center py-32 px-6"
       >
 
         <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-          All Human Services <br />
-          Under One Roof
+          Anything. Anytime. Anywhere.
         </h1>
 
-        <p className="text-gray-400 text-xl max-w-3xl mb-10">
-          Service360 connects people with trusted legal,
-          home, and personal professionals through one
-          premium platform.
+        <p className="text-gray-400 text-xl max-w-4xl mb-12 leading-10">
+          India’s trusted platform for emergency assistance,
+          legal support, home services, healthcare,
+          personal assistance, and lifestyle solutions —
+          all under one seamless ecosystem.
         </p>
 
-        <div className="flex gap-4">
+        <div className="flex gap-6 justify-center">
 
-          <button className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition">
-            Get Started
-          </button>
+          <a
+            href="/services"
+            className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition"
+          >
+            Explore Services
+          </a>
 
-          <button className="border border-gray-700 px-8 py-4 rounded-2xl hover:bg-gray-900 transition">
+          <a
+            href="/about"
+            className="border border-gray-700 px-8 py-4 rounded-2xl hover:bg-gray-900 transition"
+          >
             Learn More
-          </button>
+          </a>
+
+        </div>
+
+      </section>
+
+      {/* Featured Services */}
+      <section
+        id="featured-services"
+        className="px-8 py-24"
+      >
+
+        <div className="max-w-7xl mx-auto">
+
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-8">
+            Featured Services
+          </h2>
+
+          <p className="text-gray-400 text-xl text-center max-w-3xl mx-auto mb-20 leading-10">
+            Discover premium emergency, legal, home,
+            healthcare, and lifestyle services powered
+            by verified professionals.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            {[
+              {
+                title: "Emergency Plumbing",
+                desc: "24/7 urgent plumbing support for homes and offices.",
+                link: "/services/plumbing"
+              },
+
+              {
+                title: "Legal Documentation",
+                desc: "Professional legal drafting, agreements, and compliance support.",
+                link: "/services"
+              },
+
+              {
+                title: "Home Nursing",
+                desc: "Trusted healthcare and elderly assistance at home.",
+                link: "/services"
+              },
+
+              {
+                title: "Roadside Assistance",
+                desc: "Instant vehicle breakdown and emergency support.",
+                link: "/services"
+              },
+
+              {
+                title: "GST & Tax Filing",
+                desc: "Business taxation, audit, and compliance services.",
+                link: "/services"
+              },
+
+              {
+                title: "Pet Grooming",
+                desc: "Professional pet care and grooming at your doorstep.",
+                link: "/services"
+              }
+
+            ].map((service) => (
+
+              <div
+                key={service.title}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white hover:scale-105 transition duration-300"
+              >
+
+                <h3 className="text-3xl font-bold mb-6">
+                  {service.title}
+                </h3>
+
+                <p className="text-gray-400 text-lg leading-8 mb-10">
+                  {service.desc}
+                </p>
+
+                <a
+                  href={service.link}
+                  className="inline-block bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition"
+                >
+                  Explore Service
+                </a>
+
+              </div>
+
+            ))}
+
+          </div>
 
         </div>
 
@@ -74,12 +169,79 @@ export default function Home() {
             About Service360
           </h2>
 
-          <p className="text-gray-400 text-xl leading-9">
+          <p className="text-gray-400 text-xl leading-10">
             We are building India’s most trusted platform for
             everyday services — bringing legal assistance,
             home services, and personal support together in
             one seamless ecosystem.
+
+            From legal documentation and compliance support
+            to home repairs, maintenance, and lifestyle
+            assistance, we connect people with verified
+            professionals they can rely on.
           </p>
+
+        </div>
+
+      </section>
+
+      {/* Contact */}
+      <section
+        id="contact"
+        className="py-32 px-6 bg-black text-white"
+      >
+
+        <div className="max-w-4xl mx-auto text-center">
+
+          <h2 className="text-5xl md:text-6xl font-bold mb-10">
+            Contact Us
+          </h2>
+
+          <p className="text-gray-400 text-xl leading-9 mb-16">
+            Need legal assistance, home services,
+            or personal support? Reach out to our team
+            and we’ll connect you with trusted professionals.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+
+              <h3 className="text-2xl font-bold mb-4">
+                Email
+              </h3>
+
+              <p className="text-gray-400">
+                Email Coming Soon
+              </p>
+
+            </div>
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+
+              <h3 className="text-2xl font-bold mb-4">
+                Phone
+              </h3>
+
+              <p className="text-gray-400">
+                Phone Coming Soon
+              </p>
+
+            </div>
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+
+              <h3 className="text-2xl font-bold mb-4">
+                Location
+              </h3>
+
+              <p className="text-gray-400">
+                Tiruchirappalli, Tamil Nadu
+              </p>
+
+            </div>
+
+          </div>
 
         </div>
 
