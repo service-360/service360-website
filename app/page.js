@@ -110,7 +110,7 @@ export default function Home() {
               {
                 title: "Roadside Assistance",
                 desc: "Instant vehicle breakdown and emergency support.",
-                link: "/services"
+                link: "/services/roadside"
               },
 
               {
