@@ -116,7 +116,7 @@ export default function Home() {
               {
                 title: "GST & Tax Filing",
                 desc: "Business taxation, audit, and compliance services.",
-                link: "/services/legal"
+                link: "/services/gst-filing"
               },
 
               {
