@@ -122,7 +122,7 @@ export default function Home() {
               {
                 title: "Pet Grooming",
                 desc: "Professional pet care and grooming at your doorstep.",
-                link: "/services"
+                link: "/services/pet-grooming"
               }
 
             ].map((service) => (
