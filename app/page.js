@@ -3,27 +3,45 @@ export default function Home() {
     <main className="bg-black text-white min-h-screen">
 
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-8 py-6 border-b border-gray-800 sticky top-0 bg-black/80 backdrop-blur-lg z-50">
+      <nav className="flex justify-between items-center px-6 md:px-8 py-5 border-b border-gray-800 sticky top-0 bg-black/80 backdrop-blur-lg z-50">
 
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-2xl md:text-3xl font-bold">
           Service360
         </h1>
 
+        {/* Desktop Navigation */}
         <div className="hidden md:flex gap-8 text-lg">
 
-          <a href="/" className="hover:text-gray-400">
+          <a href="/" className="hover:text-gray-400 transition">
             Home
           </a>
 
-          <a href="/about" className="hover:text-gray-400">
+          <a href="/about" className="hover:text-gray-400 transition">
             About
           </a>
 
-          <a href="/services" className="hover:text-gray-400">
+          <a href="/services" className="hover:text-gray-400 transition">
             Services
           </a>
 
-          <a href="#contact" className="hover:text-gray-400">
+          <a href="#contact" className="hover:text-gray-400 transition">
+            Contact
+          </a>
+
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden flex gap-4 text-sm">
+
+          <a href="/" className="hover:text-gray-400 transition">
+            Home
+          </a>
+
+          <a href="/services" className="hover:text-gray-400 transition">
+            Services
+          </a>
+
+          <a href="#contact" className="hover:text-gray-400 transition">
             Contact
           </a>
 
