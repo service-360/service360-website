@@ -96,6 +96,12 @@ export default function Home() {
               },
 
               {
+                title: "Emergency Electrician",
+                desc: "Fast electrical repair and emergency support services.",
+                link: "/services/electrician"
+              },
+
+              {
                 title: "Legal Documentation",
                 desc: "Professional legal drafting, agreements, and compliance support.",
                 link: "/services/legal"
