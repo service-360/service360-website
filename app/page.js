@@ -6,6 +6,11 @@ export default function Home() {
 
   const [submitted, setSubmitted] = useState(false)
 
+  const [name, setName] = useState("")
+  const [phone, setPhone] = useState("")
+  const [service, setService] = useState("")
+  const [error, setError] = useState("")
+
   return (
     <main className="bg-black text-white min-h-screen">
 
@@ -286,12 +291,16 @@ export default function Home() {
             <input
               type="text"
               placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none"
             />
 
             <input
               type="tel"
               placeholder="Phone Number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none"
             />
 
@@ -302,9 +311,11 @@ export default function Home() {
             />
 
             <select
+              value={service}
+              onChange={(e) => setService(e.target.value)}
               className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none"
             >
-              <option>Select Service</option>
+              <option value="">Select Service</option>
               <option>Emergency Plumbing</option>
               <option>Emergency Electrician</option>
               <option>Legal Documentation</option>
@@ -322,10 +333,26 @@ export default function Home() {
             className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none w-full mt-8"
           ></textarea>
 
+          {error && (
+            <p className="text-red-500 text-center mt-6">
+              {error}
+            </p>
+          )}
+
           <div className="text-center mt-10">
 
             <button
-              onClick={() => setSubmitted(true)}
+              onClick={() => {
+
+                if (!name || !phone || !service) {
+                  setError("Please fill all required fields.")
+                  return
+                }
+
+                setError("")
+                setSubmitted(true)
+
+              }}
               className="bg-white text-black px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-gray-300 transition"
             >
               Submit Booking Request
