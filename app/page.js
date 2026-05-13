@@ -1,4 +1,11 @@
+"use client"
+
+import { useState } from "react"
+
 export default function Home() {
+
+  const [submitted, setSubmitted] = useState(false)
+
   return (
     <main className="bg-black text-white min-h-screen">
 
@@ -317,7 +324,10 @@ export default function Home() {
 
           <div className="text-center mt-10">
 
-            <button className="bg-white text-black px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-gray-300 transition">
+            <button
+              onClick={() => setSubmitted(true)}
+              className="bg-white text-black px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-gray-300 transition"
+            >
               Submit Booking Request
             </button>
 
@@ -388,6 +398,35 @@ export default function Home() {
         </div>
 
       </section>
+
+      {/* Success Popup */}
+      {submitted && (
+
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-6">
+
+          <div className="bg-zinc-900 border border-zinc-700 rounded-3xl p-10 max-w-lg text-center">
+
+            <h2 className="text-4xl font-bold mb-6">
+              Booking Request Submitted 🚀
+            </h2>
+
+            <p className="text-gray-400 text-lg leading-8 mb-8">
+              Thank you for choosing Service360.
+              Our team will contact you shortly regarding your request.
+            </p>
+
+            <button
+              onClick={() => setSubmitted(false)}
+              className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:bg-gray-300 transition"
+            >
+              Close
+            </button>
+
+          </div>
+
+        </div>
+
+      )}
 
       {/* Footer */}
       <footer className="border-t border-gray-800 py-8 text-center text-gray-500">
