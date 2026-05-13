@@ -240,29 +240,70 @@ export default function Home() {
 
       </section>
 
-      {/* About */}
+      {/* Booking Request Form */}
       <section
-        id="about"
         className="px-8 py-24 bg-black"
       >
 
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto">
 
-          <h2 className="text-5xl font-bold mb-10">
-            About Service360
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-8">
+            Book a Service
           </h2>
 
-          <p className="text-gray-400 text-xl leading-10">
-            We are building India’s most trusted platform for
-            everyday services — bringing legal assistance,
-            home services, and personal support together in
-            one seamless ecosystem.
-
-            From legal documentation and compliance support
-            to home repairs, maintenance, and lifestyle
-            assistance, we connect people with verified
-            professionals they can rely on.
+          <p className="text-gray-400 text-xl text-center max-w-3xl mx-auto mb-20 leading-10">
+            Submit your service request and our team will
+            connect you with verified professionals quickly.
           </p>
+
+          <div className="grid md:grid-cols-2 gap-8">
+
+            <input
+              type="text"
+              placeholder="Full Name"
+              className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none"
+            />
+
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none"
+            />
+
+            <input
+              type="email"
+              placeholder="Email Address"
+              className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none"
+            />
+
+            <select
+              className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none"
+            >
+              <option>Select Service</option>
+              <option>Emergency Plumbing</option>
+              <option>Emergency Electrician</option>
+              <option>Legal Documentation</option>
+              <option>Home Nursing</option>
+              <option>Roadside Assistance</option>
+              <option>GST & Tax Filing</option>
+              <option>Pet Grooming</option>
+            </select>
+
+          </div>
+
+          <textarea
+            placeholder="Describe your requirement..."
+            rows="6"
+            className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none w-full mt-8"
+          ></textarea>
+
+          <div className="text-center mt-10">
+
+            <button className="bg-white text-black px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-gray-300 transition">
+              Submit Booking Request
+            </button>
+
+          </div>
 
         </div>
 
