@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
 
 export default function Home() {
 
@@ -75,15 +74,11 @@ ${message}
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden"
+          className="md:hidden text-3xl"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
 
-          {mobileMenuOpen ? (
-            <X size={32} />
-          ) : (
-            <Menu size={32} />
-          )}
+          {mobileMenuOpen ? "✕" : "☰"}
 
         </button>
 
