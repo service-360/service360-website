@@ -127,6 +127,77 @@ ${message}
 
       </section>
 
+      {/* Service Categories */}
+      <section className="px-8 py-24 bg-gray-950">
+
+        <div className="max-w-7xl mx-auto">
+
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-8">
+            Explore Service Categories
+          </h2>
+
+          <p className="text-gray-400 text-xl text-center max-w-3xl mx-auto mb-20 leading-10">
+            Discover trusted services across emergency assistance,
+            healthcare, legal support, business compliance,
+            home solutions, and lifestyle needs.
+          </p>
+
+          <div className="grid md:grid-cols-4 gap-8">
+
+            {[
+              {
+                icon: "🚨",
+                title: "Emergency Services",
+                desc: "Plumbing, electricians, roadside assistance and urgent support."
+              },
+
+              {
+                icon: "⚖️",
+                title: "Legal & Compliance",
+                desc: "Legal documentation, GST filing, tax consultation and audits."
+              },
+
+              {
+                icon: "🏥",
+                title: "Healthcare Support",
+                desc: "Home nursing, elderly care, physiotherapy and healthcare services."
+              },
+
+              {
+                icon: "🐾",
+                title: "Lifestyle & Pet Care",
+                desc: "Pet grooming, home services and personal assistance solutions."
+              }
+
+            ].map((category) => (
+
+              <div
+                key={category.title}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-white hover:scale-105 transition duration-300"
+              >
+
+                <div className="text-6xl mb-8">
+                  {category.icon}
+                </div>
+
+                <h3 className="text-3xl font-bold mb-6">
+                  {category.title}
+                </h3>
+
+                <p className="text-gray-400 text-lg leading-8">
+                  {category.desc}
+                </p>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
       {/* Featured Services */}
       <section
         id="featured-services"
