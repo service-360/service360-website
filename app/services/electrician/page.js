@@ -116,9 +116,17 @@ export default function ElectricianServicePage() {
             Connect instantly with trusted electrician professionals.
           </p>
 
-          <button className="bg-yellow-400 text-black px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-yellow-300 transition">
-            Book Electrician Service
-          </button>
+          <div className="flex flex-col md:flex-row gap-6 justify-center">
+
+            <button className="bg-yellow-400 text-black px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-yellow-300 transition">
+              Book Electrician Service
+            </button>
+
+            <button className="border border-white px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-white hover:text-black transition">
+              Emergency Support
+            </button>
+
+          </div>
 
         </section>
 
