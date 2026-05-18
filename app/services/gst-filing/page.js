@@ -116,9 +116,17 @@ export default function GstFilingPage() {
             Connect with trusted tax and compliance professionals today.
           </p>
 
-          <button className="bg-blue-600 text-white px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-blue-500 transition">
-            Explore GST Services
-          </button>
+          <div className="flex flex-col md:flex-row gap-6 justify-center">
+
+            <button className="bg-blue-600 text-white px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-blue-500 transition">
+              Book Tax Consultation
+            </button>
+
+            <button className="border border-white px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-white hover:text-black transition">
+              Request GST Filing
+            </button>
+
+          </div>
 
         </section>
 
