@@ -116,9 +116,17 @@ export default function PetGroomingPage() {
             Connect with trusted pet grooming professionals today.
           </p>
 
-          <button className="bg-pink-500 text-black px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-pink-400 transition">
-            Explore Pet Grooming
-          </button>
+          <div className="flex flex-col md:flex-row gap-6 justify-center">
+
+            <button className="bg-pink-500 text-black px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-pink-400 transition">
+              Book Pet Grooming
+            </button>
+
+            <button className="border border-white px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-white hover:text-black transition">
+              Request Pet Care
+            </button>
+
+          </div>
 
         </section>
 
