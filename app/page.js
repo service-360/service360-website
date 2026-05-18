@@ -493,6 +493,73 @@ ${message}
 
       </section>
 
+      {/* FAQ Section */}
+      <section className="px-8 py-24 bg-black">
+
+        <div className="max-w-5xl mx-auto">
+
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-20">
+            Frequently Asked Questions
+          </h2>
+
+          <div className="space-y-8">
+
+            {[
+              {
+                question: "How does booking work?",
+                answer:
+                  "Customers can submit their service requirements through the platform and instantly connect with Service360 through WhatsApp."
+              },
+
+              {
+                question: "Are professionals verified?",
+                answer:
+                  "Yes. Service360 focuses on connecting users with trusted and verified professionals across service categories."
+              },
+
+              {
+                question: "Is emergency support available 24/7?",
+                answer:
+                  "Emergency services such as plumbing, electrician support, and roadside assistance are designed for urgent response requirements."
+              },
+
+              {
+                question: "How quickly will I receive assistance?",
+                answer:
+                  "Response times depend on the service category and location, but Service360 aims to provide quick assistance and professional support."
+              },
+
+              {
+                question: "What services are available on Service360?",
+                answer:
+                  "Service360 provides emergency assistance, legal support, healthcare services, GST filing, home services, and lifestyle solutions."
+              }
+
+            ].map((faq) => (
+
+              <div
+                key={faq.question}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
+              >
+
+                <h3 className="text-2xl font-bold mb-4">
+                  {faq.question}
+                </h3>
+
+                <p className="text-gray-400 text-lg leading-8">
+                  {faq.answer}
+                </p>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
       {/* Contact */}
       <section
         id="contact"
