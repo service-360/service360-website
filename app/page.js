@@ -4,12 +4,41 @@ import { useState } from "react"
 
 export default function Home() {
 
-  const [submitted, setSubmitted] = useState(false)
-
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [service, setService] = useState("")
+  const [message, setMessage] = useState("")
   const [error, setError] = useState("")
+
+  const whatsappNumber = "916369051521"
+
+  const handleSubmit = () => {
+
+    if (!name || !phone || !service) {
+      setError("Please fill all required fields.")
+      return
+    }
+
+    setError("")
+
+    const whatsappMessage = `
+Hello Service360,
+
+Name: ${name}
+Phone: ${phone}
+Service: ${service}
+
+Requirement:
+${message}
+    `
+
+    const encodedMessage = encodeURIComponent(whatsappMessage)
+
+    window.open(
+      `https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
+      "_blank"
+    )
+  }
 
   return (
     <main className="bg-black text-white min-h-screen">
@@ -193,87 +222,8 @@ export default function Home() {
 
       </section>
 
-      {/* Why Choose Service360 */}
-      <section
-        className="px-8 py-24 bg-gray-950"
-      >
-
-        <div className="max-w-7xl mx-auto">
-
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-8">
-            Why Choose Service360
-          </h2>
-
-          <p className="text-gray-400 text-xl text-center max-w-3xl mx-auto mb-20 leading-10">
-            Built for reliability, speed, trust, and convenience —
-            Service360 connects people with verified professionals
-            through one seamless technology-driven ecosystem.
-          </p>
-
-          <div className="grid md:grid-cols-4 gap-8">
-
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition">
-
-              <h3 className="text-3xl font-bold mb-6">
-                ✅ Verified Experts
-              </h3>
-
-              <p className="text-gray-400 leading-8">
-                Trusted professionals with verified backgrounds
-                and quality assurance.
-              </p>
-
-            </div>
-
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition">
-
-              <h3 className="text-3xl font-bold mb-6">
-                ⚡ Fast Response
-              </h3>
-
-              <p className="text-gray-400 leading-8">
-                Quick emergency dispatch and rapid support
-                whenever assistance is required.
-              </p>
-
-            </div>
-
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition">
-
-              <h3 className="text-3xl font-bold mb-6">
-                🔒 Trusted Platform
-              </h3>
-
-              <p className="text-gray-400 leading-8">
-                Transparent pricing, trusted services,
-                and customer-first experiences.
-              </p>
-
-            </div>
-
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition">
-
-              <h3 className="text-3xl font-bold mb-6">
-                🌐 All-in-One Ecosystem
-              </h3>
-
-              <p className="text-gray-400 leading-8">
-                Legal, home, healthcare, and personal
-                services under one premium platform.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* Booking Request Form */}
-      <section
-        className="px-8 py-24 bg-black"
-      >
+      {/* Booking Form */}
+      <section className="px-8 py-24 bg-black">
 
         <div className="max-w-5xl mx-auto">
 
@@ -282,8 +232,8 @@ export default function Home() {
           </h2>
 
           <p className="text-gray-400 text-xl text-center max-w-3xl mx-auto mb-20 leading-10">
-            Submit your service request and our team will
-            connect you with verified professionals quickly.
+            Submit your service request and connect instantly
+            with verified professionals.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -304,12 +254,6 @@ export default function Home() {
               className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none"
             />
 
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none"
-            />
-
             <select
               value={service}
               onChange={(e) => setService(e.target.value)}
@@ -325,11 +269,19 @@ export default function Home() {
               <option>Pet Grooming</option>
             </select>
 
+            <input
+              type="email"
+              placeholder="Email Address"
+              className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none"
+            />
+
           </div>
 
           <textarea
             placeholder="Describe your requirement..."
             rows="6"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-5 text-white outline-none w-full mt-8"
           ></textarea>
 
@@ -342,20 +294,10 @@ export default function Home() {
           <div className="text-center mt-10">
 
             <button
-              onClick={() => {
-
-                if (!name || !phone || !service) {
-                  setError("Please fill all required fields.")
-                  return
-                }
-
-                setError("")
-                setSubmitted(true)
-
-              }}
-              className="bg-white text-black px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-gray-300 transition"
+              onClick={handleSubmit}
+              className="bg-green-500 text-black px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-green-400 transition"
             >
-              Submit Booking Request
+              Continue on WhatsApp
             </button>
 
           </div>
@@ -403,7 +345,7 @@ export default function Home() {
               </h3>
 
               <p className="text-gray-400">
-                Phone Coming Soon
+                +91 63690 51521
               </p>
 
             </div>
@@ -425,35 +367,6 @@ export default function Home() {
         </div>
 
       </section>
-
-      {/* Success Popup */}
-      {submitted && (
-
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-6">
-
-          <div className="bg-zinc-900 border border-zinc-700 rounded-3xl p-10 max-w-lg text-center">
-
-            <h2 className="text-4xl font-bold mb-6">
-              Booking Request Submitted 🚀
-            </h2>
-
-            <p className="text-gray-400 text-lg leading-8 mb-8">
-              Thank you for choosing Service360.
-              Our team will contact you shortly regarding your request.
-            </p>
-
-            <button
-              onClick={() => setSubmitted(false)}
-              className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:bg-gray-300 transition"
-            >
-              Close
-            </button>
-
-          </div>
-
-        </div>
-
-      )}
 
       {/* Footer */}
       <footer className="border-t border-gray-800 py-8 text-center text-gray-500">
