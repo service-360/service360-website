@@ -306,6 +306,122 @@ ${message}
 
       </section>
 
+      {/* Stats Section */}
+      <section className="px-8 py-24 bg-gray-950">
+
+        <div className="max-w-7xl mx-auto">
+
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-20">
+            Trusted Across Multiple Services
+          </h2>
+
+          <div className="grid md:grid-cols-4 gap-8">
+
+            {[
+              {
+                number: "10K+",
+                label: "Service Requests"
+              },
+
+              {
+                number: "500+",
+                label: "Verified Professionals"
+              },
+
+              {
+                number: "24/7",
+                label: "Emergency Support"
+              },
+
+              {
+                number: "4.9★",
+                label: "Customer Rating"
+              }
+
+            ].map((stat) => (
+
+              <div
+                key={stat.label}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 text-center hover:border-white transition"
+              >
+
+                <h3 className="text-5xl font-bold mb-4">
+                  {stat.number}
+                </h3>
+
+                <p className="text-gray-400 text-lg">
+                  {stat.label}
+                </p>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Testimonials */}
+      <section className="px-8 py-24 bg-black">
+
+        <div className="max-w-7xl mx-auto">
+
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-20">
+            What Customers Say
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            {[
+              {
+                name: "Arun Kumar",
+                review:
+                  "Quick response and professional support. The plumbing service was excellent and arrived on time."
+              },
+
+              {
+                name: "Priya S",
+                review:
+                  "Very smooth legal documentation process. Highly professional experience from Service360."
+              },
+
+              {
+                name: "Rahul M",
+                review:
+                  "Booked roadside assistance during an emergency and received immediate support."
+              }
+
+            ].map((testimonial) => (
+
+              <div
+                key={testimonial.name}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-white transition"
+              >
+
+                <div className="text-yellow-400 text-2xl mb-6">
+                  ★★★★★
+                </div>
+
+                <p className="text-gray-300 text-lg leading-9 mb-8">
+                  "{testimonial.review}"
+                </p>
+
+                <h3 className="text-2xl font-semibold">
+                  {testimonial.name}
+                </h3>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
       {/* Contact */}
       <section
         id="contact"
