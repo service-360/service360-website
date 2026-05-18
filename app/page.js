@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { Menu, X } from "lucide-react"
 
 export default function Home() {
 
@@ -9,6 +10,7 @@ export default function Home() {
   const [service, setService] = useState("")
   const [message, setMessage] = useState("")
   const [error, setError] = useState("")
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const whatsappNumber = "916369051521"
 
@@ -44,7 +46,7 @@ ${message}
     <main className="bg-black text-white min-h-screen">
 
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-6 md:px-8 py-5 border-b border-gray-800 sticky top-0 bg-black/80 backdrop-blur-lg z-50">
+      <nav className="flex justify-between items-center px-6 md:px-8 py-5 border-b border-gray-800 sticky top-0 bg-black/90 backdrop-blur-lg z-50">
 
         <h1 className="text-2xl md:text-3xl font-bold">
           Service360
@@ -71,22 +73,56 @@ ${message}
 
         </div>
 
-        {/* Mobile Navigation */}
-        <div className="md:hidden flex gap-4 text-sm">
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
 
-          <a href="/" className="hover:text-gray-400 transition">
-            Home
-          </a>
+          {mobileMenuOpen ? (
+            <X size={32} />
+          ) : (
+            <Menu size={32} />
+          )}
 
-          <a href="/services" className="hover:text-gray-400 transition">
-            Services
-          </a>
+        </button>
 
-          <a href="#contact" className="hover:text-gray-400 transition">
-            Contact
-          </a>
+        {/* Mobile Drawer */}
+        {mobileMenuOpen && (
 
-        </div>
+          <div className="absolute top-20 left-0 w-full bg-black border-t border-gray-800 flex flex-col items-center gap-8 py-10 md:hidden">
+
+            <a
+              href="/"
+              className="text-xl hover:text-gray-400 transition"
+            >
+              Home
+            </a>
+
+            <a
+              href="/about"
+              className="text-xl hover:text-gray-400 transition"
+            >
+              About
+            </a>
+
+            <a
+              href="/services"
+              className="text-xl hover:text-gray-400 transition"
+            >
+              Services
+            </a>
+
+            <a
+              href="#contact"
+              className="text-xl hover:text-gray-400 transition"
+            >
+              Contact
+            </a>
+
+          </div>
+
+        )}
 
       </nav>
 
