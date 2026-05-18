@@ -1,4 +1,4 @@
-export default function RoadsideServicePage() {
+export default function RoadsidePage() {
   return (
     <main className="bg-black text-white min-h-screen px-6 py-20">
 
@@ -7,18 +7,18 @@ export default function RoadsideServicePage() {
         {/* Hero */}
         <section className="mb-24">
 
-          <div className="inline-block bg-yellow-500 text-black px-4 py-2 rounded-full mb-6">
-            24/7 Emergency Road Support
+          <div className="inline-block bg-red-600 text-white px-4 py-2 rounded-full mb-6">
+            24/7 Emergency Roadside Support
           </div>
 
           <h1 className="text-6xl md:text-7xl font-bold mb-8">
-            Instant Roadside Assistance
+            Roadside Assistance Services
           </h1>
 
           <p className="text-gray-400 text-2xl leading-10 max-w-4xl">
-            Fast and reliable roadside support for vehicle
-            breakdowns, emergencies, battery issues, towing,
-            punctures, and urgent travel assistance.
+            Instant roadside support for vehicle breakdowns,
+            flat tires, battery issues, towing assistance,
+            and emergency travel situations.
           </p>
 
         </section>
@@ -33,12 +33,12 @@ export default function RoadsideServicePage() {
           <div className="grid md:grid-cols-2 gap-8">
 
             {[
-              "Emergency Breakdown Support",
               "Battery Jump Start",
-              "Flat Tyre Assistance",
+              "Flat Tire Assistance",
+              "Emergency Towing",
               "Fuel Delivery Support",
-              "Vehicle Towing Coordination",
-              "Emergency Driver Assistance"
+              "Vehicle Lockout Assistance",
+              "Breakdown Emergency Support"
             ].map((service) => (
 
               <div
@@ -68,11 +68,11 @@ export default function RoadsideServicePage() {
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
 
               <h3 className="text-2xl font-bold mb-4">
-                Rapid Response
+                Fast Emergency Response
               </h3>
 
               <p className="text-gray-400 leading-8">
-                Fast emergency support during unexpected vehicle issues.
+                Rapid roadside assistance whenever and wherever you need help.
               </p>
 
             </div>
@@ -80,11 +80,11 @@ export default function RoadsideServicePage() {
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
 
               <h3 className="text-2xl font-bold mb-4">
-                Verified Assistance
+                Trusted Assistance Network
               </h3>
 
               <p className="text-gray-400 leading-8">
-                Trusted roadside professionals and partner support networks.
+                Verified support professionals for reliable vehicle assistance.
               </p>
 
             </div>
@@ -96,7 +96,7 @@ export default function RoadsideServicePage() {
               </h3>
 
               <p className="text-gray-400 leading-8">
-                Emergency assistance available anytime, anywhere.
+                Emergency support available anytime for urgent roadside situations.
               </p>
 
             </div>
@@ -109,16 +109,24 @@ export default function RoadsideServicePage() {
         <section className="text-center">
 
           <h2 className="text-5xl font-bold mb-8">
-            Need Emergency Road Support?
+            Need Emergency Roadside Assistance?
           </h2>
 
           <p className="text-gray-400 text-xl mb-12">
-            Connect instantly with trusted roadside assistance professionals.
+            Connect instantly with trusted roadside support professionals.
           </p>
 
-          <button className="bg-yellow-500 text-black px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-yellow-400 transition">
-            Get Roadside Assistance
-          </button>
+          <div className="flex flex-col md:flex-row gap-6 justify-center">
+
+            <button className="bg-red-600 text-white px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-red-500 transition">
+              Book Roadside Assistance
+            </button>
+
+            <button className="border border-white px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-white hover:text-black transition">
+              Emergency Support
+            </button>
+
+          </div>
 
         </section>
 
