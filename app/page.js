@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { motion } from "framer-motion"
 
 export default function Home() {
 
@@ -120,8 +121,11 @@ ${message}
       </nav>
 
       {/* Hero Section */}
-      <section
+      <motion.section
         id="home"
+        initial={{ opacity: 0, y: 80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
         className="relative overflow-hidden flex flex-col items-center justify-center text-center py-32 px-6 bg-[url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"
       >
 
@@ -131,13 +135,10 @@ ${message}
         {/* Background Glow Effects */}
         <div className="absolute inset-0 overflow-hidden">
 
-          {/* Blue Glow */}
           <div className="absolute top-[-150px] left-[-150px] w-[500px] h-[500px] bg-blue-500 opacity-40 blur-[140px] rounded-full"></div>
 
-          {/* Orange Glow */}
           <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] bg-orange-500 opacity-40 blur-[140px] rounded-full"></div>
 
-          {/* Center Glow */}
           <div className="absolute top-[30%] left-[35%] w-[300px] h-[300px] bg-white opacity-10 blur-[120px] rounded-full"></div>
 
         </div>
@@ -244,7 +245,7 @@ ${message}
 
         </div>
 
-      </section>
+      </motion.section>
 
       {/* Service Categories */}
       <section className="px-8 py-24 bg-gray-950">
@@ -290,8 +291,12 @@ ${message}
 
             ].map((category) => (
 
-              <div
+              <motion.div
                 key={category.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
                 className="group bg-zinc-900 border border-zinc-800 rounded-3xl p-10 transition duration-500 hover:border-blue-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.2)]"
               >
 
@@ -309,7 +314,7 @@ ${message}
                   {category.desc}
                 </p>
 
-              </div>
+              </motion.div>
 
             ))}
 
@@ -360,8 +365,12 @@ ${message}
 
             ].map((service) => (
 
-              <div
+              <motion.div
                 key={service.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
                 className="group relative bg-zinc-900 border border-zinc-800 rounded-3xl p-8 transition duration-500 hover:scale-105 hover:border-blue-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.25)] overflow-hidden"
               >
 
@@ -380,7 +389,7 @@ ${message}
                   Explore Service
                 </a>
 
-              </div>
+              </motion.div>
 
             ))}
 
