@@ -77,9 +77,7 @@ ${message}
           className="md:hidden text-3xl"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-
           {mobileMenuOpen ? "✕" : "☰"}
-
         </button>
 
         {/* Mobile Drawer */}
@@ -489,6 +487,10 @@ ${message}
 
               <a href="/partner-with-us" className="hover:text-white transition">
                 Partner With Us
+              </a>
+
+              <a href="/careers" className="hover:text-white transition">
+                Careers
               </a>
 
               <a href="#contact" className="hover:text-white transition">
