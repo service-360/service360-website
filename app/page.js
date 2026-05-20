@@ -281,14 +281,16 @@ ${message}
 
               <div
                 key={category.title}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-white hover:scale-105 transition duration-300"
+                className="group bg-zinc-900 border border-zinc-800 rounded-3xl p-10 transition duration-500 hover:border-blue-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.2)]"
               >
 
-                <div className="text-6xl mb-8">
+                <div className="w-20 h-20 rounded-3xl bg-black border border-zinc-700 flex items-center justify-center text-4xl mb-8 shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+
                   {category.icon}
+
                 </div>
 
-                <h3 className="text-3xl font-bold mb-6">
+                <h3 className="text-3xl font-bold mb-6 group-hover:text-blue-400 transition">
                   {category.title}
                 </h3>
 
