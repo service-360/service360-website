@@ -727,6 +727,9 @@ ${message}
               <a href="/terms-and-conditions" className="hover:text-white transition">
                 Terms & Conditions
               </a>
+            <a href="/refund-policy" className="hover:text-white transition">
+  Refund Policy
+</a>
 
               <a href="#contact" className="hover:text-white transition">
                 Contact
