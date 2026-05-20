@@ -11,7 +11,25 @@ export default function Home() {
   const [service, setService] = useState("Emergency Plumbing")
   const [message, setMessage] = useState("")
 
+  const [error, setError] = useState("")
+  const [success, setSuccess] = useState("")
+
   const handleSubmit = () => {
+
+    if (!name || !phone || !service || !message) {
+      setError("Please fill all required fields.")
+      setSuccess("")
+      return
+    }
+
+    if (phone.length < 10) {
+      setError("Please enter a valid phone number.")
+      setSuccess("")
+      return
+    }
+
+    setError("")
+    setSuccess("Redirecting to WhatsApp...")
 
     const whatsappMessage = `
 Hello Service360,
@@ -270,9 +288,7 @@ ${message}
               >
 
                 <div className="w-20 h-20 rounded-3xl bg-black border border-zinc-700 flex items-center justify-center text-4xl mb-8">
-
                   {category.icon}
-
                 </div>
 
                 <h3 className="text-3xl font-bold mb-6 group-hover:text-blue-400 transition">
@@ -529,6 +545,20 @@ ${message}
             ></textarea>
 
           </div>
+
+          {/* Error Message */}
+          {error && (
+            <div className="mt-8 bg-red-500/10 border border-red-500 text-red-400 px-6 py-4 rounded-2xl text-lg">
+              {error}
+            </div>
+          )}
+
+          {/* Success Message */}
+          {success && (
+            <div className="mt-8 bg-green-500/10 border border-green-500 text-green-400 px-6 py-4 rounded-2xl text-lg">
+              {success}
+            </div>
+          )}
 
           {/* Submit Button */}
           <div className="mt-10 text-center">
