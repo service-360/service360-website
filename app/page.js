@@ -142,34 +142,92 @@ ${message}
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10">
+        <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-            Anything. Anytime. Anywhere.
-          </h1>
+          {/* Left Content */}
+          <div>
 
-          <p className="text-gray-300 text-xl max-w-4xl mb-12 leading-10">
-            India’s trusted platform for emergency assistance,
-            legal support, home services, healthcare,
-            personal assistance, and lifestyle solutions —
-            all under one seamless ecosystem.
-          </p>
+            <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight text-left">
+              Anything. Anytime. Anywhere.
+            </h1>
 
-          <div className="flex gap-6 justify-center">
+            <p className="text-gray-300 text-xl max-w-2xl mb-12 leading-10 text-left">
+              India’s trusted platform for emergency assistance,
+              legal support, home services, healthcare,
+              personal assistance, and lifestyle solutions —
+              all under one seamless ecosystem.
+            </p>
 
-            <a
-              href="/services"
-              className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition"
-            >
-              Explore Services
-            </a>
+            <div className="flex gap-6 justify-center md:justify-start">
 
-            <a
-              href="/about"
-              className="border border-gray-700 px-8 py-4 rounded-2xl hover:bg-gray-900 transition"
-            >
-              Learn More
-            </a>
+              <a
+                href="/services"
+                className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition"
+              >
+                Explore Services
+              </a>
+
+              <a
+                href="/about"
+                className="border border-gray-700 px-8 py-4 rounded-2xl hover:bg-gray-900 transition"
+              >
+                Learn More
+              </a>
+
+            </div>
+
+          </div>
+
+          {/* Hero Illustration */}
+          <div className="relative hidden md:flex items-center justify-center">
+
+            {/* Outer Glow */}
+            <div className="absolute w-[500px] h-[500px] bg-blue-500 opacity-20 blur-[140px] rounded-full"></div>
+
+            {/* Main Card */}
+            <div className="relative bg-zinc-900 border border-zinc-800 rounded-[40px] p-10 w-full max-w-md shadow-2xl">
+
+              <div className="space-y-6">
+
+                <div className="bg-black rounded-2xl p-6 border border-zinc-800">
+
+                  <h3 className="text-2xl font-bold mb-2">
+                    Emergency Assistance
+                  </h3>
+
+                  <p className="text-gray-400">
+                    Instant support for urgent home and roadside services.
+                  </p>
+
+                </div>
+
+                <div className="bg-black rounded-2xl p-6 border border-zinc-800">
+
+                  <h3 className="text-2xl font-bold mb-2">
+                    Legal & Compliance
+                  </h3>
+
+                  <p className="text-gray-400">
+                    Professional legal documentation and business services.
+                  </p>
+
+                </div>
+
+                <div className="bg-black rounded-2xl p-6 border border-zinc-800">
+
+                  <h3 className="text-2xl font-bold mb-2">
+                    Healthcare & Lifestyle
+                  </h3>
+
+                  <p className="text-gray-400">
+                    Trusted healthcare, wellness, and personal assistance.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
 
           </div>
 
