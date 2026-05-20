@@ -1,4 +1,5 @@
 import "./globals.css"
+import Script from "next/script"
 
 export const metadata = {
   title: "Service360 | Anything. Anytime. Anywhere.",
@@ -63,7 +64,28 @@ export default function RootLayout({ children }) {
     <html lang="en">
 
       <body>
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QQYTVJE81V"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag(){
+              dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-QQYTVJE81V');
+          `}
+        </Script>
+
         {children}
+
       </body>
 
     </html>
