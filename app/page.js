@@ -371,9 +371,7 @@ export default function Home() {
               >
 
                 <div className="flex items-center gap-1 mb-6 text-yellow-400 text-2xl">
-
                   ★ ★ ★ ★ ★
-
                 </div>
 
                 <p className="text-gray-300 text-lg leading-8 mb-8">
@@ -395,6 +393,113 @@ export default function Home() {
               </div>
 
             ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Booking Section */}
+      <section
+        id="contact"
+        className="px-8 py-24"
+      >
+
+        <div className="max-w-5xl mx-auto bg-zinc-900 border border-zinc-800 rounded-[40px] p-10 md:p-16 shadow-[0_0_60px_rgba(59,130,246,0.15)]">
+
+          <div className="text-center mb-16">
+
+            <h2 className="text-5xl md:text-6xl font-bold mb-8">
+              Book a Service
+            </h2>
+
+            <p className="text-gray-400 text-xl leading-10 max-w-3xl mx-auto">
+              Connect instantly with trusted professionals for emergency,
+              legal, healthcare, home, and lifestyle services.
+            </p>
+
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+
+            {/* Name */}
+            <div>
+
+              <label className="block text-lg mb-4 text-gray-300">
+                Full Name
+              </label>
+
+              <input
+                type="text"
+                placeholder="Enter your full name"
+                className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5 text-lg outline-none focus:border-blue-500 transition"
+              />
+
+            </div>
+
+            {/* Phone */}
+            <div>
+
+              <label className="block text-lg mb-4 text-gray-300">
+                Phone Number
+              </label>
+
+              <input
+                type="tel"
+                placeholder="Enter your phone number"
+                className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5 text-lg outline-none focus:border-blue-500 transition"
+              />
+
+            </div>
+
+          </div>
+
+          {/* Service Dropdown */}
+          <div className="mt-8">
+
+            <label className="block text-lg mb-4 text-gray-300">
+              Select Service
+            </label>
+
+            <select
+              className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5 text-lg outline-none focus:border-blue-500 transition"
+            >
+
+              <option>Emergency Plumbing</option>
+              <option>Emergency Electrician</option>
+              <option>Legal Documentation</option>
+              <option>Healthcare Assistance</option>
+              <option>Roadside Assistance</option>
+              <option>Pet Grooming</option>
+
+            </select>
+
+          </div>
+
+          {/* Message */}
+          <div className="mt-8">
+
+            <label className="block text-lg mb-4 text-gray-300">
+              Requirement Details
+            </label>
+
+            <textarea
+              rows="6"
+              placeholder="Describe your requirement..."
+              className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5 text-lg outline-none focus:border-blue-500 transition resize-none"
+            ></textarea>
+
+          </div>
+
+          {/* Submit Button */}
+          <div className="mt-10 text-center">
+
+            <button
+              className="bg-blue-500 hover:bg-blue-600 transition px-10 py-5 rounded-2xl text-xl font-semibold shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:scale-105"
+            >
+              Submit Request
+            </button>
 
           </div>
 
