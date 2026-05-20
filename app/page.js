@@ -704,7 +704,9 @@ ${message}
           </div>
 
           {/* Company */}
-          <div>
+      
+<div>
+            
             <a href="/partner-with-us" className="hover:text-white transition">
   Partner With Us
 </a>
