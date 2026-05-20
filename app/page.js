@@ -325,6 +325,83 @@ export default function Home() {
 
       </section>
 
+      {/* Testimonials Section */}
+      <section className="px-8 py-24 bg-gray-950">
+
+        <div className="max-w-7xl mx-auto">
+
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-8">
+            What Our Customers Say
+          </h2>
+
+          <p className="text-gray-400 text-xl text-center max-w-3xl mx-auto mb-20 leading-10">
+            Trusted by customers for emergency assistance,
+            legal support, healthcare, and premium home services.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            {[
+              {
+                name: "Arun Kumar",
+                service: "Emergency Plumbing",
+                review:
+                  "Very fast response and professional service. The issue was solved within an hour."
+              },
+
+              {
+                name: "Priya Sharma",
+                service: "Legal Documentation",
+                review:
+                  "Extremely professional and smooth experience. Highly recommended for legal support."
+              },
+
+              {
+                name: "Rahul Verma",
+                service: "Home Healthcare",
+                review:
+                  "Excellent nursing assistance and caring professionals. Very trustworthy platform."
+              }
+
+            ].map((testimonial) => (
+
+              <div
+                key={testimonial.name}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-blue-500 transition duration-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.2)]"
+              >
+
+                <div className="flex items-center gap-1 mb-6 text-yellow-400 text-2xl">
+
+                  ★ ★ ★ ★ ★
+
+                </div>
+
+                <p className="text-gray-300 text-lg leading-8 mb-8">
+                  "{testimonial.review}"
+                </p>
+
+                <div>
+
+                  <h3 className="text-2xl font-bold">
+                    {testimonial.name}
+                  </h3>
+
+                  <p className="text-blue-400 mt-2">
+                    {testimonial.service}
+                  </p>
+
+                </div>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
       {/* Floating WhatsApp Button */}
       <a
         href="https://wa.me/916369051521"
