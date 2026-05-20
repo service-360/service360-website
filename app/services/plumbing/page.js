@@ -1,136 +1,200 @@
 export default function PlumbingPage() {
+
   return (
-    <main className="bg-black text-white min-h-screen px-6 py-20">
+    <main className="bg-black text-white min-h-screen">
 
-      <div className="max-w-6xl mx-auto">
+      {/* Hero Section */}
+      <section className="relative py-32 px-8 bg-[url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center">
 
-        {/* Hero */}
-        <section className="mb-24">
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/75"></div>
 
-          <div className="inline-block bg-blue-600 text-white px-4 py-2 rounded-full mb-6">
-            24/7 Emergency Support
-          </div>
+        <div className="relative z-10 max-w-6xl mx-auto">
 
-          <h1 className="text-6xl md:text-7xl font-bold mb-8">
+          <h1 className="text-5xl md:text-7xl font-bold mb-8">
             Emergency Plumbing Services
           </h1>
 
-          <p className="text-gray-400 text-2xl leading-10 max-w-4xl">
-            Fast and reliable plumbing solutions for homes,
-            apartments, offices, and commercial spaces —
-            available anytime you need emergency support.
+          <p className="text-xl text-gray-300 leading-10 max-w-3xl">
+            Fast, reliable, and professional plumbing assistance
+            for homes, apartments, offices, and commercial spaces.
           </p>
 
-        </section>
+        </div>
 
-        {/* Included Services */}
-        <section className="mb-24">
+      </section>
 
-          <h2 className="text-4xl font-bold mb-12">
-            Included Services
+      {/* Services */}
+      <section className="px-8 py-24">
+
+        <div className="max-w-6xl mx-auto">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-16">
+            Our Plumbing Solutions
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
 
             {[
-              "Pipe Leakage Repair",
-              "Bathroom Plumbing",
-              "Kitchen Plumbing",
-              "Water Tank Repair",
-              "Drain Block Removal",
-              "Emergency Plumbing Assistance"
+              {
+                title: "Leak Repairs",
+                desc: "Quick fixing for pipe leaks, taps, and water connections."
+              },
+
+              {
+                title: "Bathroom Plumbing",
+                desc: "Professional repair and installation for bathrooms."
+              },
+
+              {
+                title: "Emergency Support",
+                desc: "24/7 urgent plumbing assistance at your location."
+              }
+
             ].map((service) => (
 
               <div
-                key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8"
+                key={service.title}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-blue-500 transition duration-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.2)]"
               >
-                <h3 className="text-2xl font-semibold">
-                  {service}
+
+                <h3 className="text-3xl font-bold mb-6">
+                  {service.title}
                 </h3>
+
+                <p className="text-gray-400 text-lg leading-8">
+                  {service.desc}
+                </p>
+
               </div>
 
             ))}
 
           </div>
 
-        </section>
+        </div>
 
-        {/* Why Choose */}
-        <section className="mb-24">
+      </section>
 
-          <h2 className="text-4xl font-bold mb-12">
-            Why Choose Service360?
+      {/* Why Choose Us */}
+      <section className="px-8 py-24 bg-gray-950">
+
+        <div className="max-w-6xl mx-auto">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-16">
+            Why Choose Service360
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-10">
+
+            {[
+              "Verified professionals",
+              "Fast response time",
+              "Affordable pricing",
+              "24/7 support availability",
+              "Trusted customer service",
+              "Professional equipment and tools"
+            ].map((point) => (
+
+              <div
+                key={point}
+                className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 text-xl hover:border-blue-500 transition duration-500"
+              >
+                ✅ {point}
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Process Section */}
+      <section className="px-8 py-24">
+
+        <div className="max-w-6xl mx-auto">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
+            How It Works
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+            {[
+              {
+                step: "1",
+                title: "Book Service",
+                desc: "Submit your plumbing request through WhatsApp."
+              },
 
-              <h3 className="text-2xl font-bold mb-4">
-                Verified Professionals
-              </h3>
+              {
+                step: "2",
+                title: "Professional Assigned",
+                desc: "Our verified expert will contact you quickly."
+              },
 
-              <p className="text-gray-400 leading-8">
-                Skilled plumbing experts with verified experience and quality assurance.
-              </p>
+              {
+                step: "3",
+                title: "Issue Resolved",
+                desc: "Fast and professional plumbing assistance at your location."
+              }
 
-            </div>
+            ].map((item) => (
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+              <div
+                key={item.step}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 text-center hover:border-blue-500 transition duration-500"
+              >
 
-              <h3 className="text-2xl font-bold mb-4">
-                Quick Emergency Response
-              </h3>
+                <div className="w-20 h-20 rounded-full bg-blue-500 flex items-center justify-center text-3xl font-bold mx-auto mb-8">
+                  {item.step}
+                </div>
 
-              <p className="text-gray-400 leading-8">
-                Fast support for urgent plumbing issues anytime, anywhere.
-              </p>
+                <h3 className="text-3xl font-bold mb-6">
+                  {item.title}
+                </h3>
 
-            </div>
+                <p className="text-gray-400 text-lg leading-8">
+                  {item.desc}
+                </p>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+              </div>
 
-              <h3 className="text-2xl font-bold mb-4">
-                Reliable Service
-              </h3>
-
-              <p className="text-gray-400 leading-8">
-                Professional and transparent service experience for every customer.
-              </p>
-
-            </div>
+            ))}
 
           </div>
 
-        </section>
+        </div>
 
-        {/* CTA */}
-        <section className="text-center">
+      </section>
+
+      {/* CTA */}
+      <section className="px-8 py-24">
+
+        <div className="max-w-4xl mx-auto text-center bg-zinc-900 border border-zinc-800 rounded-[40px] p-12 shadow-[0_0_60px_rgba(59,130,246,0.15)]">
 
           <h2 className="text-5xl font-bold mb-8">
-            Need Emergency Plumbing Support?
+            Need Emergency Plumbing Help?
           </h2>
 
-          <p className="text-gray-400 text-xl mb-12">
-            Connect instantly with trusted plumbing professionals today.
+          <p className="text-xl text-gray-400 leading-10 mb-12">
+            Connect instantly with our professional plumbing experts.
           </p>
 
-          <div className="flex flex-col md:flex-row gap-6 justify-center">
+          <a
+            href="https://wa.me/916369051521"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-blue-500 hover:bg-blue-600 transition px-10 py-5 rounded-2xl text-xl font-semibold hover:scale-105"
+          >
+            Book on WhatsApp
+          </a>
 
-            <button className="bg-blue-600 text-white px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-blue-500 transition">
-              Book Plumbing Service
-            </button>
+        </div>
 
-            <button className="border border-white px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-white hover:text-black transition">
-              Emergency Support
-            </button>
-
-          </div>
-
-        </section>
-
-      </div>
+      </section>
 
     </main>
   )
