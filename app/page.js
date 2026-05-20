@@ -124,35 +124,49 @@ ${message}
       {/* Hero Section */}
       <section
         id="home"
-        className="flex flex-col items-center justify-center text-center py-32 px-6"
+        className="relative overflow-hidden flex flex-col items-center justify-center text-center py-32 px-6"
       >
 
-        <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-          Anything. Anytime. Anywhere.
-        </h1>
+        {/* Background Glow Effects */}
+        <div className="absolute inset-0 overflow-hidden">
 
-        <p className="text-gray-400 text-xl max-w-4xl mb-12 leading-10">
-          India’s trusted platform for emergency assistance,
-          legal support, home services, healthcare,
-          personal assistance, and lifestyle solutions —
-          all under one seamless ecosystem.
-        </p>
+          <div className="absolute top-[-100px] left-[-100px] w-[350px] h-[350px] bg-blue-500 opacity-20 blur-[120px] rounded-full"></div>
 
-        <div className="flex gap-6 justify-center">
+          <div className="absolute bottom-[-100px] right-[-100px] w-[350px] h-[350px] bg-orange-500 opacity-20 blur-[120px] rounded-full"></div>
 
-          <a
-            href="/services"
-            className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition"
-          >
-            Explore Services
-          </a>
+        </div>
 
-          <a
-            href="/about"
-            className="border border-gray-700 px-8 py-4 rounded-2xl hover:bg-gray-900 transition"
-          >
-            Learn More
-          </a>
+        {/* Hero Content */}
+        <div className="relative z-10">
+
+          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
+            Anything. Anytime. Anywhere.
+          </h1>
+
+          <p className="text-gray-400 text-xl max-w-4xl mb-12 leading-10">
+            India’s trusted platform for emergency assistance,
+            legal support, home services, healthcare,
+            personal assistance, and lifestyle solutions —
+            all under one seamless ecosystem.
+          </p>
+
+          <div className="flex gap-6 justify-center">
+
+            <a
+              href="/services"
+              className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition"
+            >
+              Explore Services
+            </a>
+
+            <a
+              href="/about"
+              className="border border-gray-700 px-8 py-4 rounded-2xl hover:bg-gray-900 transition"
+            >
+              Learn More
+            </a>
+
+          </div>
 
         </div>
 
@@ -765,15 +779,17 @@ ${message}
         </div>
 
       </footer>
-{/* Floating WhatsApp Button */}
-<a
-  href="https://wa.me/916369051521"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-400 text-black px-6 py-4 rounded-full shadow-2xl font-bold text-lg z-50 transition hover:scale-110"
->
-  WhatsApp
-</a>
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href="https://wa.me/916369051521"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-400 text-black px-6 py-4 rounded-full shadow-2xl font-bold text-lg z-50 transition hover:scale-110"
+      >
+        WhatsApp
+      </a>
+
     </main>
   )
 }
