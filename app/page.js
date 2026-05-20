@@ -373,10 +373,10 @@ ${message}
 
               <div
                 key={service.title}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white hover:scale-105 transition duration-300"
+                className="group relative bg-zinc-900 border border-zinc-800 rounded-3xl p-8 transition duration-500 hover:scale-105 hover:border-blue-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.25)] overflow-hidden"
               >
 
-                <h3 className="text-3xl font-bold mb-6">
+                <h3 className="text-3xl font-bold mb-6 group-hover:text-blue-400 transition">
                   {service.title}
                 </h3>
 
@@ -386,7 +386,7 @@ ${message}
 
                 <a
                   href={service.link}
-                  className="inline-block bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition"
+                  className="inline-block bg-white text-black px-6 py-3 rounded-xl font-semibold transition duration-300 hover:bg-blue-500 hover:text-white hover:scale-105"
                 >
                   Explore Service
                 </a>
