@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
 
 export default function Home() {
 
@@ -72,11 +71,8 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <motion.section
+      <section
         id="home"
-        initial={{ opacity: 0, y: 80 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
         className="relative overflow-hidden py-32 px-6 bg-[url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"
       >
 
@@ -193,7 +189,7 @@ export default function Home() {
 
         </div>
 
-      </motion.section>
+      </section>
 
       {/* Service Categories */}
       <section className="px-8 py-24 bg-gray-950">
@@ -238,12 +234,8 @@ export default function Home() {
 
             ].map((category) => (
 
-              <motion.div
+              <div
                 key={category.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
                 className="group bg-zinc-900 border border-zinc-800 rounded-3xl p-10 transition duration-500 hover:border-blue-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.2)]"
               >
 
@@ -261,7 +253,7 @@ export default function Home() {
                   {category.desc}
                 </p>
 
-              </motion.div>
+              </div>
 
             ))}
 
@@ -303,12 +295,8 @@ export default function Home() {
 
             ].map((service) => (
 
-              <motion.div
+              <div
                 key={service.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
                 className="group bg-zinc-900 border border-zinc-800 rounded-3xl p-8 transition duration-500 hover:scale-105 hover:border-blue-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.25)]"
               >
 
@@ -327,7 +315,7 @@ export default function Home() {
                   Explore Service
                 </a>
 
-              </motion.div>
+              </div>
 
             ))}
 
