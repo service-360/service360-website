@@ -6,6 +6,36 @@ export default function Home() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const [name, setName] = useState("")
+  const [phone, setPhone] = useState("")
+  const [service, setService] = useState("Emergency Plumbing")
+  const [message, setMessage] = useState("")
+
+  const handleSubmit = () => {
+
+    const whatsappMessage = `
+Hello Service360,
+
+New Service Request
+
+Name: ${name}
+
+Phone: ${phone}
+
+Service Required: ${service}
+
+Requirement Details:
+${message}
+    `
+
+    const encodedMessage = encodeURIComponent(whatsappMessage)
+
+    window.open(
+      `https://wa.me/916369051521?text=${encodedMessage}`,
+      "_blank"
+    )
+  }
+
   return (
     <main className="bg-black text-white min-h-screen">
 
@@ -432,6 +462,8 @@ export default function Home() {
 
               <input
                 type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your full name"
                 className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5 text-lg outline-none focus:border-blue-500 transition"
               />
@@ -447,6 +479,8 @@ export default function Home() {
 
               <input
                 type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 placeholder="Enter your phone number"
                 className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5 text-lg outline-none focus:border-blue-500 transition"
               />
@@ -463,6 +497,8 @@ export default function Home() {
             </label>
 
             <select
+              value={service}
+              onChange={(e) => setService(e.target.value)}
               className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5 text-lg outline-none focus:border-blue-500 transition"
             >
 
@@ -486,6 +522,8 @@ export default function Home() {
 
             <textarea
               rows="6"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               placeholder="Describe your requirement..."
               className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5 text-lg outline-none focus:border-blue-500 transition resize-none"
             ></textarea>
@@ -496,6 +534,7 @@ export default function Home() {
           <div className="mt-10 text-center">
 
             <button
+              onClick={handleSubmit}
               className="bg-blue-500 hover:bg-blue-600 transition px-10 py-5 rounded-2xl text-xl font-semibold shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:scale-105"
             >
               Submit Request
