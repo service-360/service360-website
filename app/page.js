@@ -2,13 +2,6 @@
 
 import { useState } from "react"
 
-import {
-  Shield,
-  Scale,
-  HeartPulse,
-  PawPrint
-} from "lucide-react"
-
 export default function Home() {
 
   const [name, setName] = useState("")
@@ -61,19 +54,19 @@ ${message}
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-8 text-lg">
 
-          <a href="/" className="hover:text-gray-400 transition">
+          <a href="/" className="hover:text-blue-400 transition">
             Home
           </a>
 
-          <a href="/about" className="hover:text-gray-400 transition">
+          <a href="/about" className="hover:text-blue-400 transition">
             About
           </a>
 
-          <a href="/services" className="hover:text-gray-400 transition">
+          <a href="/services" className="hover:text-blue-400 transition">
             Services
           </a>
 
-          <a href="#contact" className="hover:text-gray-400 transition">
+          <a href="#contact" className="hover:text-blue-400 transition">
             Contact
           </a>
 
@@ -84,9 +77,7 @@ ${message}
           className="md:hidden text-3xl"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-
           {mobileMenuOpen ? "✕" : "☰"}
-
         </button>
 
         {/* Mobile Drawer */}
@@ -96,28 +87,28 @@ ${message}
 
             <a
               href="/"
-              className="text-xl hover:text-gray-400 transition"
+              className="text-xl hover:text-blue-400 transition"
             >
               Home
             </a>
 
             <a
               href="/about"
-              className="text-xl hover:text-gray-400 transition"
+              className="text-xl hover:text-blue-400 transition"
             >
               About
             </a>
 
             <a
               href="/services"
-              className="text-xl hover:text-gray-400 transition"
+              className="text-xl hover:text-blue-400 transition"
             >
               Services
             </a>
 
             <a
               href="#contact"
-              className="text-xl hover:text-gray-400 transition"
+              className="text-xl hover:text-blue-400 transition"
             >
               Contact
             </a>
@@ -137,13 +128,10 @@ ${message}
         {/* Background Glow Effects */}
         <div className="absolute inset-0 overflow-hidden">
 
-          {/* Blue Glow */}
           <div className="absolute top-[-150px] left-[-150px] w-[500px] h-[500px] bg-blue-500 opacity-40 blur-[140px] rounded-full"></div>
 
-          {/* Orange Glow */}
           <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] bg-orange-500 opacity-40 blur-[140px] rounded-full"></div>
 
-          {/* Center Glow */}
           <div className="absolute top-[30%] left-[35%] w-[300px] h-[300px] bg-white opacity-10 blur-[120px] rounded-full"></div>
 
         </div>
@@ -188,15 +176,17 @@ ${message}
           {/* Hero Illustration */}
           <div className="relative hidden md:flex items-center justify-center">
 
-            {/* Outer Glow */}
             <div className="absolute w-[500px] h-[500px] bg-blue-500 opacity-20 blur-[140px] rounded-full"></div>
 
-            {/* Main Card */}
             <div className="relative bg-zinc-900 border border-zinc-800 rounded-[40px] p-10 w-full max-w-md shadow-2xl">
 
               <div className="space-y-6">
 
                 <div className="bg-black rounded-2xl p-6 border border-zinc-800">
+
+                  <div className="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center mb-4 text-3xl">
+                    🛡️
+                  </div>
 
                   <h3 className="text-2xl font-bold mb-2">
                     Emergency Assistance
@@ -210,6 +200,10 @@ ${message}
 
                 <div className="bg-black rounded-2xl p-6 border border-zinc-800">
 
+                  <div className="w-14 h-14 rounded-2xl bg-orange-500/20 flex items-center justify-center mb-4 text-3xl">
+                    ⚖️
+                  </div>
+
                   <h3 className="text-2xl font-bold mb-2">
                     Legal & Compliance
                   </h3>
@@ -221,6 +215,10 @@ ${message}
                 </div>
 
                 <div className="bg-black rounded-2xl p-6 border border-zinc-800">
+
+                  <div className="w-14 h-14 rounded-2xl bg-green-500/20 flex items-center justify-center mb-4 text-3xl">
+                    ❤️
+                  </div>
 
                   <h3 className="text-2xl font-bold mb-2">
                     Healthcare & Lifestyle
@@ -261,25 +259,25 @@ ${message}
 
             {[
               {
-                icon: <Shield size={36} />,
+                icon: "🛡️",
                 title: "Emergency Services",
                 desc: "Plumbing, electricians, roadside assistance and urgent support."
               },
 
               {
-                icon: <Scale size={36} />,
+                icon: "⚖️",
                 title: "Legal & Compliance",
                 desc: "Legal documentation, GST filing, tax consultation and audits."
               },
 
               {
-                icon: <HeartPulse size={36} />,
+                icon: "❤️",
                 title: "Healthcare Support",
                 desc: "Home nursing, elderly care, physiotherapy and healthcare services."
               },
 
               {
-                icon: <PawPrint size={36} />,
+                icon: "🐾",
                 title: "Lifestyle & Pet Care",
                 desc: "Pet grooming, home services and personal assistance solutions."
               }
@@ -352,30 +350,6 @@ ${message}
                 title: "Legal Documentation",
                 desc: "Professional legal drafting, agreements, and compliance support.",
                 link: "/services/legal"
-              },
-
-              {
-                title: "Home Nursing",
-                desc: "Trusted healthcare and elderly assistance at home.",
-                link: "/services/nursing"
-              },
-
-              {
-                title: "Roadside Assistance",
-                desc: "Instant vehicle breakdown and emergency support.",
-                link: "/services/roadside"
-              },
-
-              {
-                title: "GST & Tax Filing",
-                desc: "Business taxation, audit, and compliance services.",
-                link: "/services/gst-filing"
-              },
-
-              {
-                title: "Pet Grooming",
-                desc: "Professional pet care and grooming at your doorstep.",
-                link: "/services/pet-grooming"
               }
 
             ].map((service) => (
