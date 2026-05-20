@@ -654,8 +654,117 @@ ${message}
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-800 py-8 text-center text-gray-500">
-        © 2026 Service360. All rights reserved.
+      <footer className="border-t border-gray-800 py-12 px-6 bg-black text-gray-400">
+
+        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+
+          {/* Brand */}
+          <div>
+
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Service360
+            </h2>
+
+            <p className="leading-8">
+              Anything. Anytime. Anywhere.
+              Trusted services across emergency,
+              legal, healthcare, business,
+              and lifestyle solutions.
+            </p>
+
+          </div>
+
+          {/* Services */}
+          <div>
+
+            <h3 className="text-2xl font-semibold text-white mb-6">
+              Services
+            </h3>
+
+            <div className="flex flex-col gap-4">
+
+              <a href="/services/plumbing" className="hover:text-white transition">
+                Plumbing
+              </a>
+
+              <a href="/services/electrician" className="hover:text-white transition">
+                Electrician
+              </a>
+
+              <a href="/services/roadside" className="hover:text-white transition">
+                Roadside Assistance
+              </a>
+
+              <a href="/services/nursing" className="hover:text-white transition">
+                Home Nursing
+              </a>
+
+            </div>
+
+          </div>
+
+          {/* Company */}
+          <div>
+
+            <h3 className="text-2xl font-semibold text-white mb-6">
+              Company
+            </h3>
+
+            <div className="flex flex-col gap-4">
+
+              <a href="/about" className="hover:text-white transition">
+                About
+              </a>
+
+              <a href="/services" className="hover:text-white transition">
+                Services
+              </a>
+
+              <a href="/privacy-policy" className="hover:text-white transition">
+                Privacy Policy
+              </a>
+
+              <a href="#contact" className="hover:text-white transition">
+                Contact
+              </a>
+
+            </div>
+
+          </div>
+
+          {/* Contact */}
+          <div>
+
+            <h3 className="text-2xl font-semibold text-white mb-6">
+              Contact
+            </h3>
+
+            <div className="space-y-4">
+
+              <p>
+                📍 Tiruchirappalli, Tamil Nadu
+              </p>
+
+              <p>
+                📞 +91 63690 51521
+              </p>
+
+              <p>
+                ✉️ support@Service360.com
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+
+          © 2026 Service360. All rights reserved.
+
+        </div>
+
       </footer>
 
     </main>
