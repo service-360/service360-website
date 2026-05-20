@@ -765,7 +765,15 @@ ${message}
         </div>
 
       </footer>
-
+{/* Floating WhatsApp Button */}
+<a
+  href="https://wa.me/916369051521"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-400 text-black px-6 py-4 rounded-full shadow-2xl font-bold text-lg z-50 transition hover:scale-110"
+>
+  WhatsApp
+</a>
     </main>
   )
 }
