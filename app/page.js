@@ -2,6 +2,13 @@
 
 import { useState } from "react"
 
+import {
+  Shield,
+  Scale,
+  HeartPulse,
+  PawPrint
+} from "lucide-react"
+
 export default function Home() {
 
   const [name, setName] = useState("")
@@ -254,25 +261,25 @@ ${message}
 
             {[
               {
-                icon: "🚨",
+                icon: <Shield size={36} />,
                 title: "Emergency Services",
                 desc: "Plumbing, electricians, roadside assistance and urgent support."
               },
 
               {
-                icon: "⚖️",
+                icon: <Scale size={36} />,
                 title: "Legal & Compliance",
                 desc: "Legal documentation, GST filing, tax consultation and audits."
               },
 
               {
-                icon: "🏥",
+                icon: <HeartPulse size={36} />,
                 title: "Healthcare Support",
                 desc: "Home nursing, elderly care, physiotherapy and healthcare services."
               },
 
               {
-                icon: "🐾",
+                icon: <PawPrint size={36} />,
                 title: "Lifestyle & Pet Care",
                 desc: "Pet grooming, home services and personal assistance solutions."
               }
