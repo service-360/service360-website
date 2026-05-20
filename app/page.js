@@ -528,10 +528,118 @@ ${message}
 
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+        {/* Footer */}
+<footer className="border-t border-gray-800 bg-black px-8 py-20">
 
-          © 2026 Service360. All rights reserved.
+  <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
 
+    {/* Brand Section */}
+    <div>
+
+      <h2 className="text-3xl font-bold mb-6 text-white">
+        Service360
+      </h2>
+
+      <p className="text-gray-400 leading-8">
+        India’s trusted all-in-one platform for emergency,
+        legal, healthcare, home, and lifestyle services.
+      </p>
+
+    </div>
+
+    {/* Services */}
+    <div>
+
+      <h3 className="text-2xl font-semibold mb-6 text-white">
+        Services
+      </h3>
+
+      <div className="flex flex-col gap-4 text-gray-400">
+
+        <a href="/services/plumbing" className="hover:text-white transition">
+          Plumbing
+        </a>
+
+        <a href="/services/electrician" className="hover:text-white transition">
+          Electrician
+        </a>
+
+        <a href="/services/legal" className="hover:text-white transition">
+          Legal Documentation
+        </a>
+
+        <a href="/services/nursing" className="hover:text-white transition">
+          Home Nursing
+        </a>
+
+      </div>
+
+    </div>
+
+    {/* Company */}
+    <div>
+
+      <h3 className="text-2xl font-semibold mb-6 text-white">
+        Company
+      </h3>
+
+      <div className="flex flex-col gap-4 text-gray-400">
+
+        <a href="/about" className="hover:text-white transition">
+          About Us
+        </a>
+
+        <a href="/privacy-policy" className="hover:text-white transition">
+          Privacy Policy
+        </a>
+
+        <a href="/terms-and-conditions" className="hover:text-white transition">
+          Terms & Conditions
+        </a>
+
+        <a href="#contact" className="hover:text-white transition">
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+
+    {/* Contact */}
+    <div>
+
+      <h3 className="text-2xl font-semibold mb-6 text-white">
+        Contact
+      </h3>
+
+      <div className="flex flex-col gap-4 text-gray-400">
+
+        <p>
+          Tiruchirappalli, Tamil Nadu
+        </p>
+
+        <p>
+          +91 63690 51521
+        </p>
+
+        <p>
+          support@Service360.com
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  {/* Bottom Footer */}
+  <div className="border-t border-gray-800 mt-16 pt-8 text-center text-gray-500">
+
+    © 2026 Service360. All rights reserved.
+
+  </div>
+
+</footer>
         </div>
 
       </footer>
