@@ -408,251 +408,6 @@ ${message}
 
       </section>
 
-      {/* Stats Section */}
-      <section className="px-8 py-24 bg-gray-950">
-
-        <div className="max-w-7xl mx-auto">
-
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-20">
-            Trusted Across Multiple Services
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-8">
-
-            {[
-              {
-                number: "10K+",
-                label: "Service Requests"
-              },
-
-              {
-                number: "500+",
-                label: "Verified Professionals"
-              },
-
-              {
-                number: "24/7",
-                label: "Emergency Support"
-              },
-
-              {
-                number: "4.9★",
-                label: "Customer Rating"
-              }
-
-            ].map((stat) => (
-
-              <div
-                key={stat.label}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 text-center hover:border-white transition"
-              >
-
-                <h3 className="text-5xl font-bold mb-4">
-                  {stat.number}
-                </h3>
-
-                <p className="text-gray-400 text-lg">
-                  {stat.label}
-                </p>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* Testimonials */}
-      <section className="px-8 py-24 bg-black">
-
-        <div className="max-w-7xl mx-auto">
-
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-20">
-            What Customers Say
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              {
-                name: "Arun Kumar",
-                review:
-                  "Quick response and professional support. The plumbing service was excellent and arrived on time."
-              },
-
-              {
-                name: "Priya S",
-                review:
-                  "Very smooth legal documentation process. Highly professional experience from Service360."
-              },
-
-              {
-                name: "Rahul M",
-                review:
-                  "Booked roadside assistance during an emergency and received immediate support."
-              }
-
-            ].map((testimonial) => (
-
-              <div
-                key={testimonial.name}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-white transition"
-              >
-
-                <div className="text-yellow-400 text-2xl mb-6">
-                  ★★★★★
-                </div>
-
-                <p className="text-gray-300 text-lg leading-9 mb-8">
-                  "{testimonial.review}"
-                </p>
-
-                <h3 className="text-2xl font-semibold">
-                  {testimonial.name}
-                </h3>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* FAQ Section */}
-      <section className="px-8 py-24 bg-black">
-
-        <div className="max-w-5xl mx-auto">
-
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-20">
-            Frequently Asked Questions
-          </h2>
-
-          <div className="space-y-8">
-
-            {[
-              {
-                question: "How does booking work?",
-                answer:
-                  "Customers can submit their service requirements through the platform and instantly connect with Service360 through WhatsApp."
-              },
-
-              {
-                question: "Are professionals verified?",
-                answer:
-                  "Yes. Service360 focuses on connecting users with trusted and verified professionals across service categories."
-              },
-
-              {
-                question: "Is emergency support available 24/7?",
-                answer:
-                  "Emergency services such as plumbing, electrician support, and roadside assistance are designed for urgent response requirements."
-              },
-
-              {
-                question: "How quickly will I receive assistance?",
-                answer:
-                  "Response times depend on the service category and location, but Service360 aims to provide quick assistance and professional support."
-              },
-
-              {
-                question: "What services are available on Service360?",
-                answer:
-                  "Service360 provides emergency assistance, legal support, healthcare services, GST filing, home services, and lifestyle solutions."
-              }
-
-            ].map((faq) => (
-
-              <div
-                key={faq.question}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white transition"
-              >
-
-                <h3 className="text-2xl font-bold mb-4">
-                  {faq.question}
-                </h3>
-
-                <p className="text-gray-400 text-lg leading-8">
-                  {faq.answer}
-                </p>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* Contact */}
-      <section
-        id="contact"
-        className="py-32 px-6 bg-gray-950 text-white"
-      >
-
-        <div className="max-w-4xl mx-auto text-center">
-
-          <h2 className="text-5xl md:text-6xl font-bold mb-10">
-            Contact Us
-          </h2>
-
-          <p className="text-gray-400 text-xl leading-9 mb-16">
-            Need legal assistance, home services,
-            or personal support? Reach out to our team
-            and we’ll connect you with trusted professionals.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-
-              <h3 className="text-2xl font-bold mb-4">
-                Email
-              </h3>
-
-              <p className="text-gray-400">
-                Email Coming Soon
-              </p>
-
-            </div>
-
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-
-              <h3 className="text-2xl font-bold mb-4">
-                Phone
-              </h3>
-
-              <p className="text-gray-400">
-                +91 63690 51521
-              </p>
-
-            </div>
-
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-
-              <h3 className="text-2xl font-bold mb-4">
-                Location
-              </h3>
-
-              <p className="text-gray-400">
-                Tiruchirappalli, Tamil Nadu
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
       {/* Footer */}
       <footer className="border-t border-gray-800 py-12 px-6 bg-black text-gray-400">
 
@@ -704,12 +459,7 @@ ${message}
           </div>
 
           {/* Company */}
-      
-<div>
-            
-            <a href="/partner-with-us" className="hover:text-white transition">
-  Partner With Us
-</a>
+          <div>
 
             <h3 className="text-2xl font-semibold text-white mb-6">
               Company
@@ -732,9 +482,14 @@ ${message}
               <a href="/terms-and-conditions" className="hover:text-white transition">
                 Terms & Conditions
               </a>
-            <a href="/refund-policy" className="hover:text-white transition">
-  Refund Policy
-</a>
+
+              <a href="/refund-policy" className="hover:text-white transition">
+                Refund Policy
+              </a>
+
+              <a href="/partner-with-us" className="hover:text-white transition">
+                Partner With Us
+              </a>
 
               <a href="#contact" className="hover:text-white transition">
                 Contact
