@@ -122,22 +122,28 @@ ${message}
       {/* Hero Section */}
       <section
         id="home"
-        className="relative overflow-hidden flex flex-col items-center justify-center text-center py-32 px-6"
+        className="relative overflow-hidden flex flex-col items-center justify-center text-center py-32 px-6 bg-[url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"
       >
+
+        {/* Dark Gradient Overlay */}
+        <div className="absolute inset-0 bg-black/75"></div>
 
         {/* Background Glow Effects */}
         <div className="absolute inset-0 overflow-hidden">
 
+          {/* Blue Glow */}
           <div className="absolute top-[-150px] left-[-150px] w-[500px] h-[500px] bg-blue-500 opacity-40 blur-[140px] rounded-full"></div>
 
+          {/* Orange Glow */}
           <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] bg-orange-500 opacity-40 blur-[140px] rounded-full"></div>
 
+          {/* Center Glow */}
           <div className="absolute top-[30%] left-[35%] w-[300px] h-[300px] bg-white opacity-10 blur-[120px] rounded-full"></div>
 
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div className="relative z-20 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
           {/* Left Content */}
           <div>
@@ -178,11 +184,11 @@ ${message}
 
             <div className="absolute w-[500px] h-[500px] bg-blue-500 opacity-20 blur-[140px] rounded-full"></div>
 
-            <div className="relative bg-zinc-900 border border-zinc-800 rounded-[40px] p-10 w-full max-w-md shadow-2xl">
+            <div className="relative bg-zinc-900/90 border border-zinc-700 rounded-[40px] p-10 w-full max-w-md shadow-2xl backdrop-blur-lg">
 
               <div className="space-y-6">
 
-                <div className="bg-black rounded-2xl p-6 border border-zinc-800">
+                <div className="bg-black/70 rounded-2xl p-6 border border-zinc-800">
 
                   <div className="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center mb-4 text-3xl">
                     🛡️
@@ -198,7 +204,7 @@ ${message}
 
                 </div>
 
-                <div className="bg-black rounded-2xl p-6 border border-zinc-800">
+                <div className="bg-black/70 rounded-2xl p-6 border border-zinc-800">
 
                   <div className="w-14 h-14 rounded-2xl bg-orange-500/20 flex items-center justify-center mb-4 text-3xl">
                     ⚖️
@@ -214,7 +220,7 @@ ${message}
 
                 </div>
 
-                <div className="bg-black rounded-2xl p-6 border border-zinc-800">
+                <div className="bg-black/70 rounded-2xl p-6 border border-zinc-800">
 
                   <div className="w-14 h-14 rounded-2xl bg-green-500/20 flex items-center justify-center mb-4 text-3xl">
                     ❤️
