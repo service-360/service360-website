@@ -1,91 +1,60 @@
-import "./globals.css"
-import Script from "next/script"
-
 export const metadata = {
   title: "Service360 | Anything. Anytime. Anywhere.",
-
+  
   description:
-    "India’s trusted all-in-one platform for emergency assistance, legal services, healthcare, home services, and lifestyle support.",
+    "Service360 is a trusted all-in-one service platform in Trichy, Tamil Nadu offering emergency assistance, legal services, healthcare, home services, and lifestyle support.",
 
   keywords: [
     "Service360",
-    "Home Services",
-    "Emergency Services",
-    "Plumbing",
+    "Trichy services",
+    "Emergency services in Trichy",
+    "Healthcare services",
+    "Legal services",
+    "Home services",
     "Electrician",
-    "Healthcare",
-    "Legal Services",
-    "Pet Care",
-    "India Services Platform"
+    "Plumbing",
+    "Lifestyle services",
   ],
 
-  authors: [{ name: "Service360" }],
+  metadataBase: new URL("https://www.service360.in"),
 
   openGraph: {
-    title: "Service360 | Anything. Anytime. Anywhere.",
-
+    title: "Service360",
+    
     description:
-      "India’s trusted all-in-one platform for emergency assistance, legal services, healthcare, home services, and lifestyle support.",
+      "India’s trusted all-in-one service ecosystem for emergency, legal, healthcare, home, and lifestyle services.",
 
-    url: "https://service360.in",
+    url: "https://www.service360.in",
 
     siteName: "Service360",
 
     images: [
       {
-        url: "https://service360.in/og-image.jpg",
+        url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Service360"
-      }
+        alt: "Service360",
+      },
     ],
 
     locale: "en_IN",
-    type: "website"
+
+    type: "website",
   },
 
-  twitter: {
-    card: "summary_large_image",
-
-    title: "Service360 | Anything. Anytime. Anywhere.",
-
-    description:
-      "India’s trusted all-in-one platform for emergency assistance, legal services, healthcare, home services, and lifestyle support.",
-
-    images: ["https://service360.in/og-image.jpg"]
+  icons: {
+    icon: "/favicon.ico",
   },
-
-  metadataBase: new URL("https://service360.in")
 }
 
-export default function RootLayout({ children }) {
+import "./globals.css"
 
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
 
       <body>
-
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-QQYTVJE81V"
-          strategy="afterInteractive"
-        />
-
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag(){
-              dataLayer.push(arguments);
-            }
-
-            gtag('js', new Date());
-
-            gtag('config', 'G-QQYTVJE81V');
-          `}
-        </Script>
-
         {children}
-
       </body>
 
     </html>
