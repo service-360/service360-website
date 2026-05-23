@@ -114,7 +114,7 @@ export default function Footer() {
             </a>
 
             <p>
-              Madurai, Tamil Nadu
+              Tiruchirappalli, Tamil Nadu
             </p>
 
           </div>
