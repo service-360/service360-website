@@ -14,53 +14,89 @@ export default function Home() {
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
 
     if (!name || !phone || !service || !message) {
+
       setError("Please fill all required fields.")
       setSuccess("")
       return
+
     }
 
     if (phone.length < 10) {
+
       setError("Please enter a valid phone number.")
       setSuccess("")
       return
+
     }
 
     setError("")
-    setSuccess("Redirecting to WhatsApp...")
+    setSuccess("Submitting request...")
 
-    const whatsappMessage = `
+    try {
+
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbwpmoH7FpqMxY9VpgAY1dM9x1HQ7AXf6mooI_Fs3g0XwL8EKh0mbi3mcBWRiT-jWXwupg/exec",
+        {
+          method: "POST",
+
+          body: JSON.stringify({
+            type: "customer",
+            name,
+            phone,
+            service,
+            message,
+          }),
+        }
+      )
+
+      setSuccess("Request submitted successfully!")
+
+      const whatsappMessage = `
 Hello Service360,
 
-New Service Request
+New Customer Service Request
 
 Name: ${name}
 
-Phone: ${phone}
+Phone Number: ${phone}
 
-Service Required: ${service}
+Required Service: ${service}
 
-Requirement Details:
+Message:
 ${message}
-    `
+      `
 
-    const encodedMessage = encodeURIComponent(whatsappMessage)
+      const encodedMessage =
+        encodeURIComponent(whatsappMessage)
 
-    window.open(
-      `https://wa.me/916369051521?text=${encodedMessage}`,
-      "_blank"
-    )
+      window.open(
+        `https://wa.me/916369051521?text=${encodedMessage}`,
+        "_blank"
+      )
+
+      setName("")
+      setPhone("")
+      setService("Emergency Plumbing")
+      setMessage("")
+
+    } catch (err) {
+
+      setError("Something went wrong. Please try again.")
+
+    }
   }
 
   return (
+
     <main className="bg-black text-white min-h-screen">
 
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-32 px-6 bg-black">
+      <section className="relative overflow-hidden py-32 px-8">
 
         <div className="absolute inset-0 overflow-hidden">
 
@@ -70,147 +106,38 @@ ${message}
 
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div className="relative z-20 max-w-7xl mx-auto text-center">
 
-          <div>
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-10">
 
-            <h1 className="text-5xl md:text-8xl font-bold leading-tight mb-8">
-              Anything. Anytime. Anywhere.
-            </h1>
+            Anything. Anytime. Anywhere.
 
-            <p className="text-gray-300 text-xl leading-10 mb-12">
-              India’s trusted platform for emergency assistance,
-              legal support, healthcare, home services,
-              and lifestyle solutions.
-            </p>
+          </h1>
 
-            <div className="flex gap-6 flex-wrap">
+          <p className="text-gray-400 text-xl md:text-2xl leading-10 max-w-4xl mx-auto">
 
-              <a
-                href="/services"
-                className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition"
-              >
-                Explore Services
-              </a>
+            India’s trusted all-in-one service ecosystem for
+            emergency assistance, legal support, healthcare,
+            home services, lifestyle needs, and much more.
 
-              <a
-                href="/partners"
-                className="border border-blue-500 text-blue-400 px-8 py-4 rounded-2xl hover:bg-blue-500 hover:text-white transition"
-              >
-                Become a Partner
-              </a>
+          </p>
 
-            </div>
+          <div className="flex flex-col md:flex-row justify-center gap-6 mt-12">
 
-          </div>
+            <a
+              href="/services"
+              className="bg-blue-500 hover:bg-blue-600 px-10 py-5 rounded-2xl text-xl font-semibold transition"
+            >
+              Explore Services
+            </a>
 
-          <div className="hidden md:block">
+            <a
+              href="/partners"
+              className="border border-zinc-700 hover:border-blue-500 px-10 py-5 rounded-2xl text-xl font-semibold transition"
+            >
+              Become a Partner
+            </a>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-[40px] p-10">
-
-              <div className="space-y-6">
-
-                <div className="bg-black rounded-2xl p-6 border border-zinc-800">
-
-                  <div className="text-4xl mb-4">
-                    🛡️
-                  </div>
-
-                  <h3 className="text-2xl font-bold mb-2">
-                    Emergency Assistance
-                  </h3>
-
-                  <p className="text-gray-400">
-                    Instant support for urgent services.
-                  </p>
-
-                </div>
-
-                <div className="bg-black rounded-2xl p-6 border border-zinc-800">
-
-                  <div className="text-4xl mb-4">
-                    ⚖️
-                  </div>
-
-                  <h3 className="text-2xl font-bold mb-2">
-                    Legal Support
-                  </h3>
-
-                  <p className="text-gray-400">
-                    Trusted legal and compliance services.
-                  </p>
-
-                </div>
-
-                <div className="bg-black rounded-2xl p-6 border border-zinc-800">
-
-                  <div className="text-4xl mb-4">
-                    ❤️
-                  </div>
-
-                  <h3 className="text-2xl font-bold mb-2">
-                    Healthcare Services
-                  </h3>
-
-                  <p className="text-gray-400">
-                    Wellness and healthcare assistance.
-                  </p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* Stats */}
-      <section className="px-8 py-20 border-y border-zinc-800 bg-zinc-950">
-
-        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-10 text-center">
-
-          <div>
-            <h2 className="text-5xl font-bold text-blue-400 mb-4">
-              24/7
-            </h2>
-
-            <p className="text-gray-400">
-              Emergency Support
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-5xl font-bold text-blue-400 mb-4">
-              100+
-            </h2>
-
-            <p className="text-gray-400">
-              Verified Professionals
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-5xl font-bold text-blue-400 mb-4">
-              10+
-            </h2>
-
-            <p className="text-gray-400">
-              Service Categories
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-5xl font-bold text-blue-400 mb-4">
-              Fast
-            </h2>
-
-            <p className="text-gray-400">
-              Response Time
-            </p>
           </div>
 
         </div>
@@ -218,39 +145,73 @@ ${message}
       </section>
 
       {/* Services */}
-      <section className="px-8 py-24 bg-black">
+      <section className="px-8 py-24 border-y border-zinc-800 bg-zinc-950">
 
         <div className="max-w-7xl mx-auto">
 
-          <h2 className="text-5xl font-bold text-center mb-8">
-            Explore Services
-          </h2>
+          <h2 className="text-5xl font-bold text-center mb-20">
 
-          <p className="text-gray-400 text-xl text-center max-w-3xl mx-auto mb-20">
-            Trusted professionals across multiple service categories.
-          </p>
+            Our Services
+
+          </h2>
 
           <div className="grid md:grid-cols-4 gap-8">
 
             {[
-              "Emergency Services",
-              "Legal Services",
-              "Healthcare",
-              "Lifestyle"
-            ].map((serviceItem) => (
+              {
+                icon: "🚰",
+                title: "Plumbing"
+              },
+
+              {
+                icon: "⚡",
+                title: "Electrician"
+              },
+
+              {
+                icon: "🏥",
+                title: "Healthcare"
+              },
+
+              {
+                icon: "⚖️",
+                title: "Legal Assistance"
+              },
+
+              {
+                icon: "🧹",
+                title: "Cleaning"
+              },
+
+              {
+                icon: "🚗",
+                title: "Drivers"
+              },
+
+              {
+                icon: "🐶",
+                title: "Pet Care"
+              },
+
+              {
+                icon: "🛠️",
+                title: "Technicians"
+              }
+
+            ].map((item) => (
 
               <div
-                key={serviceItem}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-blue-500 transition"
+                key={item.title}
+                className="bg-black border border-zinc-800 rounded-3xl p-10 hover:border-blue-500 transition"
               >
 
-                <h3 className="text-2xl font-bold mb-4">
-                  {serviceItem}
-                </h3>
+                <div className="text-5xl mb-6">
+                  {item.icon}
+                </div>
 
-                <p className="text-gray-400">
-                  Trusted and verified service professionals.
-                </p>
+                <h3 className="text-2xl font-bold">
+                  {item.title}
+                </h3>
 
               </div>
 
@@ -262,7 +223,7 @@ ${message}
 
       </section>
 
-      {/* Booking Form */}
+      {/* Contact Form */}
       <section
         id="contact"
         className="px-8 py-24"
@@ -273,11 +234,15 @@ ${message}
           <div className="text-center mb-16">
 
             <h2 className="text-5xl font-bold mb-8">
+
               Book a Service
+
             </h2>
 
             <p className="text-gray-400 text-xl">
-              Connect instantly with trusted professionals.
+
+              Get connected with verified professionals instantly.
+
             </p>
 
           </div>
@@ -311,9 +276,12 @@ ${message}
             >
 
               <option>Emergency Plumbing</option>
-              <option>Emergency Electrician</option>
-              <option>Legal Documentation</option>
-              <option>Healthcare Assistance</option>
+              <option>Electrician</option>
+              <option>Healthcare</option>
+              <option>Legal Assistance</option>
+              <option>Cleaning</option>
+              <option>Drivers</option>
+              <option>Pet Care</option>
 
             </select>
 
@@ -323,7 +291,7 @@ ${message}
 
             <textarea
               rows="6"
-              placeholder="Describe your requirement..."
+              placeholder="Tell us your requirement..."
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5 resize-none"
@@ -358,18 +326,9 @@ ${message}
 
       </section>
 
-      {/* WhatsApp Floating Button */}
-      <a
-        href="https://wa.me/916369051521"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 bg-green-500 text-black px-6 py-4 rounded-full font-bold z-50"
-      >
-        WhatsApp
-      </a>
-
       <Footer />
 
     </main>
+
   )
 }
