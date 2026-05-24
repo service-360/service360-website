@@ -1,8 +1,20 @@
 "use client"
 
 import { useState } from "react"
+
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
+
+import {
+  Wrench,
+  Zap,
+  HeartPulse,
+  Scale,
+  BrushCleaning,
+  Car,
+  PawPrint,
+  Settings
+} from "lucide-react"
 
 export default function Home() {
 
@@ -89,6 +101,50 @@ ${message}
     }
   }
 
+  const services = [
+
+    {
+      icon: <Wrench size={48} className="text-blue-500" />,
+      title: "Plumbing"
+    },
+
+    {
+      icon: <Zap size={48} className="text-orange-400" />,
+      title: "Electrician"
+    },
+
+    {
+      icon: <HeartPulse size={48} className="text-pink-500" />,
+      title: "Healthcare"
+    },
+
+    {
+      icon: <Scale size={48} className="text-yellow-400" />,
+      title: "Legal Assistance"
+    },
+
+    {
+      icon: <BrushCleaning size={48} className="text-cyan-400" />,
+      title: "Cleaning"
+    },
+
+    {
+      icon: <Car size={48} className="text-green-400" />,
+      title: "Drivers"
+    },
+
+    {
+      icon: <PawPrint size={48} className="text-orange-500" />,
+      title: "Pet Care"
+    },
+
+    {
+      icon: <Settings size={48} className="text-gray-300" />,
+      title: "Technicians"
+    }
+
+  ]
+
   return (
 
     <main className="bg-black text-white min-h-screen">
@@ -116,9 +172,9 @@ ${message}
 
           <p className="text-gray-400 text-xl md:text-2xl leading-10 max-w-4xl mx-auto">
 
-            India’s trusted all-in-one service ecosystem for
-            emergency assistance, legal support, healthcare,
-            home services, lifestyle needs, and much more.
+            Building a trusted all-in-one service platform
+            for emergency assistance, healthcare, legal support,
+            home services, and lifestyle needs.
 
           </p>
 
@@ -144,7 +200,7 @@ ${message}
 
       </section>
 
-      {/* Services */}
+      {/* Services Section */}
       <section className="px-8 py-24 border-y border-zinc-800 bg-zinc-950">
 
         <div className="max-w-7xl mx-auto">
@@ -157,55 +213,14 @@ ${message}
 
           <div className="grid md:grid-cols-4 gap-8">
 
-            {[
-              {
-                icon: "🚰",
-                title: "Plumbing"
-              },
-
-              {
-                icon: "⚡",
-                title: "Electrician"
-              },
-
-              {
-                icon: "🏥",
-                title: "Healthcare"
-              },
-
-              {
-                icon: "⚖️",
-                title: "Legal Assistance"
-              },
-
-              {
-                icon: "🧹",
-                title: "Cleaning"
-              },
-
-              {
-                icon: "🚗",
-                title: "Drivers"
-              },
-
-              {
-                icon: "🐶",
-                title: "Pet Care"
-              },
-
-              {
-                icon: "🛠️",
-                title: "Technicians"
-              }
-
-            ].map((item) => (
+            {services.map((item) => (
 
               <div
                 key={item.title}
-                className="bg-black border border-zinc-800 rounded-3xl p-10 hover:border-blue-500 transition"
+                className="bg-black border border-zinc-800 rounded-3xl p-10 hover:border-blue-500 transition duration-300"
               >
 
-                <div className="text-5xl mb-6">
+                <div className="mb-6">
                   {item.icon}
                 </div>
 
