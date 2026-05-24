@@ -16,7 +16,7 @@ export default function PartnersPage() {
   const [success, setSuccess] = useState("")
   const [error, setError] = useState("")
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
 
     if (
       !name ||
@@ -38,9 +38,30 @@ export default function PartnersPage() {
     }
 
     setError("")
-    setSuccess("Redirecting to WhatsApp...")
+    setSuccess("Submitting application...")
 
-    const whatsappMessage = `
+    try {
+
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbwpmoH7FpqMxY9VpgAY1dM9x1HQ7AXf6mooI_Fs3g0XwL8EKh0mbi3mcBWRiT-jWXwupg/exec",
+        {
+          method: "POST",
+
+          body: JSON.stringify({
+            type: "partner",
+            name,
+            phone,
+            category,
+            city,
+            experience,
+            message,
+          }),
+        }
+      )
+
+      setSuccess("Application submitted successfully!")
+
+      const whatsappMessage = `
 Hello Service360,
 
 New Partner Registration
@@ -57,14 +78,28 @@ Experience: ${experience}
 
 Details:
 ${message}
-    `
+      `
 
-    const encodedMessage = encodeURIComponent(whatsappMessage)
+      const encodedMessage =
+        encodeURIComponent(whatsappMessage)
 
-    window.open(
-      `https://wa.me/916369051521?text=${encodedMessage}`,
-      "_blank"
-    )
+      window.open(
+        `https://wa.me/916369051521?text=${encodedMessage}`,
+        "_blank"
+      )
+
+      setName("")
+      setPhone("")
+      setCategory("Plumbing")
+      setCity("")
+      setExperience("")
+      setMessage("")
+
+    } catch (err) {
+
+      setError("Something went wrong. Please try again.")
+
+    }
   }
 
   return (
@@ -72,7 +107,7 @@ ${message}
 
       <Navbar />
 
-      {/* Hero */}
+      {/* Hero Section */}
       <section className="relative overflow-hidden py-32 px-8">
 
         <div className="absolute inset-0 overflow-hidden">
@@ -86,24 +121,20 @@ ${message}
         <div className="relative z-20 max-w-7xl mx-auto text-center">
 
           <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-10">
-
             Join Service360 as a Partner
-
           </h1>
 
           <p className="text-gray-400 text-xl leading-10 max-w-4xl mx-auto">
-
             Grow your business with verified customer leads,
             flexible work opportunities, and trusted service support
             through Service360.
-
           </p>
 
         </div>
 
       </section>
 
-      {/* Benefits */}
+      {/* Benefits Section */}
       <section className="px-8 py-24 border-y border-zinc-800 bg-zinc-950">
 
         <div className="max-w-7xl mx-auto">
