@@ -1,236 +1,351 @@
 "use client"
 
-import { useState } from "react"
-
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 
-import {
-  Wrench,
-  Zap,
-  HeartPulse,
-  Scale,
-  BrushCleaning,
-  Car,
-  PawPrint,
-  Settings
-} from "lucide-react"
-
 export default function Home() {
 
-  const [name, setName] = useState("")
-  const [phone, setPhone] = useState("")
-  const [service, setService] = useState("Emergency Plumbing")
-  const [message, setMessage] = useState("")
-
-  const [error, setError] = useState("")
-  const [success, setSuccess] = useState("")
-
-  const handleSubmit = async () => {
-
-    if (!name || !phone || !service || !message) {
-
-      setError("Please fill all required fields.")
-      setSuccess("")
-      return
-
-    }
-
-    if (phone.length < 10) {
-
-      setError("Please enter a valid phone number.")
-      setSuccess("")
-      return
-
-    }
-
-    setError("")
-    setSuccess("Submitting request...")
-
-    try {
-
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbwpmoH7FpqMxY9VpgAY1dM9x1HQ7AXf6mooI_Fs3g0XwL8EKh0mbi3mcBWRiT-jWXwupg/exec",
-        {
-          method: "POST",
-
-          body: JSON.stringify({
-            type: "customer",
-            name,
-            phone,
-            service,
-            message,
-          }),
-        }
-      )
-
-      setSuccess("Request submitted successfully!")
-
-      const whatsappMessage = `
-Hello Service360,
-
-New Customer Service Request
-
-Name: ${name}
-
-Phone Number: ${phone}
-
-Required Service: ${service}
-
-Message:
-${message}
-      `
-
-      const encodedMessage =
-        encodeURIComponent(whatsappMessage)
-
-      window.open(
-        `https://wa.me/916369051521?text=${encodedMessage}`,
-        "_blank"
-      )
-
-      setName("")
-      setPhone("")
-      setService("Emergency Plumbing")
-      setMessage("")
-
-    } catch (err) {
-
-      setError("Something went wrong. Please try again.")
-
-    }
-  }
-
   const services = [
-
-    {
-      icon: <Wrench size={48} className="text-blue-500" />,
-      title: "Plumbing"
-    },
-
-    {
-      icon: <Zap size={48} className="text-orange-400" />,
-      title: "Electrician"
-    },
-
-    {
-      icon: <HeartPulse size={48} className="text-pink-500" />,
-      title: "Healthcare"
-    },
-
-    {
-      icon: <Scale size={48} className="text-yellow-400" />,
-      title: "Legal Assistance"
-    },
-
-    {
-      icon: <BrushCleaning size={48} className="text-cyan-400" />,
-      title: "Cleaning"
-    },
-
-    {
-      icon: <Car size={48} className="text-green-400" />,
-      title: "Drivers"
-    },
-
-    {
-      icon: <PawPrint size={48} className="text-orange-500" />,
-      title: "Pet Care"
-    },
-
-    {
-      icon: <Settings size={48} className="text-gray-300" />,
-      title: "Technicians"
-    }
-
+    "Home Services",
+    "Healthcare",
+    "Legal Assistance",
+    "Emergency Support",
+    "Drivers & Transport",
+    "Lifestyle Services"
   ]
 
   return (
-
     <main className="bg-black text-white min-h-screen">
 
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-32 px-8">
+      <section className="px-6 md:px-20 py-28 text-center bg-gradient-to-b from-black to-zinc-900">
 
-        <div className="absolute inset-0 overflow-hidden">
+        <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
+          Anything.
+          <br />
+          Anytime.
+          <br />
+          Anywhere.
+        </h1>
 
-          <div className="absolute top-[-150px] left-[-150px] w-[500px] h-[500px] bg-blue-500 opacity-30 blur-[140px] rounded-full"></div>
+        <p className="text-gray-400 text-lg md:text-2xl max-w-4xl mx-auto leading-9 mb-10">
+          Trusted access to emergency, home, healthcare, legal, and lifestyle services —
+          all in one platform.
+        </p>
 
-          <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] bg-orange-500 opacity-30 blur-[140px] rounded-full"></div>
+        <div className="flex flex-col md:flex-row gap-5 justify-center">
+
+          <a
+            href="/services"
+            className="bg-orange-500 hover:bg-orange-600 transition px-8 py-4 rounded-full text-lg font-semibold"
+          >
+            Explore Services
+          </a>
+
+          <a
+            href="/partner-with-us"
+            className="border border-orange-500 hover:bg-orange-500 transition px-8 py-4 rounded-full text-lg font-semibold"
+          >
+            Become a Partner
+          </a>
 
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto text-center">
+      </section>
 
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-10">
+      {/* Trust Metrics */}
+      <section className="px-6 md:px-20 py-20 bg-zinc-950">
 
-            Anything. Anytime. Anywhere.
+        <div className="grid md:grid-cols-4 gap-8 text-center">
 
-          </h1>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+            <h3 className="text-4xl font-bold text-orange-400 mb-3">
+              24/7
+            </h3>
+            <p className="text-gray-300">
+              Assistance & Support
+            </p>
+          </div>
 
-          <p className="text-gray-400 text-xl md:text-2xl leading-10 max-w-4xl mx-auto">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+            <h3 className="text-4xl font-bold text-orange-400 mb-3">
+              Verified
+            </h3>
+            <p className="text-gray-300">
+              Professionals & Partners
+            </p>
+          </div>
 
-            Building a trusted all-in-one service platform
-            for emergency assistance, healthcare, legal support,
-            home services, and lifestyle needs.
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+            <h3 className="text-4xl font-bold text-orange-400 mb-3">
+              Fast
+            </h3>
+            <p className="text-gray-300">
+              Response & Assistance
+            </p>
+          </div>
 
-          </p>
-
-          <div className="flex flex-col md:flex-row justify-center gap-6 mt-12">
-
-            <a
-              href="/services"
-              className="bg-blue-500 hover:bg-blue-600 px-10 py-5 rounded-2xl text-xl font-semibold transition"
-            >
-              Explore Services
-            </a>
-
-            <a
-              href="/partners"
-              className="border border-zinc-700 hover:border-blue-500 px-10 py-5 rounded-2xl text-xl font-semibold transition"
-            >
-              Become a Partner
-            </a>
-
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+            <h3 className="text-4xl font-bold text-orange-400 mb-3">
+              Growing
+            </h3>
+            <p className="text-gray-300">
+              Partner Network
+            </p>
           </div>
 
         </div>
 
       </section>
 
-      {/* Services Section */}
-      <section className="px-8 py-24 border-y border-zinc-800 bg-zinc-950">
+      {/* Services */}
+      <section className="px-6 md:px-20 py-24 bg-black">
 
-        <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
 
-          <h2 className="text-5xl font-bold text-center mb-20">
-
+          <h2 className="text-4xl md:text-5xl font-bold mb-5">
             Our Services
-
           </h2>
 
-          <div className="grid md:grid-cols-4 gap-8">
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            Service360 connects customers with trusted professionals across essential and lifestyle services.
+          </p>
 
-            {services.map((item) => (
+        </div>
 
-              <div
-                key={item.title}
-                className="bg-black border border-zinc-800 rounded-3xl p-10 hover:border-blue-500 transition duration-300"
+        <div className="grid md:grid-cols-3 gap-8">
+
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-orange-500 transition duration-300"
+            >
+              <h3 className="text-2xl font-semibold">
+                {service}
+              </h3>
+            </div>
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="px-6 md:px-20 py-24 bg-zinc-950">
+
+        <div className="text-center mb-16">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-5">
+            Why Choose Service360
+          </h2>
+
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            Built to provide reliable, fast, and trusted service access through one unified platform.
+          </p>
+
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-10">
+
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
+            <h3 className="text-2xl font-bold mb-4 text-orange-400">
+              Fast Response
+            </h3>
+
+            <p className="text-gray-300 leading-8">
+              Quick assistance and reliable support designed to help customers connect with services efficiently.
+            </p>
+          </div>
+
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
+            <h3 className="text-2xl font-bold mb-4 text-orange-400">
+              Verified Professionals
+            </h3>
+
+            <p className="text-gray-300 leading-8">
+              We focus on building a trusted network of professionals and partners for better service experiences.
+            </p>
+          </div>
+
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
+            <h3 className="text-2xl font-bold mb-4 text-orange-400">
+              Unified Platform
+            </h3>
+
+            <p className="text-gray-300 leading-8">
+              Access multiple services through one modern and customer-focused ecosystem.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* How It Works */}
+      <section className="px-6 md:px-20 py-24 bg-black">
+
+        <div className="text-center mb-16">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-5">
+            How It Works
+          </h2>
+
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            Getting started with Service360 is simple and seamless.
+          </p>
+
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-10 text-center">
+
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
+            <h3 className="text-3xl font-bold text-orange-400 mb-4">
+              01
+            </h3>
+
+            <p className="text-xl font-semibold mb-3">
+              Choose Service
+            </p>
+
+            <p className="text-gray-400">
+              Select the service you require from our platform.
+            </p>
+          </div>
+
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
+            <h3 className="text-3xl font-bold text-orange-400 mb-4">
+              02
+            </h3>
+
+            <p className="text-xl font-semibold mb-3">
+              Submit Request
+            </p>
+
+            <p className="text-gray-400">
+              Share your requirement quickly through our platform.
+            </p>
+          </div>
+
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
+            <h3 className="text-3xl font-bold text-orange-400 mb-4">
+              03
+            </h3>
+
+            <p className="text-xl font-semibold mb-3">
+              Get Connected
+            </p>
+
+            <p className="text-gray-400">
+              Connect with trusted professionals and receive assistance.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Founders Section */}
+      <section className="px-6 md:px-20 py-24 bg-zinc-950 text-white">
+
+        <div className="text-center mb-16">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-5">
+            Meet The Founders
+          </h2>
+
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            Building a trusted and technology-driven service ecosystem designed to simplify everyday life.
+          </p>
+
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-10">
+
+          {/* Founder 1 */}
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-orange-500 transition duration-300">
+
+            <img
+              src="/tharun.jpg"
+              alt="Tharun Kumar"
+              className="w-full h-[500px] object-cover"
+            />
+
+            <div className="p-8">
+
+              <h3 className="text-3xl font-bold mb-2">
+                Tharun Kumar
+              </h3>
+
+              <p className="text-orange-400 font-semibold mb-5">
+                Founder & COO
+              </p>
+
+              <p className="text-gray-300 leading-8 mb-6">
+                Tharun Kumar is the Founder & COO of Service360, leading operations and growth for the platform.
+
+                <br /><br />
+
+                A Business Administration graduate with experience across B2B, B2C, and service industries, he has worked with high-growth startups and operational teams, gaining strong expertise in customer experience, business operations, and scalable service management.
+
+                <br /><br />
+
+                His vision is to build Service360 into a trusted platform that simplifies access to reliable services through technology and local partnerships.
+              </p>
+
+              <a
+                href="https://www.linkedin.com/in/tharun-kumar-manivannan"
+                target="_blank"
+                className="inline-block bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold"
               >
+                Connect on LinkedIn
+              </a>
 
-                <div className="mb-6">
-                  {item.icon}
-                </div>
+            </div>
 
-                <h3 className="text-2xl font-bold">
-                  {item.title}
-                </h3>
+          </div>
 
-              </div>
+          {/* Founder 2 */}
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-orange-500 transition duration-300">
 
-            ))}
+            <img
+              src="/ramesh.jpg"
+              alt="Ramesh Prashanth Muthaiah"
+              className="w-full h-[500px] object-cover"
+            />
+
+            <div className="p-8">
+
+              <h3 className="text-3xl font-bold mb-2">
+                Ramesh Prashanth Muthaiah
+              </h3>
+
+              <p className="text-orange-400 font-semibold mb-5">
+                Founder & CMO
+              </p>
+
+              <p className="text-gray-300 leading-8 mb-6">
+                Ramesh Prashanth Muthaiah is the Founder & CMO of Service360, leading brand growth, marketing, and expansion initiatives for the platform.
+
+                <br /><br />
+
+                An Engineering graduate and entrepreneur, he has successfully built and scaled multiple businesses, gaining strong experience in business development, customer engagement, and strategic growth.
+
+                <br /><br />
+
+                With a passion for innovation and scalable business ecosystems, he aims to position Service360 as a trusted platform that simplifies access to reliable services through technology and efficient local networks.
+              </p>
+
+              <a
+                href="https://linkedin.com/"
+                target="_blank"
+                className="inline-block bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold"
+              >
+                Connect on LinkedIn
+              </a>
+
+            </div>
 
           </div>
 
@@ -238,112 +353,73 @@ ${message}
 
       </section>
 
-      {/* Contact Form */}
-      <section
-        id="contact"
-        className="px-8 py-24"
-      >
+      {/* FAQ */}
+      <section className="px-6 md:px-20 py-24 bg-black">
 
-        <div className="max-w-5xl mx-auto bg-zinc-900 border border-zinc-800 rounded-[40px] p-10 md:p-16">
+        <div className="text-center mb-16">
 
-          <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-5">
+            Frequently Asked Questions
+          </h2>
 
-            <h2 className="text-5xl font-bold mb-8">
+        </div>
 
-              Book a Service
+        <div className="space-y-6 max-w-4xl mx-auto">
 
-            </h2>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+            <h3 className="text-xl font-semibold mb-3">
+              How does Service360 work?
+            </h3>
 
-            <p className="text-gray-400 text-xl">
-
-              Get connected with verified professionals instantly.
-
+            <p className="text-gray-400">
+              Customers can submit service requests through the platform and connect with trusted professionals.
             </p>
-
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+            <h3 className="text-xl font-semibold mb-3">
+              Are the professionals verified?
+            </h3>
 
-            <input
-              type="text"
-              placeholder="Full Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="bg-black border border-zinc-700 rounded-2xl px-6 py-5"
-            />
-
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="bg-black border border-zinc-700 rounded-2xl px-6 py-5"
-            />
-
+            <p className="text-gray-400">
+              We focus on building a trusted and verified partner ecosystem for reliable service experiences.
+            </p>
           </div>
 
-          <div className="mt-8">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+            <h3 className="text-xl font-semibold mb-3">
+              Which cities are currently supported?
+            </h3>
 
-            <select
-              value={service}
-              onChange={(e) => setService(e.target.value)}
-              className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5"
-            >
-
-              <option>Emergency Plumbing</option>
-              <option>Electrician</option>
-              <option>Healthcare</option>
-              <option>Legal Assistance</option>
-              <option>Cleaning</option>
-              <option>Drivers</option>
-              <option>Pet Care</option>
-
-            </select>
-
-          </div>
-
-          <div className="mt-8">
-
-            <textarea
-              rows="6"
-              placeholder="Tell us your requirement..."
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5 resize-none"
-            ></textarea>
-
-          </div>
-
-          {error && (
-            <div className="mt-6 text-red-400">
-              {error}
-            </div>
-          )}
-
-          {success && (
-            <div className="mt-6 text-green-400">
-              {success}
-            </div>
-          )}
-
-          <div className="mt-10 text-center">
-
-            <button
-              onClick={handleSubmit}
-              className="bg-blue-500 hover:bg-blue-600 px-10 py-5 rounded-2xl text-xl font-semibold transition"
-            >
-              Submit Request
-            </button>
-
+            <p className="text-gray-400">
+              Service360 is currently focused on expanding services starting from Trichy, Tamil Nadu.
+            </p>
           </div>
 
         </div>
+
+      </section>
+
+      {/* Final CTA */}
+      <section className="px-6 md:px-20 py-28 bg-gradient-to-b from-zinc-950 to-black text-center">
+
+        <h2 className="text-4xl md:text-6xl font-bold mb-8">
+          Need Assistance?
+          <br />
+          Book a Service Instantly.
+        </h2>
+
+        <a
+          href="/services"
+          className="inline-block bg-orange-500 hover:bg-orange-600 transition px-10 py-5 rounded-full text-xl font-semibold"
+        >
+          Explore Services
+        </a>
 
       </section>
 
       <Footer />
 
     </main>
-
   )
 }
