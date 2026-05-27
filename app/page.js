@@ -5,13 +5,71 @@ import Footer from "./components/Footer"
 
 export default function Home() {
 
-  const services = [
-    "Home Services",
-    "Healthcare",
-    "Legal Assistance",
-    "Emergency Support",
-    "Drivers & Transport",
-    "Lifestyle Services"
+  const serviceCategories = [
+
+    {
+      category: "Legal, Tax & Compliance Services",
+
+      description:
+        "Professional assistance for legal documentation, registrations, taxation, and compliance services.",
+    },
+
+    {
+      category: "Home Repair & Maintenance Services",
+
+      description:
+        "Reliable home repair, maintenance, cleaning, and essential household support services.",
+    },
+
+    {
+      category: "Appliance Repair & Technical Support",
+
+      description:
+        "Technical support and repair services for appliances, electronics, and personal devices.",
+    },
+
+    {
+      category: "Personal Assistance Services",
+
+      description:
+        "Everyday support services designed to simplify personal tasks and daily responsibilities.",
+    },
+
+    {
+      category: "Lifestyle Services",
+
+      description:
+        "Lifestyle, grooming, and personal styling services designed around convenience and self-care.",
+    },
+
+    {
+      category: "Healthcare Support Services",
+
+      description:
+        "Reliable healthcare coordination and patient assistance services for everyday medical needs.",
+    },
+
+    {
+      category: "Elderly Care Services",
+
+      description:
+        "Supportive care and assistance services focused on elderly wellbeing and everyday support.",
+    },
+
+    {
+      category: "Drivers & Mobility Services",
+
+      description:
+        "Convenient driver and transportation assistance services for daily travel and mobility needs.",
+    },
+
+    {
+      category: "Emergency & Priority Assistance",
+
+      description:
+        "Quick-response support and urgent assistance services when immediate help is required.",
+    },
+
   ]
 
   return (
@@ -92,10 +150,10 @@ export default function Home() {
                 <div className="bg-black border border-zinc-800 rounded-2xl p-5 flex items-center justify-between">
                   <div>
                     <p className="text-lg font-semibold">
-                      Plumbing Services
+                      Home Services
                     </p>
                     <p className="text-gray-500 text-sm">
-                      Quick home assistance
+                      Quick household assistance
                     </p>
                   </div>
 
@@ -107,10 +165,10 @@ export default function Home() {
                 <div className="bg-black border border-zinc-800 rounded-2xl p-5 flex items-center justify-between">
                   <div>
                     <p className="text-lg font-semibold">
-                      Legal Documentation
+                      Legal & Tax Services
                     </p>
                     <p className="text-gray-500 text-sm">
-                      Trusted legal support
+                      Trusted documentation support
                     </p>
                   </div>
 
@@ -144,137 +202,123 @@ export default function Home() {
 
       </section>
 
-      {/* Trust Metrics */}
-      <section className="px-6 md:px-20 py-20 bg-zinc-950">
-
-        <div className="grid md:grid-cols-4 gap-8 text-center">
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-            <h3 className="text-4xl font-bold text-orange-400 mb-3">
-              24/7
-            </h3>
-            <p className="text-gray-300">
-              Assistance & Support
-            </p>
-          </div>
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-            <h3 className="text-4xl font-bold text-orange-400 mb-3">
-              Verified
-            </h3>
-            <p className="text-gray-300">
-              Professionals & Partners
-            </p>
-          </div>
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-            <h3 className="text-4xl font-bold text-orange-400 mb-3">
-              Fast
-            </h3>
-            <p className="text-gray-300">
-              Response & Assistance
-            </p>
-          </div>
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-            <h3 className="text-4xl font-bold text-orange-400 mb-3">
-              Growing
-            </h3>
-            <p className="text-gray-300">
-              Partner Network
-            </p>
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* Services */}
+      {/* Services Ecosystem */}
       <section className="px-6 md:px-20 py-24 bg-black">
 
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-5">
-            Our Services
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Explore Our Services
           </h2>
 
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Service360 connects customers with trusted professionals across essential and lifestyle services.
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-8">
+            Service360 brings together essential services, professional assistance, and everyday support through one connected platform.
           </p>
 
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
 
-          {services.map((service, index) => (
+          {serviceCategories.map((category, index) => (
+
             <div
               key={index}
-              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-orange-500 transition duration-300"
+              className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-10 hover:border-orange-500 transition duration-300 flex flex-col justify-between"
             >
 
-              <h3 className="text-2xl font-semibold mb-6">
-                {service}
-              </h3>
+              <div>
+
+                <h3 className="text-3xl font-bold mb-5">
+                  {category.category}
+                </h3>
+
+                <p className="text-gray-400 text-lg leading-8 mb-10">
+                  {category.description}
+                </p>
+
+              </div>
 
               <a
                 href="/services"
-                className="inline-block bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold"
+                className="inline-block bg-orange-500 hover:bg-orange-600 transition px-8 py-4 rounded-full font-semibold text-center"
               >
-                Explore
+                Explore Services
               </a>
 
             </div>
+
           ))}
 
         </div>
 
       </section>
 
-      {/* Why Choose Us */}
+      {/* Why Service360 */}
       <section className="px-6 md:px-20 py-24 bg-zinc-950">
 
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-5">
-            Why Choose Service360
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Why Service360
           </h2>
 
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Built to provide reliable, fast, and trusted service access through one unified platform.
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-8">
+            Built to simplify access to trusted services and everyday assistance through one modern platform.
           </p>
 
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 gap-8">
 
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
-            <h3 className="text-2xl font-bold mb-4 text-orange-400">
-              Fast Response
+          {/* Card 1 */}
+          <div className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-10 hover:border-orange-500 transition duration-300">
+
+            <div className="mb-6 text-orange-400 text-5xl">
+              •
+            </div>
+
+            <h3 className="text-3xl font-bold mb-5">
+              One Platform, Multiple Services
             </h3>
 
-            <p className="text-gray-300 leading-8">
-              Quick assistance and reliable support designed to help customers connect with services efficiently.
+            <p className="text-gray-400 text-lg leading-8">
+              From home services and legal support to healthcare and personal assistance — access everything through one connected experience.
             </p>
+
           </div>
 
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
-            <h3 className="text-2xl font-bold mb-4 text-orange-400">
-              Verified Professionals
+          {/* Card 2 */}
+          <div className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-10 hover:border-orange-500 transition duration-300">
+
+            <div className="mb-6 text-orange-400 text-5xl">
+              •
+            </div>
+
+            <h3 className="text-3xl font-bold mb-5">
+              Assistance That Feels Simple
             </h3>
 
-            <p className="text-gray-300 leading-8">
-              We focus on building a trusted network of professionals and partners for better service experiences.
+            <p className="text-gray-400 text-lg leading-8">
+              We focus on reducing everyday stress by making service access faster, easier, and more convenient.
             </p>
+
           </div>
 
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
-            <h3 className="text-2xl font-bold mb-4 text-orange-400">
-              Unified Platform
+          {/* Card 3 */}
+          <div className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-10 hover:border-orange-500 transition duration-300">
+
+            <div className="mb-6 text-orange-400 text-5xl">
+              •
+            </div>
+
+            <h3 className="text-3xl font-bold mb-5">
+              Designed Around Real Life
             </h3>
 
-            <p className="text-gray-300 leading-8">
-              Access multiple services through one modern and customer-focused ecosystem.
+            <p className="text-gray-400 text-lg leading-8">
+              Whether it’s urgent support or everyday assistance, Service360 is designed to make everyday life easier and more convenient.
             </p>
+
           </div>
 
         </div>
@@ -285,6 +329,7 @@ export default function Home() {
       <section className="px-6 md:px-20 py-24 bg-black text-white">
 
         <div className="text-center mb-16">
+
           <h2 className="text-4xl md:text-5xl font-bold mb-5">
             Meet The Founders
           </h2>
@@ -292,6 +337,7 @@ export default function Home() {
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
             Building a trusted and technology-driven service ecosystem designed to simplify everyday life.
           </p>
+
         </div>
 
         <div className="grid md:grid-cols-2 gap-10">
@@ -378,7 +424,7 @@ export default function Home() {
         <h2 className="text-4xl md:text-6xl font-bold mb-8">
           Need Assistance?
           <br />
-          Book a Service Instantly.
+          Explore Services Instantly.
         </h2>
 
         <a
