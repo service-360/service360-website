@@ -108,7 +108,7 @@ export default function ServicesPage() {
               </p>
 
               <a
-                href="https://api.whatsapp.com/send?phone=916369051521&text=Hi%20Service360%2C%20I%20would%20like%20to%20book%20a%20service."
+                href={`https://api.whatsapp.com/send?phone=916369051521&text=Hi%20Service360%2C%20I%20would%20like%20to%20book%20${encodeURIComponent(service.title)}.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-white text-black hover:bg-orange-500 hover:text-white transition px-8 py-4 rounded-2xl font-semibold"
@@ -191,7 +191,7 @@ export default function ServicesPage() {
         </h2>
 
         <a
-          href="https://api.whatsapp.com/send?phone=916369051521&text=Hi%20Service360%2C%20I%20would%20like%20to%20book%20a%20service."
+          href="https://api.whatsapp.com/send?phone=916369051521&text=Hi%20Service360%2C%20I%20would%20like%20to%20connect%20with%20your%20team."
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-orange-500 hover:bg-orange-600 transition px-10 py-5 rounded-full text-xl font-semibold"
