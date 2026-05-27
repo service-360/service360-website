@@ -1,321 +1,207 @@
+"use client"
+
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
+
 export default function ServicesPage() {
+
+  const serviceCategories = [
+    {
+      title: "Legal Documentation",
+      description:
+        "Trusted legal support and documentation services delivered by verified professionals.",
+    },
+    {
+      title: "Rental Agreements",
+      description:
+        "Trusted legal support and documentation services delivered by verified professionals.",
+    },
+    {
+      title: "Property Registration",
+      description:
+        "Trusted legal support and documentation services delivered by verified professionals.",
+    },
+    {
+      title: "Business Registration",
+      description:
+        "Trusted legal support and documentation services delivered by verified professionals.",
+    },
+    {
+      title: "GST & Tax Filing",
+      description:
+        "Trusted legal support and documentation services delivered by verified professionals.",
+    },
+    {
+      title: "Audit & Compliance Services",
+      description:
+        "Trusted legal support and documentation services delivered by verified professionals.",
+    },
+    {
+      title: "Home Cleaning",
+      description:
+        "Professional and reliable home cleaning solutions for homes and offices.",
+    },
+    {
+      title: "Electrician Services",
+      description:
+        "Quick and trusted electrician services for residential and commercial needs.",
+    },
+    {
+      title: "Plumbing Services",
+      description:
+        "Reliable plumbing solutions for maintenance, repairs, and emergencies.",
+    },
+    {
+      title: "Healthcare Assistance",
+      description:
+        "Connect with trusted healthcare support and medical assistance services.",
+    },
+    {
+      title: "Drivers & Transport",
+      description:
+        "Verified drivers and transport assistance available when you need them.",
+    },
+    {
+      title: "Pet Care Services",
+      description:
+        "Trusted pet care, walking, grooming, and assistance services.",
+    },
+  ]
+
   return (
-    <main className="bg-black text-white min-h-screen px-6 py-20">
+    <main className="bg-black text-white min-h-screen">
 
-      <div className="max-w-7xl mx-auto">
+      <Navbar />
 
-        <h1 className="text-6xl md:text-7xl font-bold text-center mb-8">
+      {/* Hero Section */}
+      <section className="px-6 md:px-20 py-24 text-center bg-gradient-to-b from-black to-zinc-900">
+
+        <h1 className="text-5xl md:text-7xl font-bold mb-8">
           Our Services
         </h1>
 
-        <p className="text-gray-400 text-xl text-center max-w-4xl mx-auto mb-16 leading-10">
-          Service360 brings together emergency assistance,
-          legal support, home services, healthcare support,
-          personal assistance, and lifestyle solutions into
-          one seamless ecosystem.
+        <p className="text-gray-400 text-lg md:text-2xl max-w-4xl mx-auto leading-9">
+          Explore trusted services across legal, healthcare, home assistance,
+          emergency support, and lifestyle solutions.
         </p>
 
-        {/* Search & Filters */}
-        <div className="mb-24">
+      </section>
 
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+      {/* Services Grid */}
+      <section className="px-6 md:px-20 py-20 bg-black">
 
-            <input
-              type="text"
-              placeholder="Search services..."
-              className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4 w-full md:w-[500px] text-white outline-none"
-            />
+        <div className="grid md:grid-cols-3 gap-10">
 
-            <select
-              className="bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4 text-white outline-none"
+          {serviceCategories.map((service, index) => (
+
+            <div
+              key={index}
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-orange-500 transition duration-300"
             >
-              <option>All Categories</option>
-              <option>Legal Services</option>
-              <option>Emergency Services</option>
-              <option>Home Services</option>
-              <option>Healthcare</option>
-              <option>Personal Assistance</option>
-              <option>Pet Services</option>
-            </select>
+
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                {service.title}
+              </h2>
+
+              <p className="text-gray-400 text-lg leading-9 mb-10">
+                {service.description}
+              </p>
+
+              <a
+                href="https://api.whatsapp.com/send?phone=916369051521&text=Hi%20Service360%2C%20I%20would%20like%20to%20book%20a%20service."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-white text-black hover:bg-orange-500 hover:text-white transition px-8 py-4 rounded-2xl font-semibold"
+              >
+                Book Now
+              </a>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="px-6 md:px-20 py-24 bg-zinc-950">
+
+        <div className="text-center mb-16">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-5">
+            Why Choose Service360
+          </h2>
+
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            Service360 is focused on building a trusted, fast, and customer-first service ecosystem.
+          </p>
+
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-10">
+
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
+
+            <h3 className="text-2xl font-bold text-orange-400 mb-5">
+              Verified Professionals
+            </h3>
+
+            <p className="text-gray-400 leading-8">
+              We work towards building a reliable network of verified service professionals and partners.
+            </p>
+
+          </div>
+
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
+
+            <h3 className="text-2xl font-bold text-orange-400 mb-5">
+              Quick Assistance
+            </h3>
+
+            <p className="text-gray-400 leading-8">
+              Fast response and simplified service access designed for customer convenience.
+            </p>
+
+          </div>
+
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
+
+            <h3 className="text-2xl font-bold text-orange-400 mb-5">
+              Multiple Services
+            </h3>
+
+            <p className="text-gray-400 leading-8">
+              Access legal, home, healthcare, transport, and lifestyle services from one platform.
+            </p>
 
           </div>
 
         </div>
 
-        {/* Legal Services */}
-        <section className="mb-28">
-
-          <h2 className="text-5xl font-bold mb-12">
-            ⚖️ Legal Services
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              "Legal Documentation",
-              "Rental Agreements",
-              "Property Registration",
-              "Business Registration",
-              "GST & Tax Filing",
-              "Audit & Compliance Services",
-              "Government Certifications",
-              "Government Documentation Assistance",
-              "Legal Consultation",
-              "Contract Drafting",
-              "Business Compliance Services"
-            ].map((service) => (
-
-              <div
-                key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white hover:scale-105 transition duration-300"
-              >
-
-                <h3 className="text-2xl font-semibold leading-10 mb-4">
-                  {service}
-                </h3>
-
-                <p className="text-gray-400 mb-8 leading-8">
-                  Trusted legal support and documentation
-                  services delivered by verified professionals.
-                </p>
-
-                <button className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition">
-                  Book Now
-                </button>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </section>
-
-        {/* Emergency Services */}
-        <section className="mb-28">
-
-          <h2 className="text-5xl font-bold mb-12">
-            🚨 Emergency Services
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              "24/7 Emergency Plumbing",
-              "24/7 Emergency Electrician",
-              "Emergency Locksmith",
-              "Instant Roadside Assistance",
-              "Home Pest Emergency Treatment",
-              "EV Charging Assistance"
-            ].map((service) => (
-
-              <div
-                key={service}
-                className="bg-red-950/30 border border-red-800 rounded-3xl p-8 hover:border-red-400 hover:scale-105 transition duration-300"
-              >
-
-                <h3 className="text-2xl font-semibold leading-10 mb-4">
-                  {service}
-                </h3>
-
-                <p className="text-gray-400 mb-8 leading-8">
-                  Fast-response emergency support available
-                  whenever urgent assistance is required.
-                </p>
-
-                <button className="bg-red-500 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-400 transition">
-                  Emergency Booking
-                </button>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </section>
-
-        {/* Home & Lifestyle */}
-        <section className="mb-28">
-
-          <h2 className="text-5xl font-bold mb-12">
-            🏠 Home & Lifestyle Services
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              "Home Appliance Repair",
-              "Daily Home Cook",
-              "Part-time Maid",
-              "Home Organization",
-              "Laundry Pickup Service",
-              "Furniture Assembly",
-              "Plant Care & Gardening",
-              "On-demand Car Cleaning",
-              "Digital Setup Help",
-              "Water Can Delivery Subscription"
-            ].map((service) => (
-
-              <div
-                key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white hover:scale-105 transition duration-300"
-              >
-
-                <h3 className="text-2xl font-semibold leading-10 mb-4">
-                  {service}
-                </h3>
-
-                <p className="text-gray-400 mb-8 leading-8">
-                  Reliable home and lifestyle services
-                  delivered directly to your doorstep.
-                </p>
-
-                <button className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition">
-                  Book Now
-                </button>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </section>
-
-        {/* Healthcare & Elder Care */}
-        <section className="mb-28">
-
-          <h2 className="text-5xl font-bold mb-12">
-            🏥 Healthcare & Elder Care
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              "Elderly Caregiver",
-              "Home Nursing Services",
-              "Medicine Reminder Assistance",
-              "Hospital Companion Service",
-              "Home Physiotherapy",
-              "Mental Wellness Listener"
-            ].map((service) => (
-
-              <div
-                key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white hover:scale-105 transition duration-300"
-              >
-
-                <h3 className="text-2xl font-semibold leading-10 mb-4">
-                  {service}
-                </h3>
-
-                <p className="text-gray-400 mb-8 leading-8">
-                  Compassionate healthcare and elderly support
-                  services provided by trained professionals.
-                </p>
-
-                <button className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition">
-                  Book Now
-                </button>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </section>
-
-        {/* Personal Assistance */}
-        <section className="mb-28">
-
-          <h2 className="text-5xl font-bold mb-12">
-            🤝 Personal Assistance
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              "Queue & Errand Running",
-              "Grocery Concierge",
-              "Childcare & Babysitting",
-              "Tutor On-demand",
-              "Event Helpers",
-              "Driver On-demand",
-              "Parking Spot Assistance",
-              "Document Pickup Assistance",
-              "Local Guide Assistance"
-            ].map((service) => (
-
-              <div
-                key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white hover:scale-105 transition duration-300"
-              >
-
-                <h3 className="text-2xl font-semibold leading-10 mb-4">
-                  {service}
-                </h3>
-
-                <p className="text-gray-400 mb-8 leading-8">
-                  Flexible personal assistance services
-                  designed to simplify everyday life.
-                </p>
-
-                <button className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition">
-                  Book Now
-                </button>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </section>
-
-        {/* Pet Services */}
-        <section className="mb-20">
-
-          <h2 className="text-5xl font-bold mb-12">
-            🐾 Pet Services
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              "Pet Grooming",
-              "Pet Boarding",
-              "Pet Walking"
-            ].map((service) => (
-
-              <div
-                key={service}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-white hover:scale-105 transition duration-300"
-              >
-
-                <h3 className="text-2xl font-semibold leading-10 mb-4">
-                  {service}
-                </h3>
-
-                <p className="text-gray-400 mb-8 leading-8">
-                  Trusted pet care services for grooming,
-                  boarding, and daily pet support needs.
-                </p>
-
-                <button className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition">
-                  Book Now
-                </button>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </section>
-
-      </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="px-6 md:px-20 py-28 bg-gradient-to-b from-zinc-950 to-black text-center">
+
+        <h2 className="text-4xl md:text-6xl font-bold mb-8">
+          Need Assistance?
+          <br />
+          Connect With Service360 Today.
+        </h2>
+
+        <a
+          href="https://api.whatsapp.com/send?phone=916369051521&text=Hi%20Service360%2C%20I%20would%20like%20to%20book%20a%20service."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-orange-500 hover:bg-orange-600 transition px-10 py-5 rounded-full text-xl font-semibold"
+        >
+          Contact on WhatsApp
+        </a>
+
+      </section>
+
+      <Footer />
 
     </main>
   )
