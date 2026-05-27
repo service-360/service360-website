@@ -128,7 +128,7 @@ export default function Home() {
               </h3>
 
               <a
-                href="https://wa.me/916369051521?text=Hi%20Service360%2C%20I%20would%20like%20to%20book%20a%20service."
+                href="https://api.whatsapp.com/send?phone=916369051521&text=Hi%20Service360%2C%20I%20would%20like%20to%20book%20a%20service."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold"
@@ -423,7 +423,7 @@ export default function Home() {
         </h2>
 
         <a
-          href="https://wa.me/916369051521?text=Hi%20Service360%2C%20I%20would%20like%20to%20book%20a%20service."
+          href="https://api.whatsapp.com/send?phone=916369051521&text=Hi%20Service360%2C%20I%20would%20like%20to%20book%20a%20service."
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-orange-500 hover:bg-orange-600 transition px-10 py-5 rounded-full text-xl font-semibold"
