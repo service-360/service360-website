@@ -1,9 +1,20 @@
 "use client"
 
+import { useState } from "react"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
 export default function ServicesPage() {
+
+  const [selectedService, setSelectedService] = useState("")
+  const [showModal, setShowModal] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    message: "",
+  })
 
   const serviceCategories = [
     {
@@ -68,12 +79,59 @@ export default function ServicesPage() {
     },
   ]
 
+  const handleBooking = async () => {
+
+    if (!formData.name || !formData.phone) {
+      alert("Please fill all required fields")
+      return
+    }
+
+    setLoading(true)
+
+    try {
+
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbwpmoH7FpqMxY9VpgAY1dM9x1HQ7AXf6mooI_Fs3g0XwL8EKh0mbi3mcBWRiT-jWXwupg/exec",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            name: formData.name,
+            phone: formData.phone,
+            service: selectedService,
+            message: formData.message,
+          }),
+        }
+      )
+
+      const whatsappMessage =
+        `Hi Service360, my name is ${formData.name}. I would like to book ${selectedService}.`
+
+      window.open(
+        `https://api.whatsapp.com/send?phone=916369051521&text=${encodeURIComponent(whatsappMessage)}`,
+        "_blank"
+      )
+
+      setShowModal(false)
+
+      setFormData({
+        name: "",
+        phone: "",
+        message: "",
+      })
+
+    } catch (error) {
+      alert("Something went wrong")
+    }
+
+    setLoading(false)
+  }
+
   return (
     <main className="bg-black text-white min-h-screen">
 
       <Navbar />
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="px-6 md:px-20 py-24 text-center bg-gradient-to-b from-black to-zinc-900">
 
         <h1 className="text-5xl md:text-7xl font-bold mb-8">
@@ -81,13 +139,13 @@ export default function ServicesPage() {
         </h1>
 
         <p className="text-gray-400 text-lg md:text-2xl max-w-4xl mx-auto leading-9">
-          Explore trusted services across legal, healthcare, home assistance,
-          emergency support, and lifestyle solutions.
+          Explore trusted services across legal, healthcare,
+          home assistance, emergency support, and lifestyle solutions.
         </p>
 
       </section>
 
-      {/* Services Grid */}
+      {/* Services */}
       <section className="px-6 md:px-20 py-20 bg-black">
 
         <div className="grid md:grid-cols-3 gap-10">
@@ -107,14 +165,15 @@ export default function ServicesPage() {
                 {service.description}
               </p>
 
-              <a
-                href={`https://api.whatsapp.com/send?phone=916369051521&text=Hi%20Service360%2C%20I%20would%20like%20to%20book%20${encodeURIComponent(service.title)}.`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => {
+                  setSelectedService(service.title)
+                  setShowModal(true)
+                }}
                 className="inline-block bg-white text-black hover:bg-orange-500 hover:text-white transition px-8 py-4 rounded-2xl font-semibold"
               >
                 Book Now
-              </a>
+              </button>
 
             </div>
 
@@ -124,82 +183,84 @@ export default function ServicesPage() {
 
       </section>
 
-      {/* Why Choose Us */}
-      <section className="px-6 md:px-20 py-24 bg-zinc-950">
+      {/* Booking Modal */}
+      {showModal && (
 
-        <div className="text-center mb-16">
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 px-4">
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-5">
-            Why Choose Service360
-          </h2>
+          <div className="bg-zinc-900 p-8 rounded-3xl w-full max-w-lg border border-zinc-800">
 
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Service360 is focused on building a trusted, fast, and customer-first service ecosystem.
-          </p>
+            <h2 className="text-3xl font-bold mb-6">
+              Book {selectedService}
+            </h2>
+
+            <div className="space-y-5">
+
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    name: e.target.value,
+                  })
+                }
+                className="w-full bg-black border border-zinc-700 rounded-xl px-5 py-4 outline-none"
+              />
+
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    phone: e.target.value,
+                  })
+                }
+                className="w-full bg-black border border-zinc-700 rounded-xl px-5 py-4 outline-none"
+              />
+
+              <textarea
+                placeholder="Tell us your requirement"
+                rows="4"
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    message: e.target.value,
+                  })
+                }
+                className="w-full bg-black border border-zinc-700 rounded-xl px-5 py-4 outline-none"
+              />
+
+              <div className="flex gap-4 pt-4">
+
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="w-full border border-zinc-700 py-4 rounded-xl"
+                >
+                  Cancel
+                </button>
+
+                <button
+                  onClick={handleBooking}
+                  disabled={loading}
+                  className="w-full bg-orange-500 hover:bg-orange-600 transition py-4 rounded-xl font-semibold"
+                >
+                  {loading ? "Processing..." : "Continue"}
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10">
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
-
-            <h3 className="text-2xl font-bold text-orange-400 mb-5">
-              Verified Professionals
-            </h3>
-
-            <p className="text-gray-400 leading-8">
-              We work towards building a reliable network of verified service professionals and partners.
-            </p>
-
-          </div>
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
-
-            <h3 className="text-2xl font-bold text-orange-400 mb-5">
-              Quick Assistance
-            </h3>
-
-            <p className="text-gray-400 leading-8">
-              Fast response and simplified service access designed for customer convenience.
-            </p>
-
-          </div>
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
-
-            <h3 className="text-2xl font-bold text-orange-400 mb-5">
-              Multiple Services
-            </h3>
-
-            <p className="text-gray-400 leading-8">
-              Access legal, home, healthcare, transport, and lifestyle services from one platform.
-            </p>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* Final CTA */}
-      <section className="px-6 md:px-20 py-28 bg-gradient-to-b from-zinc-950 to-black text-center">
-
-        <h2 className="text-4xl md:text-6xl font-bold mb-8">
-          Need Assistance?
-          <br />
-          Connect With Service360 Today.
-        </h2>
-
-        <a
-          href="https://api.whatsapp.com/send?phone=916369051521&text=Hi%20Service360%2C%20I%20would%20like%20to%20connect%20with%20your%20team."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-orange-500 hover:bg-orange-600 transition px-10 py-5 rounded-full text-xl font-semibold"
-        >
-          Contact on WhatsApp
-        </a>
-
-      </section>
+      )}
 
       <Footer />
 
