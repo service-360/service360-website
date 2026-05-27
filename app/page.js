@@ -70,6 +70,13 @@ export default function Home() {
         "Quick-response support and urgent assistance services when immediate help is required.",
     },
 
+    {
+      category: "Pet Care Services",
+
+      description:
+        "Reliable pet care, grooming, assistance, and support services designed for pet wellbeing and everyday convenience.",
+    },
+
   ]
 
   return (
@@ -270,7 +277,6 @@ export default function Home() {
 
         <div className="grid md:grid-cols-3 gap-8">
 
-          {/* Card 1 */}
           <div className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-10 hover:border-orange-500 transition duration-300">
 
             <div className="mb-6 text-orange-400 text-5xl">
@@ -287,7 +293,6 @@ export default function Home() {
 
           </div>
 
-          {/* Card 2 */}
           <div className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-10 hover:border-orange-500 transition duration-300">
 
             <div className="mb-6 text-orange-400 text-5xl">
@@ -304,7 +309,6 @@ export default function Home() {
 
           </div>
 
-          {/* Card 3 */}
           <div className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-10 hover:border-orange-500 transition duration-300">
 
             <div className="mb-6 text-orange-400 text-5xl">
@@ -318,99 +322,6 @@ export default function Home() {
             <p className="text-gray-400 text-lg leading-8">
               Whether it’s urgent support or everyday assistance, Service360 is designed to make everyday life easier and more convenient.
             </p>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* Founders Section */}
-      <section className="px-6 md:px-20 py-24 bg-black text-white">
-
-        <div className="text-center mb-16">
-
-          <h2 className="text-4xl md:text-5xl font-bold mb-5">
-            Meet The Founders
-          </h2>
-
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Building a trusted and technology-driven service ecosystem designed to simplify everyday life.
-          </p>
-
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-10">
-
-          {/* Founder 1 */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden">
-
-            <img
-              src="/tharun.jpg"
-              alt="Tharun Kumar"
-              className="w-full h-[500px] object-cover"
-            />
-
-            <div className="p-8">
-
-              <h3 className="text-3xl font-bold mb-2">
-                Tharun Kumar
-              </h3>
-
-              <p className="text-orange-400 font-semibold mb-5">
-                Founder & COO
-              </p>
-
-              <p className="text-gray-300 leading-8 mb-6">
-                A Business Administration graduate with experience across B2B, B2C, and service industries, focused on building customer-first operational systems through Service360.
-              </p>
-
-              <a
-                href="https://www.linkedin.com/in/tharun-kumar-manivannan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold"
-              >
-                Connect on LinkedIn
-              </a>
-
-            </div>
-
-          </div>
-
-          {/* Founder 2 */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden">
-
-            <img
-              src="/ramesh.jpg"
-              alt="Ramesh Prashanth Muthaiah"
-              className="w-full h-[500px] object-cover"
-            />
-
-            <div className="p-8">
-
-              <h3 className="text-3xl font-bold mb-2">
-                Ramesh Prashanth Muthaiah
-              </h3>
-
-              <p className="text-orange-400 font-semibold mb-5">
-                Founder & CMO
-              </p>
-
-              <p className="text-gray-300 leading-8 mb-6">
-                An Engineering graduate and entrepreneur focused on scaling modern service ecosystems through innovation, customer engagement, and strategic growth.
-              </p>
-
-              <a
-                href="https://linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold"
-              >
-                Connect on LinkedIn
-              </a>
-
-            </div>
 
           </div>
 
