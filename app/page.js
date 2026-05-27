@@ -122,9 +122,18 @@ export default function Home() {
               key={index}
               className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-orange-500 transition duration-300"
             >
-              <h3 className="text-2xl font-semibold">
+
+              <h3 className="text-2xl font-semibold mb-6">
                 {service}
               </h3>
+
+              <a
+                href="/services"
+                className="inline-block bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold"
+              >
+                Book Now
+              </a>
+
             </div>
           ))}
 
@@ -183,69 +192,6 @@ export default function Home() {
 
       </section>
 
-      {/* How It Works */}
-      <section className="px-6 md:px-20 py-24 bg-black">
-
-        <div className="text-center mb-16">
-
-          <h2 className="text-4xl md:text-5xl font-bold mb-5">
-            How It Works
-          </h2>
-
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Getting started with Service360 is simple and seamless.
-          </p>
-
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-10 text-center">
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
-            <h3 className="text-3xl font-bold text-orange-400 mb-4">
-              01
-            </h3>
-
-            <p className="text-xl font-semibold mb-3">
-              Choose Service
-            </p>
-
-            <p className="text-gray-400">
-              Select the service you require from our platform.
-            </p>
-          </div>
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
-            <h3 className="text-3xl font-bold text-orange-400 mb-4">
-              02
-            </h3>
-
-            <p className="text-xl font-semibold mb-3">
-              Submit Request
-            </p>
-
-            <p className="text-gray-400">
-              Share your requirement quickly through our platform.
-            </p>
-          </div>
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
-            <h3 className="text-3xl font-bold text-orange-400 mb-4">
-              03
-            </h3>
-
-            <p className="text-xl font-semibold mb-3">
-              Get Connected
-            </p>
-
-            <p className="text-gray-400">
-              Connect with trusted professionals and receive assistance.
-            </p>
-          </div>
-
-        </div>
-
-      </section>
-
       {/* Founders Section */}
       <section className="px-6 md:px-20 py-24 bg-zinc-950 text-white">
 
@@ -263,7 +209,6 @@ export default function Home() {
 
         <div className="grid md:grid-cols-2 gap-10">
 
-          {/* Founder 1 */}
           <div className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-orange-500 transition duration-300">
 
             <img
@@ -306,7 +251,6 @@ export default function Home() {
 
           </div>
 
-          {/* Founder 2 */}
           <div className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-orange-500 transition duration-300">
 
             <img
@@ -373,26 +317,6 @@ export default function Home() {
 
             <p className="text-gray-400">
               Customers can submit service requests through the platform and connect with trusted professionals.
-            </p>
-          </div>
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
-            <h3 className="text-xl font-semibold mb-3">
-              Are the professionals verified?
-            </h3>
-
-            <p className="text-gray-400">
-              We focus on building a trusted and verified partner ecosystem for reliable service experiences.
-            </p>
-          </div>
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
-            <h3 className="text-xl font-semibold mb-3">
-              Which cities are currently supported?
-            </h3>
-
-            <p className="text-gray-400">
-              Service360 is currently focused on expanding services starting from Trichy, Tamil Nadu.
             </p>
           </div>
 
