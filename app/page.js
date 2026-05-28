@@ -12,6 +12,8 @@ export default function Home() {
 
       description:
         "Professional assistance for legal documentation, registrations, taxation, and compliance services.",
+
+      link: "/services#legal-tax",
     },
 
     {
@@ -19,6 +21,8 @@ export default function Home() {
 
       description:
         "Reliable home repair, maintenance, cleaning, and essential household support services.",
+
+      link: "/services#home-repair",
     },
 
     {
@@ -26,6 +30,8 @@ export default function Home() {
 
       description:
         "Technical support and repair services for appliances, electronics, and personal devices.",
+
+      link: "/services#appliance-repair",
     },
 
     {
@@ -33,6 +39,8 @@ export default function Home() {
 
       description:
         "Everyday support services designed to simplify personal tasks and daily responsibilities.",
+
+      link: "/services#personal-assistance",
     },
 
     {
@@ -40,6 +48,8 @@ export default function Home() {
 
       description:
         "Lifestyle, grooming, and personal styling services designed around convenience and self-care.",
+
+      link: "/services#lifestyle",
     },
 
     {
@@ -47,6 +57,8 @@ export default function Home() {
 
       description:
         "Reliable healthcare coordination and patient assistance services for everyday medical needs.",
+
+      link: "/services#healthcare",
     },
 
     {
@@ -54,6 +66,8 @@ export default function Home() {
 
       description:
         "Supportive care and assistance services focused on elderly wellbeing and everyday support.",
+
+      link: "/services#elderly-care",
     },
 
     {
@@ -61,6 +75,8 @@ export default function Home() {
 
       description:
         "Convenient driver and transportation assistance services for daily travel and mobility needs.",
+
+      link: "/services#mobility",
     },
 
     {
@@ -68,6 +84,8 @@ export default function Home() {
 
       description:
         "Quick-response support and urgent assistance services when immediate help is required.",
+
+      link: "/services#emergency",
     },
 
     {
@@ -75,6 +93,8 @@ export default function Home() {
 
       description:
         "Reliable pet care, grooming, assistance, and support services designed for pet wellbeing and everyday convenience.",
+
+      link: "/services#pet-care",
     },
 
   ]
@@ -246,7 +266,7 @@ export default function Home() {
               </div>
 
               <a
-                href="/services"
+                href={category.link}
                 className="inline-block bg-orange-500 hover:bg-orange-600 transition px-8 py-4 rounded-full font-semibold text-center"
               >
                 Explore Services
