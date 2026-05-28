@@ -2,154 +2,176 @@ export default function Footer() {
 
   return (
 
-    <footer className="bg-black border-t border-zinc-800 px-8 py-16">
+    <footer className="bg-zinc-950 border-t border-zinc-800 text-white">
 
-      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20">
 
-        {/* Brand */}
-        <div>
+        <div className="grid md:grid-cols-4 gap-14">
 
-          <h2 className="text-3xl font-bold mb-6 text-white">
-            Service360
-          </h2>
+          {/* Brand Section */}
+          <div>
 
-          <p className="text-gray-400 leading-8">
-            Building a trusted all-in-one service platform
-            for emergency assistance, legal support,
-            healthcare, home services, and lifestyle needs.
-          </p>
+            <h2 className="text-3xl font-bold mb-5">
+              <span className="text-white">
+                Service
+              </span>
 
-        </div>
+              <span className="text-orange-500">
+                360
+              </span>
+            </h2>
 
-        {/* Quick Links */}
-        <div>
-
-          <h3 className="text-xl font-semibold mb-6">
-            Quick Links
-          </h3>
-
-          <div className="flex flex-col gap-4 text-gray-400">
-
-            <a
-              href="/"
-              className="hover:text-white transition"
-            >
-              Home
-            </a>
-
-            <a
-              href="/services"
-              className="hover:text-white transition"
-            >
-              Services
-            </a>
-
-            <a
-              href="/partners"
-              className="hover:text-white transition"
-            >
-              Become a Partner
-            </a>
-
-            <a
-              href="#contact"
-              className="hover:text-white transition"
-            >
-              Contact
-            </a>
-
-          </div>
-
-        </div>
-
-        {/* Services */}
-        <div>
-
-          <h3 className="text-xl font-semibold mb-6">
-            Services
-          </h3>
-
-          <div className="flex flex-col gap-4 text-gray-400">
-
-            <p>Emergency Assistance</p>
-            <p>Healthcare Support</p>
-            <p>Legal Assistance</p>
-            <p>Home Services</p>
-            <p>Lifestyle Services</p>
-
-          </div>
-
-        </div>
-
-        {/* Contact */}
-        <div>
-
-          <h3 className="text-xl font-semibold mb-6">
-            Contact
-          </h3>
-
-          <div className="flex flex-col gap-4 text-gray-400">
-
-            <p>
-              Trichy, Tamil Nadu
+            <p className="text-gray-400 leading-8 mb-6">
+              Making everyday life simpler through trusted services, technology, and human support.
             </p>
 
             <a
-              href="mailto:service360.in@gmail.com"
-              className="hover:text-white transition"
+              href="https://wa.me/916369051521"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold"
             >
-              service360.in@gmail.com
-            </a>
-
-            <a
-              href="tel:+916369051521"
-              className="hover:text-white transition"
-            >
-              +91 63690 51521
+              Chat on WhatsApp
             </a>
 
           </div>
 
-          {/* Social Links */}
-          <div className="flex gap-6 mt-8">
+          {/* Quick Links */}
+          <div>
 
-            <a
-              href="https://www.instagram.com/service_360.in?igsh=MXFjY3BpY3dpZDJ3cg=="
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-pink-500 transition"
-            >
-              Instagram
-            </a>
+            <h3 className="text-xl font-bold mb-6">
+              Quick Links
+            </h3>
 
-            <a
-              href="https://www.linkedin.com/company/service360-in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-400 transition"
-            >
-              LinkedIn
-            </a>
+            <div className="flex flex-col gap-4 text-gray-400">
 
-            <a
-              href="https://www.facebook.com/share/1BEj2wakmw/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-500 transition"
-            >
-              Facebook
-            </a>
+              <a
+                href="/"
+                className="hover:text-orange-400 transition"
+              >
+                Home
+              </a>
+
+              <a
+                href="/services"
+                className="hover:text-orange-400 transition"
+              >
+                Services
+              </a>
+
+              <a
+                href="/about"
+                className="hover:text-orange-400 transition"
+              >
+                About
+              </a>
+
+              <a
+                href="/contact"
+                className="hover:text-orange-400 transition"
+              >
+                Contact
+              </a>
+
+            </div>
+
+          </div>
+
+          {/* Service Categories */}
+          <div>
+
+            <h3 className="text-xl font-bold mb-6">
+              Popular Categories
+            </h3>
+
+            <div className="flex flex-col gap-4 text-gray-400">
+
+              <a
+                href="/services#home-repair"
+                className="hover:text-orange-400 transition"
+              >
+                Home Services
+              </a>
+
+              <a
+                href="/services#legal-tax"
+                className="hover:text-orange-400 transition"
+              >
+                Legal & Tax
+              </a>
+
+              <a
+                href="/services#healthcare"
+                className="hover:text-orange-400 transition"
+              >
+                Healthcare
+              </a>
+
+              <a
+                href="/services#pet-care"
+                className="hover:text-orange-400 transition"
+              >
+                Pet Care
+              </a>
+
+            </div>
+
+          </div>
+
+          {/* Contact */}
+          <div>
+
+            <h3 className="text-xl font-bold mb-6">
+              Contact
+            </h3>
+
+            <div className="space-y-5 text-gray-400">
+
+              <p>
+                Chennai, India
+              </p>
+
+              <a
+                href="tel:+916369051521"
+                className="block hover:text-orange-400 transition"
+              >
+                +91 63690 51521
+              </a>
+
+              <a
+                href="mailto:tharunkumar@service360.in"
+                className="block hover:text-orange-400 transition"
+              >
+                tharunkumar@service360.in
+              </a>
+
+              <a
+                href="https://www.service360.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:text-orange-400 transition"
+              >
+                www.service360.in
+              </a>
+
+            </div>
 
           </div>
 
         </div>
 
-      </div>
+        {/* Bottom Section */}
+        <div className="border-t border-zinc-800 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between gap-5">
 
-      {/* Bottom Bar */}
-      <div className="border-t border-zinc-800 mt-16 pt-8 text-center text-gray-500">
+          <p className="text-gray-500 text-sm">
+            © 2026 Service360. All rights reserved.
+          </p>
 
-        © 2026 Service360. All rights reserved.
+          <p className="text-gray-500 text-sm">
+            Built to simplify everyday living.
+          </p>
+
+        </div>
 
       </div>
 
