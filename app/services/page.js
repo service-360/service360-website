@@ -358,14 +358,7 @@ export default function ServicesPage() {
     try {
 
       const confirmationMessage =
-`Hi ${formData.name} 👋
-
-Your booking request for ${selectedService} has been received successfully by Service360.
-
-Our team will contact you shortly.
-
-Thank you,
-Service360`
+        `Hi Service360, my name is ${formData.name}. I would like to book ${selectedService}.`
 
       const whatsappURL =
         `https://api.whatsapp.com/send?phone=916369051521&text=${encodeURIComponent(confirmationMessage)}`
