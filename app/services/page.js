@@ -1,269 +1,114 @@
 "use client"
 
-import { useState } from "react"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
 export default function ServicesPage() {
 
-  const [selectedService, setSelectedService] = useState("")
-  const [showModal, setShowModal] = useState(false)
-  const [loading, setLoading] = useState(false)
-
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    message: "",
-  })
-
   const serviceCategories = [
+
     {
-      title: "Legal Documentation",
-      description:
-        "Trusted legal support and documentation services delivered by verified professionals.",
+      category: "Home Repair & Maintenance Services",
+
+      services: [
+
+        {
+          title: "Plumbing Services",
+          description:
+            "Quick plumbing repair and maintenance support for homes.",
+        },
+
+        {
+          title: "Electrician Services",
+          description:
+            "Reliable electrical installation and repair assistance.",
+        },
+
+        {
+          title: "Carpenter Services",
+          description:
+            "Furniture, fittings, and woodwork assistance services.",
+        },
+
+        {
+          title: "Painting Services",
+          description:
+            "Interior and exterior painting support for homes and spaces.",
+        },
+
+      ],
     },
-    {
-      title: "Rental Agreements",
-      description:
-        "Trusted legal support and documentation services delivered by verified professionals.",
-    },
-    {
-      title: "Property Registration",
-      description:
-        "Trusted legal support and documentation services delivered by verified professionals.",
-    },
-    {
-      title: "Business Registration",
-      description:
-        "Trusted legal support and documentation services delivered by verified professionals.",
-    },
-    {
-      title: "GST & Tax Filing",
-      description:
-        "Trusted legal support and documentation services delivered by verified professionals.",
-    },
-    {
-      title: "Audit & Compliance Services",
-      description:
-        "Trusted legal support and documentation services delivered by verified professionals.",
-    },
-    {
-      title: "Home Cleaning",
-      description:
-        "Professional and reliable home cleaning solutions for homes and offices.",
-    },
-    {
-      title: "Electrician Services",
-      description:
-        "Quick and trusted electrician services for residential and commercial needs.",
-    },
-    {
-      title: "Plumbing Services",
-      description:
-        "Reliable plumbing solutions for maintenance, repairs, and emergencies.",
-    },
-    {
-      title: "Healthcare Assistance",
-      description:
-        "Connect with trusted healthcare support and medical assistance services.",
-    },
-    {
-      title: "Drivers & Transport",
-      description:
-        "Verified drivers and transport assistance available when you need them.",
-    },
-    {
-      title: "Pet Care Services",
-      description:
-        "Trusted pet care, walking, grooming, and assistance services.",
-    },
+
   ]
 
-  const handleBooking = async () => {
-
-    if (!formData.name || !formData.phone) {
-      alert("Please fill all required fields")
-      return
-    }
-
-    setLoading(true)
-
-    try {
-
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbwvYj-X-C-R9vimWL6fL62sCk4VlbClPvkJJCZWw6ZdnFeOzGrOJ-Kd9CmgpMvziQHnPg/exec",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            name: formData.name,
-            phone: formData.phone,
-            service: selectedService,
-            message: formData.message,
-          }),
-        }
-      )
-
-      const whatsappMessage =
-        `Hi Service360, my name is ${formData.name}. I would like to book ${selectedService}.`
-
-      window.open(
-        `https://api.whatsapp.com/send?phone=916369051521&text=${encodeURIComponent(whatsappMessage)}`,
-        "_blank"
-      )
-
-      setShowModal(false)
-
-      setFormData({
-        name: "",
-        phone: "",
-        message: "",
-      })
-
-    } catch (error) {
-      alert("Something went wrong")
-    }
-
-    setLoading(false)
-  }
-
   return (
+
     <main className="bg-black text-white min-h-screen">
 
       <Navbar />
 
-      {/* Hero */}
-      <section className="px-6 md:px-20 py-24 text-center bg-gradient-to-b from-black to-zinc-900">
+      {/* Hero Section */}
+      <section className="px-6 md:px-20 py-24 bg-gradient-to-b from-black to-zinc-950 text-center">
 
         <h1 className="text-5xl md:text-7xl font-bold mb-8">
-          Our Services
+          Explore Services
         </h1>
 
-        <p className="text-gray-400 text-lg md:text-2xl max-w-4xl mx-auto leading-9">
-          Explore trusted services across legal, healthcare,
-          home assistance, emergency support, and lifestyle solutions.
+        <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-9">
+          Browse professional assistance and everyday support services across multiple categories.
         </p>
 
       </section>
 
-      {/* Services */}
-      <section className="px-6 md:px-20 py-20 bg-black">
+      {/* Categories */}
+      <section className="px-6 md:px-20 py-20">
 
-        <div className="grid md:grid-cols-3 gap-10">
+        {serviceCategories.map((category, index) => (
 
-          {serviceCategories.map((service, index) => (
+          <div key={index} className="mb-24">
 
-            <div
-              key={index}
-              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-orange-500 transition duration-300"
-            >
-
-              <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                {service.title}
-              </h2>
-
-              <p className="text-gray-400 text-lg leading-9 mb-10">
-                {service.description}
-              </p>
-
-              <button
-                onClick={() => {
-                  setSelectedService(service.title)
-                  setShowModal(true)
-                }}
-                className="inline-block bg-white text-black hover:bg-orange-500 hover:text-white transition px-8 py-4 rounded-2xl font-semibold"
-              >
-                Book Now
-              </button>
-
-            </div>
-
-          ))}
-
-        </div>
-
-      </section>
-
-      {/* Booking Modal */}
-      {showModal && (
-
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 px-4">
-
-          <div className="bg-zinc-900 p-8 rounded-3xl w-full max-w-lg border border-zinc-800">
-
-            <h2 className="text-3xl font-bold mb-6">
-              Book {selectedService}
+            <h2 className="text-4xl md:text-5xl font-bold mb-12">
+              {category.category}
             </h2>
 
-            <div className="space-y-5">
+            <div className="grid md:grid-cols-3 gap-8">
 
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    name: e.target.value,
-                  })
-                }
-                className="w-full bg-black border border-zinc-700 rounded-xl px-5 py-4 outline-none"
-              />
+              {category.services.map((service, idx) => (
 
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                value={formData.phone}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    phone: e.target.value,
-                  })
-                }
-                className="w-full bg-black border border-zinc-700 rounded-xl px-5 py-4 outline-none"
-              />
-
-              <textarea
-                placeholder="Tell us your requirement"
-                rows="4"
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    message: e.target.value,
-                  })
-                }
-                className="w-full bg-black border border-zinc-700 rounded-xl px-5 py-4 outline-none"
-              />
-
-              <div className="flex gap-4 pt-4">
-
-                <button
-                  onClick={() => setShowModal(false)}
-                  className="w-full border border-zinc-700 py-4 rounded-xl"
+                <div
+                  key={idx}
+                  className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-8"
                 >
-                  Cancel
-                </button>
 
-                <button
-                  onClick={handleBooking}
-                  disabled={loading}
-                  className="w-full bg-orange-500 hover:bg-orange-600 transition py-4 rounded-xl font-semibold"
-                >
-                  {loading ? "Processing..." : "Continue"}
-                </button>
+                  <h3 className="text-2xl font-bold mb-5">
+                    {service.title}
+                  </h3>
 
-              </div>
+                  <p className="text-gray-400 leading-8 mb-8">
+                    {service.description}
+                  </p>
+
+                  <button
+                    className="bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold"
+                  >
+                    Book Now
+                  </button>
+
+                </div>
+
+              ))}
 
             </div>
 
           </div>
 
-        </div>
+        ))}
 
-      )}
+      </section>
 
       <Footer />
 
     </main>
+
   )
 }
