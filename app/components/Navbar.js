@@ -4,79 +4,157 @@ import { useState } from "react"
 
 export default function Navbar() {
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <nav className="flex justify-between items-center px-6 md:px-8 py-5 border-b border-gray-800 sticky top-0 bg-black/90 backdrop-blur-lg z-50">
 
-      {/* Logo */}
-      <a
-        href="/"
-        className="text-2xl md:text-3xl font-bold"
-      >
-        Service360
-      </a>
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-black/80 border-b border-zinc-800">
 
-      {/* Desktop Menu */}
-      <div className="hidden md:flex gap-8 text-lg">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
 
-        <a href="/" className="hover:text-blue-400 transition">
-          Home
-        </a>
+        <div className="flex items-center justify-between h-20">
 
-        <a href="/about" className="hover:text-blue-400 transition">
-          About
-        </a>
+          {/* Logo */}
+          <a
+            href="/"
+            className="text-2xl md:text-3xl font-bold tracking-tight"
+          >
+            <span className="text-white">
+              Service
+            </span>
 
-        <a href="/services" className="hover:text-blue-400 transition">
-          Services
-        </a>
+            <span className="text-orange-500">
+              360
+            </span>
+          </a>
 
-        <a href="/partners" className="hover:text-blue-400 transition">
-          Become a Partner
-        </a>
+          {/* Desktop Menu */}
+          <nav className="hidden md:flex items-center gap-10">
 
-        <a href="#contact" className="hover:text-blue-400 transition">
-          Contact
-        </a>
+            <a
+              href="/"
+              className="text-gray-300 hover:text-orange-400 transition"
+            >
+              Home
+            </a>
+
+            <a
+              href="/services"
+              className="text-gray-300 hover:text-orange-400 transition"
+            >
+              Services
+            </a>
+
+            <a
+              href="/about"
+              className="text-gray-300 hover:text-orange-400 transition"
+            >
+              About
+            </a>
+
+            <a
+              href="/contact"
+              className="text-gray-300 hover:text-orange-400 transition"
+            >
+              Contact
+            </a>
+
+          </nav>
+
+          {/* CTA + Mobile Button */}
+          <div className="flex items-center gap-4">
+
+            <a
+              href="/services"
+              className="hidden md:inline-block bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold"
+            >
+              Book Service
+            </a>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden text-white"
+            >
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d={
+                    menuOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M4 6h16M4 12h16M4 18h16"
+                  }
+                />
+
+              </svg>
+
+            </button>
+
+          </div>
+
+        </div>
 
       </div>
 
-      {/* Mobile Button */}
-      <button
-        className="md:hidden text-3xl"
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-      >
-        {mobileMenuOpen ? "✕" : "☰"}
-      </button>
-
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="absolute top-20 left-0 w-full bg-black border-t border-gray-800 flex flex-col items-center gap-8 py-10 md:hidden">
+      {menuOpen && (
 
-          <a href="/" className="text-xl hover:text-blue-400 transition">
-            Home
-          </a>
+        <div className="md:hidden border-t border-zinc-800 bg-black">
 
-          <a href="/about" className="text-xl hover:text-blue-400 transition">
-            About
-          </a>
+          <div className="flex flex-col px-6 py-6 space-y-5">
 
-          <a href="/services" className="text-xl hover:text-blue-400 transition">
-            Services
-          </a>
+            <a
+              href="/"
+              className="text-gray-300 hover:text-orange-400 transition"
+            >
+              Home
+            </a>
 
-          <a href="/partners" className="text-xl hover:text-blue-400 transition">
-            Become a Partner
-          </a>
+            <a
+              href="/services"
+              className="text-gray-300 hover:text-orange-400 transition"
+            >
+              Services
+            </a>
 
-          <a href="#contact" className="text-xl hover:text-blue-400 transition">
-            Contact
-          </a>
+            <a
+              href="/about"
+              className="text-gray-300 hover:text-orange-400 transition"
+            >
+              About
+            </a>
+
+            <a
+              href="/contact"
+              className="text-gray-300 hover:text-orange-400 transition"
+            >
+              Contact
+            </a>
+
+            <a
+              href="/services"
+              className="bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold text-center"
+            >
+              Book Service
+            </a>
+
+          </div>
 
         </div>
+
       )}
 
-    </nav>
+    </header>
+
   )
 }
