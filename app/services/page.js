@@ -357,6 +357,21 @@ export default function ServicesPage() {
 
     try {
 
+      const confirmationMessage =
+`Hi ${formData.name} 👋
+
+Your booking request for ${selectedService} has been received successfully by Service360.
+
+Our team will contact you shortly.
+
+Thank you,
+Service360`
+
+      const whatsappURL =
+        `https://api.whatsapp.com/send?phone=916369051521&text=${encodeURIComponent(confirmationMessage)}`
+
+      window.open(whatsappURL, "_blank")
+
       await fetch(
         "https://script.google.com/macros/s/AKfycbwvYj-X-C-R9vimWL6fL62sCk4VlbClPvkJJCZWw6ZdnFeOzGrOJ-Kd9CmgpMvziQHnPg/exec",
         {
@@ -368,14 +383,6 @@ export default function ServicesPage() {
             message: formData.message,
           }),
         }
-      )
-
-      const whatsappMessage =
-        `Hi Service360, my name is ${formData.name}. I would like to book ${selectedService}.`
-
-      window.open(
-        `https://api.whatsapp.com/send?phone=916369051521&text=${encodeURIComponent(whatsappMessage)}`,
-        "_blank"
       )
 
       setShowModal(false)
