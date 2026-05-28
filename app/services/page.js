@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { motion } from "framer-motion"
+
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
@@ -422,13 +424,23 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <section className="px-6 md:px-20 py-24 bg-gradient-to-b from-black to-zinc-950 text-center">
 
-        <h1 className="text-5xl md:text-7xl font-bold mb-8">
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-5xl md:text-7xl font-bold mb-8"
+        >
           Explore Services
-        </h1>
+        </motion.h1>
 
-        <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-9">
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-9"
+        >
           Browse professional assistance and everyday support services across multiple categories.
-        </p>
+        </motion.p>
 
       </section>
 
@@ -468,16 +480,24 @@ export default function ServicesPage() {
             className="mb-24 scroll-mt-32"
           >
 
-            <h2 className="text-4xl md:text-5xl font-bold mb-12">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-4xl md:text-5xl font-bold mb-12"
+            >
               {category.category}
-            </h2>
+            </motion.h2>
 
             <div className="grid md:grid-cols-3 gap-8">
 
               {category.services.map((service, idx) => (
 
-                <div
+                <motion.div
                   key={idx}
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.25 }}
                   className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-8 hover:border-orange-500 transition duration-300"
                 >
 
@@ -499,7 +519,7 @@ export default function ServicesPage() {
                     Book Now
                   </button>
 
-                </div>
+                </motion.div>
 
               ))}
 
@@ -516,7 +536,12 @@ export default function ServicesPage() {
 
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 px-4">
 
-          <div className="bg-zinc-900 p-8 rounded-3xl w-full max-w-lg border border-zinc-800">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.25 }}
+            className="bg-zinc-900 p-8 rounded-3xl w-full max-w-lg border border-zinc-800"
+          >
 
             <h2 className="text-3xl font-bold mb-6">
               Book {selectedService}
@@ -584,7 +609,7 @@ export default function ServicesPage() {
 
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
 
