@@ -19,6 +19,8 @@ export default function ServicesPage() {
   const serviceCategories = [
 
     {
+      id: "legal-tax",
+
       category: "Legal, Tax & Compliance Services",
 
       services: [
@@ -63,6 +65,8 @@ export default function ServicesPage() {
     },
 
     {
+      id: "home-repair",
+
       category: "Home Repair & Maintenance Services",
 
       services: [
@@ -107,6 +111,8 @@ export default function ServicesPage() {
     },
 
     {
+      id: "appliance-repair",
+
       category: "Appliance Repair & Technical Support",
 
       services: [
@@ -151,6 +157,8 @@ export default function ServicesPage() {
     },
 
     {
+      id: "personal-assistance",
+
       category: "Personal Assistance Services",
 
       services: [
@@ -189,6 +197,8 @@ export default function ServicesPage() {
     },
 
     {
+      id: "lifestyle",
+
       category: "Lifestyle Services",
 
       services: [
@@ -221,6 +231,8 @@ export default function ServicesPage() {
     },
 
     {
+      id: "healthcare",
+
       category: "Healthcare Support Services",
 
       services: [
@@ -247,6 +259,8 @@ export default function ServicesPage() {
     },
 
     {
+      id: "elderly-care",
+
       category: "Elderly Care Services",
 
       services: [
@@ -273,6 +287,8 @@ export default function ServicesPage() {
     },
 
     {
+      id: "mobility",
+
       category: "Drivers & Mobility Services",
 
       services: [
@@ -299,6 +315,8 @@ export default function ServicesPage() {
     },
 
     {
+      id: "emergency",
+
       category: "Emergency & Priority Assistance",
 
       services: [
@@ -319,6 +337,8 @@ export default function ServicesPage() {
     },
 
     {
+      id: "pet-care",
+
       category: "Pet Care Services",
 
       services: [
@@ -417,7 +437,11 @@ export default function ServicesPage() {
 
         {serviceCategories.map((category, index) => (
 
-          <div key={index} className="mb-24">
+          <div
+            key={index}
+            id={category.id}
+            className="mb-24 scroll-mt-32"
+          >
 
             <h2 className="text-4xl md:text-5xl font-bold mb-12">
               {category.category}
