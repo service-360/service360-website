@@ -432,6 +432,31 @@ export default function ServicesPage() {
 
       </section>
 
+      {/* Sticky Category Navigation */}
+      <section className="sticky top-0 z-40 bg-black/90 backdrop-blur-xl border-b border-zinc-800">
+
+        <div className="overflow-x-auto">
+
+          <div className="flex gap-4 px-6 md:px-20 py-5 min-w-max">
+
+            {serviceCategories.map((category, index) => (
+
+              <a
+                key={index}
+                href={`#${category.id}`}
+                className="whitespace-nowrap bg-zinc-900 hover:bg-orange-500 transition px-5 py-3 rounded-full border border-zinc-800 text-sm md:text-base font-medium"
+              >
+                {category.category}
+              </a>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
       {/* Categories */}
       <section className="px-6 md:px-20 py-20">
 
