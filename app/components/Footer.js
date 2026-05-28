@@ -139,10 +139,10 @@ export default function Footer() {
               </a>
 
               <a
-                href="mailto:tharunkumar@service360.in"
+                href="mailto:sales@service360.in"
                 className="block hover:text-orange-400 transition"
               >
-                tharunkumar@service360.in
+                sales@service360.in
               </a>
 
               <a
