@@ -1,155 +1,401 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import {
-  Home,
-  Scale,
-  Wrench,
-  Briefcase,
-  HeartHandshake,
-  ArrowRight,
-} from "lucide-react";
+import { useState } from "react"
+import { motion } from "framer-motion"
 
-const services = [
-  {
-    title: "Home Services",
-    description:
-      "AC service, plumbing, electrical, cleaning and more.",
-    icon: <Home size={34} />,
-  },
-  {
-    title: "Legal Assistance",
-    description:
-      "Documentation, registrations, agreements and compliance support.",
-    icon: <Scale size={34} />,
-  },
-  {
-    title: "Repairs & Maintenance",
-    description:
-      "Trusted repair professionals for home and office needs.",
-    icon: <Wrench size={34} />,
-  },
-  {
-    title: "Business Solutions",
-    description:
-      "Startup support, GST, payroll, operations and growth solutions.",
-    icon: <Briefcase size={34} />,
-  },
-  {
-    title: "Lifestyle Support",
-    description:
-      "Daily assistance services tailored for your convenience.",
-    icon: <HeartHandshake size={34} />,
-  },
-];
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 export default function ServicesPage() {
-  const handleBooking = (service) => {
-    const message = `Hi Service360, I would like to book ${service}.`;
 
-    window.open(
-      `https://wa.me/916369051521?text=${encodeURIComponent(message)}`,
-      "_blank"
-    );
-  };
+  const [selectedService, setSelectedService] = useState("")
+  const [showModal, setShowModal] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    message: "",
+  })
+
+  const serviceCategories = [
+
+    {
+      id: "legal-tax",
+      category: "Legal, Tax & Compliance Services",
+
+      services: [
+        "Lawyer Consultation",
+        "Rental Agreements",
+        "Property Registration",
+        "Business Registration",
+        "GST Filing",
+        "Income Tax Filing",
+      ],
+    },
+
+    {
+      id: "home-repair",
+      category: "Home Repair & Maintenance Services",
+
+      services: [
+        "Plumbing",
+        "Electrician",
+        "Carpenter",
+        "Painting",
+        "Pest Control",
+        "Deep Cleaning",
+      ],
+    },
+
+    {
+      id: "appliance-repair",
+      category: "Appliance Repair & Technical Support",
+
+      services: [
+        "AC Services",
+        "Refrigerator Repair",
+        "Washing Machine Repair",
+        "TV Service",
+        "UPS & Inverter Service",
+        "Laptop & PC Support",
+      ],
+    },
+
+    {
+      id: "personal-assistance",
+      category: "Personal Assistance Services",
+
+      services: [
+        "Expense Management",
+        "Bill Payment Reminder",
+        "Medication Reminder",
+        "Doctor Appointments",
+        "Pickup & Drop",
+      ],
+    },
+
+    {
+      id: "lifestyle",
+      category: "Lifestyle Services",
+
+      services: [
+        "Men’s Grooming",
+        "Women’s Grooming",
+        "Hair Styling",
+        "Wardrobe Styling",
+      ],
+    },
+
+    {
+      id: "healthcare",
+      category: "Healthcare Support Services",
+
+      services: [
+        "Home Nursing",
+        "Patient Care",
+        "Medical Assistance",
+      ],
+    },
+
+    {
+      id: "elderly-care",
+      category: "Elderly Care Services",
+
+      services: [
+        "Elder Care Support",
+        "Companion Assistance",
+        "Mobility Assistance",
+      ],
+    },
+
+    {
+      id: "mobility",
+      category: "Drivers & Mobility Services",
+
+      services: [
+        "Driver on Demand",
+        "Travel Assistance",
+        "Local Pickup & Drop",
+      ],
+    },
+
+    {
+      id: "emergency",
+      category: "Emergency & Priority Assistance",
+
+      services: [
+        "Emergency Assistance",
+        "Priority Service Coordination",
+      ],
+    },
+
+    {
+      id: "pet-care",
+      category: "Pet Care Services",
+
+      services: [
+        "Pet Grooming",
+        "Pet Walking",
+        "Pet Care Assistance",
+      ],
+    },
+
+  ]
+
+  const handleBooking = async () => {
+
+    if (!formData.name || !formData.phone) {
+      alert("Please fill all required fields")
+      return
+    }
+
+    setLoading(true)
+
+    try {
+
+      const whatsappMessage =
+        `Hi Service360, my name is ${formData.name}. I would like to book ${selectedService}.`
+
+      const whatsappURL =
+        `https://wa.me/916369051521?text=${encodeURIComponent(whatsappMessage)}`
+
+      window.open(whatsappURL, "_blank")
+
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbwvYj-X-C-R9vimWL6fL62sCk4VlbClPvkJJCZWw6ZdnFeOzGrOJ-Kd9CmgpMvziQHnPg/exec",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            name: formData.name,
+            phone: formData.phone,
+            service: selectedService,
+            message: formData.message,
+          }),
+        }
+      )
+
+      setShowModal(false)
+
+      setFormData({
+        name: "",
+        phone: "",
+        message: "",
+      })
+
+    } catch (error) {
+      alert("Something went wrong")
+    }
+
+    setLoading(false)
+  }
 
   return (
-    <main className="min-h-screen bg-black text-white px-6 md:px-16 py-20">
-      {/* HERO */}
-      <section className="max-w-5xl">
+
+    <main className="bg-black text-white min-h-screen">
+
+      <Navbar />
+
+      {/* Hero */}
+      <section className="px-6 md:px-20 py-24 bg-gradient-to-b from-black to-zinc-950 text-center">
+
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-5xl md:text-7xl font-bold leading-tight"
+          transition={{ duration: 0.6 }}
+          className="text-5xl md:text-7xl font-bold mb-8"
         >
-          Our{" "}
-          <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
-            Services
-          </span>
+          Explore Services
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-gray-400 text-lg md:text-2xl mt-8 leading-relaxed max-w-4xl"
+          transition={{ duration: 0.8 }}
+          className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-9"
         >
-          Service360 connects you with trusted professionals across
-          home services, legal assistance, lifestyle support,
-          repairs, business solutions and more — all in one seamless platform.
+          Browse trusted services and everyday assistance across multiple categories.
         </motion.p>
+
       </section>
 
-      {/* SERVICES GRID */}
-      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 mt-20">
-        {services.map((service, index) => (
-          <motion.div
+      {/* Sticky Navigation */}
+      <section className="sticky top-0 z-40 bg-black/90 backdrop-blur-xl border-b border-zinc-800">
+
+        <div className="overflow-x-auto">
+
+          <div className="flex gap-4 px-6 md:px-20 py-5 min-w-max">
+
+            {serviceCategories.map((category, index) => (
+
+              <a
+                key={index}
+                href={`#${category.id}`}
+                className="whitespace-nowrap bg-zinc-900 hover:bg-orange-500 transition px-5 py-3 rounded-full border border-zinc-800 text-sm md:text-base font-medium"
+              >
+                {category.category}
+              </a>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Categories */}
+      <section className="px-6 md:px-20 py-20">
+
+        {serviceCategories.map((category, index) => (
+
+          <div
             key={index}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -8 }}
-            className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-blue-500 transition-all duration-300 shadow-xl"
+            id={category.id}
+            className="mb-24 scroll-mt-32"
           >
-            <div className="w-20 h-20 rounded-2xl bg-zinc-800 flex items-center justify-center text-blue-400 mb-8">
-              {service.icon}
+
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-4xl md:text-5xl font-bold mb-12"
+            >
+              {category.category}
+            </motion.h2>
+
+            <div className="grid md:grid-cols-3 gap-8">
+
+              {category.services.map((service, idx) => (
+
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -8 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.25 }}
+                  className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-8 hover:border-orange-500 transition duration-300"
+                >
+
+                  <h3 className="text-2xl font-bold mb-5">
+                    {service}
+                  </h3>
+
+                  <p className="text-gray-400 leading-8 mb-8">
+                    Trusted professional assistance for {service.toLowerCase()} services.
+                  </p>
+
+                  <button
+                    onClick={() => {
+                      setSelectedService(service)
+                      setShowModal(true)
+                    }}
+                    className="bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold"
+                  >
+                    Book Now
+                  </button>
+
+                </motion.div>
+
+              ))}
+
             </div>
 
-            <h2 className="text-3xl font-semibold mb-5">
-              {service.title}
+          </div>
+
+        ))}
+
+      </section>
+
+      {/* Booking Modal */}
+      {showModal && (
+
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 px-4">
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.25 }}
+            className="bg-zinc-900 p-8 rounded-3xl w-full max-w-lg border border-zinc-800"
+          >
+
+            <h2 className="text-3xl font-bold mb-6">
+              Book {selectedService}
             </h2>
 
-            <p className="text-gray-400 text-lg leading-relaxed mb-10">
-              {service.description}
-            </p>
+            <div className="space-y-5">
 
-            <button
-              onClick={() => handleBooking(service.title)}
-              className="flex items-center gap-2 bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300"
-            >
-              Book Now
-              <ArrowRight size={18} />
-            </button>
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    name: e.target.value,
+                  })
+                }
+                className="w-full bg-black border border-zinc-700 rounded-xl px-5 py-4 outline-none"
+              />
+
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    phone: e.target.value,
+                  })
+                }
+                className="w-full bg-black border border-zinc-700 rounded-xl px-5 py-4 outline-none"
+              />
+
+              <textarea
+                placeholder="Tell us your requirement"
+                rows="4"
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    message: e.target.value,
+                  })
+                }
+                className="w-full bg-black border border-zinc-700 rounded-xl px-5 py-4 outline-none"
+              />
+
+              <div className="flex gap-4 pt-4">
+
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="w-full border border-zinc-700 py-4 rounded-xl"
+                >
+                  Cancel
+                </button>
+
+                <button
+                  onClick={handleBooking}
+                  disabled={loading}
+                  className="w-full bg-orange-500 hover:bg-orange-600 transition py-4 rounded-xl font-semibold"
+                >
+                  {loading ? "Processing..." : "Continue"}
+                </button>
+
+              </div>
+
+            </div>
+
           </motion.div>
-        ))}
-      </section>
 
-      {/* CTA SECTION */}
-      <section className="mt-32 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold"
-        >
-          Need a custom service solution?
-        </motion.h2>
+        </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-gray-400 text-lg mt-6 max-w-2xl mx-auto"
-        >
-          Our team is ready to help you with tailored solutions
-          for personal, home and business requirements.
-        </motion.p>
+      )}
 
-        <motion.a
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          viewport={{ once: true }}
-          href="https://wa.me/916369051521"
-          target="_blank"
-          className="inline-block mt-10 bg-blue-500 hover:bg-blue-600 px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300"
-        >
-          Contact Service360
-        </motion.a>
-      </section>
+      <Footer />
+
     </main>
-  );
+
+  )
 }
