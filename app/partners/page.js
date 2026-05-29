@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { motion } from "framer-motion"
+
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
@@ -15,6 +17,7 @@ export default function PartnersPage() {
 
   const [success, setSuccess] = useState("")
   const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = async () => {
 
@@ -37,6 +40,7 @@ export default function PartnersPage() {
       return
     }
 
+    setLoading(true)
     setError("")
     setSuccess("Submitting application...")
 
@@ -58,8 +62,6 @@ export default function PartnersPage() {
           }),
         }
       )
-
-      setSuccess("Application submitted successfully!")
 
       const whatsappMessage = `
 Hello Service360,
@@ -88,6 +90,8 @@ ${message}
         "_blank"
       )
 
+      setSuccess("Application submitted successfully!")
+
       setName("")
       setPhone("")
       setCategory("Plumbing")
@@ -100,9 +104,12 @@ ${message}
       setError("Something went wrong. Please try again.")
 
     }
+
+    setLoading(false)
   }
 
   return (
+
     <main className="bg-black text-white min-h-screen">
 
       <Navbar />
@@ -120,15 +127,78 @@ ${message}
 
         <div className="relative z-20 max-w-7xl mx-auto text-center">
 
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-10">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-5xl md:text-7xl font-bold leading-tight mb-10"
+          >
             Join Service360 as a Partner
-          </h1>
+          </motion.h1>
 
-          <p className="text-gray-400 text-xl leading-10 max-w-4xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-gray-400 text-xl leading-10 max-w-4xl mx-auto"
+          >
             Grow your business with verified customer leads,
             flexible work opportunities, and trusted service support
             through Service360.
-          </p>
+          </motion.p>
+
+        </div>
+
+      </section>
+
+      {/* Stats Section */}
+      <section className="px-8 py-20">
+
+        <div className="max-w-7xl mx-auto">
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            {[
+              {
+                number: "500+",
+                label: "Service Requests"
+              },
+
+              {
+                number: "100+",
+                label: "Verified Partners"
+              },
+
+              {
+                number: "10+",
+                label: "Service Categories"
+              }
+
+            ].map((item) => (
+
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -8 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 text-center hover:border-blue-500 transition"
+              >
+
+                <h2 className="text-5xl font-bold text-blue-400 mb-4">
+                  {item.number}
+                </h2>
+
+                <p className="text-gray-400 text-lg">
+                  {item.label}
+                </p>
+
+              </motion.div>
+
+            ))}
+
+          </div>
 
         </div>
 
@@ -172,8 +242,13 @@ ${message}
 
             ].map((item) => (
 
-              <div
+              <motion.div
                 key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -8 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
                 className="bg-black border border-zinc-800 rounded-3xl p-10 hover:border-blue-500 transition"
               >
 
@@ -189,7 +264,7 @@ ${message}
                   {item.desc}
                 </p>
 
-              </div>
+              </motion.div>
 
             ))}
 
@@ -218,11 +293,20 @@ ${message}
               "Cleaning",
               "Drivers",
               "Pet Care",
-              "Technicians"
+              "Technicians",
+              "AC Services",
+              "Tax Filing",
+              "Lifestyle",
+              "Elderly Care"
             ].map((categoryItem) => (
 
-              <div
+              <motion.div
                 key={categoryItem}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -8 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
                 className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 text-center hover:border-blue-500 transition"
               >
 
@@ -230,7 +314,71 @@ ${message}
                   {categoryItem}
                 </h3>
 
-              </div>
+              </motion.div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* How It Works */}
+      <section className="px-8 py-24 bg-zinc-950 border-y border-zinc-800">
+
+        <div className="max-w-7xl mx-auto">
+
+          <h2 className="text-5xl font-bold text-center mb-20">
+            How It Works
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-10">
+
+            {[
+              {
+                step: "01",
+                title: "Apply",
+                desc: "Submit your partner registration form."
+              },
+
+              {
+                step: "02",
+                title: "Verification",
+                desc: "Our team verifies your details and services."
+              },
+
+              {
+                step: "03",
+                title: "Start Receiving Leads",
+                desc: "Begin growing your business with Service360."
+              }
+
+            ].map((item) => (
+
+              <motion.div
+                key={item.step}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -8 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
+                className="bg-black border border-zinc-800 rounded-3xl p-10 hover:border-orange-500 transition"
+              >
+
+                <div className="text-6xl font-bold text-orange-500 mb-8">
+                  {item.step}
+                </div>
+
+                <h3 className="text-3xl font-bold mb-4">
+                  {item.title}
+                </h3>
+
+                <p className="text-gray-400 leading-8">
+                  {item.desc}
+                </p>
+
+              </motion.div>
 
             ))}
 
@@ -241,9 +389,15 @@ ${message}
       </section>
 
       {/* Registration Form */}
-      <section className="px-8 py-24 bg-zinc-950">
+      <section className="px-8 py-24 bg-black">
 
-        <div className="max-w-5xl mx-auto bg-zinc-900 border border-zinc-800 rounded-[40px] p-10 md:p-16">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-5xl mx-auto bg-zinc-900 border border-zinc-800 rounded-[40px] p-10 md:p-16"
+        >
 
           <div className="text-center mb-16">
 
@@ -292,6 +446,10 @@ ${message}
               <option>Cleaning</option>
               <option>Drivers</option>
               <option>Pet Care</option>
+              <option>AC Services</option>
+              <option>Tax Filing</option>
+              <option>Lifestyle</option>
+              <option>Elderly Care</option>
 
             </select>
 
@@ -345,14 +503,15 @@ ${message}
 
             <button
               onClick={handleSubmit}
+              disabled={loading}
               className="bg-blue-500 hover:bg-blue-600 px-10 py-5 rounded-2xl text-xl font-semibold transition"
             >
-              Submit Application
+              {loading ? "Submitting..." : "Submit Application"}
             </button>
 
           </div>
 
-        </div>
+        </motion.div>
 
       </section>
 
