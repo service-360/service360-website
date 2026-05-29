@@ -1,121 +1,155 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import {
   Home,
   Scale,
   Wrench,
-  Sparkles,
-  Truck,
+  Briefcase,
   HeartHandshake,
-  Dog,
-} from "lucide-react"
+  ArrowRight,
+} from "lucide-react";
 
 const services = [
   {
     title: "Home Services",
     description:
       "AC service, plumbing, electrical, cleaning and more.",
-    icon: Home,
+    icon: <Home size={34} />,
   },
   {
     title: "Legal Assistance",
     description:
       "Documentation, registrations, agreements and compliance support.",
-    icon: Scale,
+    icon: <Scale size={34} />,
   },
   {
     title: "Repairs & Maintenance",
     description:
       "Trusted repair professionals for home and office needs.",
-    icon: Wrench,
+    icon: <Wrench size={34} />,
   },
   {
-    title: "Lifestyle Services",
+    title: "Business Solutions",
     description:
-      "Personal assistance and everyday convenience solutions.",
-    icon: Sparkles,
+      "Startup support, GST, payroll, operations and growth solutions.",
+    icon: <Briefcase size={34} />,
   },
   {
-    title: "Moving & Delivery",
+    title: "Lifestyle Support",
     description:
-      "Packers, movers and local delivery support.",
-    icon: Truck,
+      "Daily assistance services tailored for your convenience.",
+    icon: <HeartHandshake size={34} />,
   },
-  {
-    title: "Business Support",
-    description:
-      "Startup, operational and professional business services.",
-    icon: HeartHandshake,
-  },
-  {
-    title: "Pet Care",
-    description:
-      "Pet walking, grooming, care and assistance services.",
-    icon: Dog,
-  },
-]
+];
 
 export default function ServicesPage() {
-  return (
-    <main className="bg-black text-white min-h-screen px-6 py-20">
-      <div className="max-w-7xl mx-auto">
+  const handleBooking = (service) => {
+    const message = `Hi Service360, I would like to book ${service}.`;
 
-        <motion.div
+    window.open(
+      `https://wa.me/916369051521?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  };
+
+  return (
+    <main className="min-h-screen bg-black text-white px-6 md:px-16 py-20">
+      {/* HERO */}
+      <section className="max-w-5xl">
+        <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="mb-20"
+          className="text-5xl md:text-7xl font-bold leading-tight"
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Our Services
-          </h1>
+          Our{" "}
+          <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+            Services
+          </span>
+        </motion.h1>
 
-          <p className="text-gray-400 text-xl max-w-3xl leading-9">
-            Service360 connects you with trusted professionals
-            across home services, legal assistance, lifestyle
-            support, repairs, business solutions, and more —
-            all in one seamless platform.
-          </p>
-        </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-gray-400 text-lg md:text-2xl mt-8 leading-relaxed max-w-4xl"
+        >
+          Service360 connects you with trusted professionals across
+          home services, legal assistance, lifestyle support,
+          repairs, business solutions and more — all in one seamless platform.
+        </motion.p>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* SERVICES GRID */}
+      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 mt-20">
+        {services.map((service, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -8 }}
+            className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 hover:border-blue-500 transition-all duration-300 shadow-xl"
+          >
+            <div className="w-20 h-20 rounded-2xl bg-zinc-800 flex items-center justify-center text-blue-400 mb-8">
+              {service.icon}
+            </div>
 
-          {services.map((service, index) => {
-            const Icon = service.icon
+            <h2 className="text-3xl font-semibold mb-5">
+              {service.title}
+            </h2>
 
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                whileHover={{
-                  y: -10,
-                  scale: 1.02,
-                }}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:shadow-white/5"
-              >
-                <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
-                  <Icon size={30} />
-                </div>
+            <p className="text-gray-400 text-lg leading-relaxed mb-10">
+              {service.description}
+            </p>
 
-                <h2 className="text-2xl font-semibold mb-4">
-                  {service.title}
-                </h2>
+            <button
+              onClick={() => handleBooking(service.title)}
+              className="flex items-center gap-2 bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300"
+            >
+              Book Now
+              <ArrowRight size={18} />
+            </button>
+          </motion.div>
+        ))}
+      </section>
 
-                <p className="text-gray-400 leading-8">
-                  {service.description}
-                </p>
-              </motion.div>
-            )
-          })}
+      {/* CTA SECTION */}
+      <section className="mt-32 text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-bold"
+        >
+          Need a custom service solution?
+        </motion.h2>
 
-        </div>
-      </div>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-gray-400 text-lg mt-6 max-w-2xl mx-auto"
+        >
+          Our team is ready to help you with tailored solutions
+          for personal, home and business requirements.
+        </motion.p>
+
+        <motion.a
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          viewport={{ once: true }}
+          href="https://wa.me/916369051521"
+          target="_blank"
+          className="inline-block mt-10 bg-blue-500 hover:bg-blue-600 px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300"
+        >
+          Contact Service360
+        </motion.a>
+      </section>
     </main>
-  )
+  );
 }
