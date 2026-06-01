@@ -1,12 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 
 export default function ServicesPage() {
-  const searchParams = useSearchParams();
-
   const services = [
     "Plumbing",
     "Electrician",
@@ -26,14 +23,6 @@ export default function ServicesPage() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    const category = searchParams.get("category");
-
-    if (category) {
-      setSelectedService(category);
-    }
-  }, [searchParams]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,12 +47,13 @@ export default function ServicesPage() {
 
     const whatsappMessage = `Hello Service360,
 
-I would like to book a service.
+Service Required: ${selectedService}
 
-Service: ${selectedService}
 Name: ${name}
 Phone: ${phone}
-Requirement: ${message}`;
+
+Requirement:
+${message}`;
 
     window.open(
       `https://wa.me/919489380923?text=${encodeURIComponent(
@@ -83,12 +73,10 @@ Requirement: ${message}`;
         </h1>
 
         <p className="text-gray-400 text-lg max-w-3xl mb-16">
-          Service360 connects you with trusted professionals across
-          home services, legal assistance, lifestyle support,
-          repairs, business solutions, and more.
+          Service360 connects you with trusted professionals
+          across multiple service categories.
         </p>
 
-        {/* Service Categories */}
         <div className="grid md:grid-cols-4 gap-8">
           {services.map((service) => (
             <button
@@ -105,7 +93,6 @@ Requirement: ${message}`;
           ))}
         </div>
 
-        {/* Booking Form */}
         {selectedService && (
           <div className="mt-20 bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-12">
             <h2 className="text-4xl font-bold mb-8">
@@ -119,26 +106,26 @@ Requirement: ${message}`;
               <input
                 type="text"
                 placeholder="Your Name"
+                required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                required
                 className="bg-black border border-zinc-700 rounded-xl px-5 py-4"
               />
 
               <input
                 type="tel"
                 placeholder="Phone Number"
+                required
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                required
                 className="bg-black border border-zinc-700 rounded-xl px-5 py-4"
               />
 
               <textarea
+                rows="5"
                 placeholder="Describe your requirement"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                rows="5"
                 className="bg-black border border-zinc-700 rounded-xl px-5 py-4"
               />
 
