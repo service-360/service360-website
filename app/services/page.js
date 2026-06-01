@@ -163,8 +163,7 @@ export default function ServicesPage() {
       window.open(whatsappURL, "_blank")
 
       await fetch(
-        "https://script.google.com/macros/s/AKfycbwvYj-X-C-R9vimWL6fL62sCk4VlbClPvkJJCZWw6ZdnFeOzGrOJ-Kd9CmgpMvziQHnPg/exec",
-        {
+https://script.google.com/macros/s/AKfycbxvet7dfXC-E81foZ5ijI0SJizWhUfxzLWqSVrc-xviBnyKbyRAfaNoLNh0e6I0O9-7ww/exec        {
           method: "POST",
           body: JSON.stringify({
             name: formData.name,
