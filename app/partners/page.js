@@ -1,533 +1,238 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import Navbar from "@/app/components/Navbar";
+import { motion } from "framer-motion";
 
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
+const categories = [
+  "Plumbing",
+  "Electrician",
+  "Healthcare",
+  "Legal",
+  "Cleaning",
+  "Drivers",
+  "Pet Care",
+  "Technicians",
+  "AC Services",
+  "Tax Filing",
+  "Lifestyle",
+  "Elderly Care",
+];
 
 export default function PartnersPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    category: "",
+    city: "",
+    experience: "",
+    message: "",
+  });
 
-  const [name, setName] = useState("")
-  const [phone, setPhone] = useState("")
-  const [category, setCategory] = useState("Plumbing")
-  const [city, setCity] = useState("")
-  const [experience, setExperience] = useState("")
-  const [message, setMessage] = useState("")
+  const [loading, setLoading] = useState(false);
 
-  const [success, setSuccess] = useState("")
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  const handleSubmit = async () => {
+  const handleCategorySelect = (category) => {
+    setFormData({
+      ...formData,
+      category,
+    });
+  };
 
-    if (
-      !name ||
-      !phone ||
-      !category ||
-      !city ||
-      !experience ||
-      !message
-    ) {
-      setError("Please fill all required fields.")
-      setSuccess("")
-      return
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    if (phone.length < 10) {
-      setError("Please enter a valid phone number.")
-      setSuccess("")
-      return
-    }
-
-    setLoading(true)
-    setError("")
-    setSuccess("Submitting application...")
+    setLoading(true);
 
     try {
-
       await fetch(
-https://script.google.com/macros/s/AKfycbxvet7dfXC-E81foZ5ijI0SJizWhUfxzLWqSVrc-xviBnyKbyRAfaNoLNh0e6I0O9-7ww/exec        {
+        "https://script.google.com/macros/s/AKfycbxvet7dfXC-E81foZ5ijI0SJizWhUfxzLWqSVrc-xviBnyKbyRAfaNoLNh0e6I0O9-7ww/exec",
+        {
           method: "POST",
-
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({
             type: "partner",
-            name,
-            phone,
-            category,
-            city,
-            experience,
-            message,
+            ...formData,
           }),
         }
-      )
+      );
 
-      const whatsappMessage = `
-Hello Service360,
+      const whatsappMessage = `Hello Service360,
 
-New Partner Registration
+I would like to join as a partner.
 
-Full Name: ${name}
-
-Phone Number: ${phone}
-
-Service Category: ${category}
-
-City: ${city}
-
-Experience: ${experience}
-
-Details:
-${message}
-      `
-
-      const encodedMessage =
-        encodeURIComponent(whatsappMessage)
+Name: ${formData.name}
+Phone: ${formData.phone}
+Category: ${formData.category}
+City: ${formData.city}
+Experience: ${formData.experience}
+Message: ${formData.message}`;
 
       window.open(
-        `https://wa.me/916369051521?text=${encodedMessage}`,
+        `https://wa.me/919489380923?text=${encodeURIComponent(
+          whatsappMessage
+        )}`,
         "_blank"
-      )
+      );
 
-      setSuccess("Application submitted successfully!")
+      alert("Partner request submitted successfully!");
 
-      setName("")
-      setPhone("")
-      setCategory("Plumbing")
-      setCity("")
-      setExperience("")
-      setMessage("")
-
-    } catch (err) {
-
-      setError("Something went wrong. Please try again.")
-
+      setFormData({
+        name: "",
+        phone: "",
+        category: "",
+        city: "",
+        experience: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong!");
     }
 
-    setLoading(false)
-  }
+    setLoading(false);
+  };
 
   return (
-
-    <main className="bg-black text-white min-h-screen">
-
+    <main className="min-h-screen bg-black text-white">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-32 px-8">
+      <section className="relative overflow-hidden py-24 px-6">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/40 via-black to-orange-900/40"></div>
 
-        <div className="absolute inset-0 overflow-hidden">
-
-          <div className="absolute top-[-150px] left-[-150px] w-[500px] h-[500px] bg-blue-500 opacity-30 blur-[140px] rounded-full"></div>
-
-          <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] bg-orange-500 opacity-30 blur-[140px] rounded-full"></div>
-
-        </div>
-
-        <div className="relative z-20 max-w-7xl mx-auto text-center">
-
+        <div className="relative max-w-7xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-5xl md:text-7xl font-bold leading-tight mb-10"
+            transition={{ duration: 0.7 }}
+            className="text-5xl md:text-7xl font-bold mb-8"
           >
             Join Service360 as a Partner
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-gray-400 text-xl leading-10 max-w-4xl mx-auto"
+            transition={{ delay: 0.2, duration: 0.7 }}
+            className="text-gray-300 text-lg md:text-2xl max-w-4xl mx-auto leading-relaxed"
           >
-            Grow your business with verified customer leads,
-            flexible work opportunities, and trusted service support
-            through Service360.
+            Grow your business with verified customer leads, flexible work
+            opportunities, and trusted service support through Service360.
           </motion.p>
-
         </div>
-
-      </section>
-
-      {/* Stats Section */}
-      <section className="px-8 py-20">
-
-        <div className="max-w-7xl mx-auto">
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              {
-                number: "500+",
-                label: "Service Requests"
-              },
-
-              {
-                number: "100+",
-                label: "Verified Partners"
-              },
-
-              {
-                number: "10+",
-                label: "Service Categories"
-              }
-
-            ].map((item) => (
-
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -8 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3 }}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 text-center hover:border-blue-500 transition"
-              >
-
-                <h2 className="text-5xl font-bold text-blue-400 mb-4">
-                  {item.number}
-                </h2>
-
-                <p className="text-gray-400 text-lg">
-                  {item.label}
-                </p>
-
-              </motion.div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* Benefits Section */}
-      <section className="px-8 py-24 border-y border-zinc-800 bg-zinc-950">
-
-        <div className="max-w-7xl mx-auto">
-
-          <h2 className="text-5xl font-bold text-center mb-20">
-            Why Partner With Us?
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-8">
-
-            {[
-              {
-                icon: "📈",
-                title: "More Customers",
-                desc: "Receive verified service leads directly."
-              },
-
-              {
-                icon: "⏰",
-                title: "Flexible Work",
-                desc: "Choose jobs based on your availability."
-              },
-
-              {
-                icon: "💰",
-                title: "Fast Payments",
-                desc: "Get paid quickly and securely."
-              },
-
-              {
-                icon: "🛡️",
-                title: "Trusted Platform",
-                desc: "Build credibility with Service360."
-              }
-
-            ].map((item) => (
-
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -8 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3 }}
-                className="bg-black border border-zinc-800 rounded-3xl p-10 hover:border-blue-500 transition"
-              >
-
-                <div className="text-5xl mb-6">
-                  {item.icon}
-                </div>
-
-                <h3 className="text-2xl font-bold mb-4">
-                  {item.title}
-                </h3>
-
-                <p className="text-gray-400 leading-8">
-                  {item.desc}
-                </p>
-
-              </motion.div>
-
-            ))}
-
-          </div>
-
-        </div>
-
       </section>
 
       {/* Categories */}
-      <section className="px-8 py-24">
-
+      <section className="px-6 pb-16">
         <div className="max-w-7xl mx-auto">
-
-          <h2 className="text-5xl font-bold text-center mb-20">
-            Service Categories
+          <h2 className="text-4xl font-bold text-center mb-12">
+            Choose Your Category
           </h2>
 
-          <div className="grid md:grid-cols-4 gap-8">
-
-            {[
-              "Plumbing",
-              "Electrician",
-              "Healthcare",
-              "Legal",
-              "Cleaning",
-              "Drivers",
-              "Pet Care",
-              "Technicians",
-              "AC Services",
-              "Tax Filing",
-              "Lifestyle",
-              "Elderly Care"
-            ].map((categoryItem) => (
-
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {categories.map((category, index) => (
               <motion.button
-                key={categoryItem}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -8 }}
-                whileTap={{ scale: 0.97 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3 }}
-                onClick={() => {
-                  setCategory(categoryItem)
-
-                  document
-                    .getElementById("partner-form")
-                    ?.scrollIntoView({
-                      behavior: "smooth"
-                    })
-                }}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 text-center hover:border-blue-500 transition cursor-pointer"
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => handleCategorySelect(category)}
+                className={`p-8 rounded-3xl border transition-all duration-300 text-xl font-semibold ${
+                  formData.category === category
+                    ? "bg-orange-500 border-orange-500 text-white"
+                    : "bg-zinc-900 border-zinc-800 hover:border-orange-500"
+                }`}
               >
-
-                <h3 className="text-2xl font-bold">
-                  {categoryItem}
-                </h3>
-
+                {category}
               </motion.button>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
 
-      {/* How It Works */}
-      <section className="px-8 py-24 bg-zinc-950 border-y border-zinc-800">
-
-        <div className="max-w-7xl mx-auto">
-
-          <h2 className="text-5xl font-bold text-center mb-20">
-            How It Works
+      {/* Form Section */}
+      <section className="px-6 pb-24">
+        <div className="max-w-4xl mx-auto bg-zinc-950 border border-zinc-800 rounded-3xl p-8 md:p-12">
+          <h2 className="text-4xl font-bold mb-10 text-center">
+            Partner Registration
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-10">
-
-            {[
-              {
-                step: "01",
-                title: "Apply",
-                desc: "Submit your partner registration form."
-              },
-
-              {
-                step: "02",
-                title: "Verification",
-                desc: "Our team verifies your details and services."
-              },
-
-              {
-                step: "03",
-                title: "Start Receiving Leads",
-                desc: "Begin growing your business with Service360."
-              }
-
-            ].map((item) => (
-
-              <motion.div
-                key={item.step}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -8 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3 }}
-                className="bg-black border border-zinc-800 rounded-3xl p-10 hover:border-orange-500 transition"
-              >
-
-                <div className="text-6xl font-bold text-orange-500 mb-8">
-                  {item.step}
-                </div>
-
-                <h3 className="text-3xl font-bold mb-4">
-                  {item.title}
-                </h3>
-
-                <p className="text-gray-400 leading-8">
-                  {item.desc}
-                </p>
-
-              </motion.div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* Registration Form */}
-      <section className="px-8 py-24 bg-black">
-
-        <motion.div
-          id="partner-form"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-5xl mx-auto bg-zinc-900 border border-zinc-800 rounded-[40px] p-10 md:p-16"
-        >
-
-          <div className="text-center mb-16">
-
-            <h2 className="text-5xl font-bold mb-8">
-              Partner Registration
-            </h2>
-
-            <p className="text-gray-400 text-xl">
-              Start your onboarding process with Service360.
-            </p>
-
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-
+          <form onSubmit={handleSubmit} className="space-y-6">
             <input
               type="text"
+              name="name"
               placeholder="Full Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="bg-black border border-zinc-700 rounded-2xl px-6 py-5"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
             />
 
             <input
               type="tel"
+              name="phone"
               placeholder="Phone Number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="bg-black border border-zinc-700 rounded-2xl px-6 py-5"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
             />
-
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 mt-8">
-
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="bg-black border border-zinc-700 rounded-2xl px-6 py-5"
-            >
-
-              <option>Plumbing</option>
-              <option>Electrician</option>
-              <option>Healthcare</option>
-              <option>Legal</option>
-              <option>Cleaning</option>
-              <option>Drivers</option>
-              <option>Pet Care</option>
-              <option>Technicians</option>
-              <option>AC Services</option>
-              <option>Tax Filing</option>
-              <option>Lifestyle</option>
-              <option>Elderly Care</option>
-
-            </select>
 
             <input
               type="text"
+              name="city"
               placeholder="City"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              className="bg-black border border-zinc-700 rounded-2xl px-6 py-5"
+              value={formData.city}
+              onChange={handleChange}
+              required
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
             />
-
-          </div>
-
-          <div className="mt-8">
 
             <input
-              type="text"
+              type="number"
+              name="experience"
               placeholder="Years of Experience"
-              value={experience}
-              onChange={(e) => setExperience(e.target.value)}
-              className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5"
+              value={formData.experience}
+              onChange={handleChange}
+              required
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
             />
-
-          </div>
-
-          <div className="mt-8">
 
             <textarea
-              rows="6"
-              placeholder="Tell us about your services..."
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="w-full bg-black border border-zinc-700 rounded-2xl px-6 py-5 resize-none"
-            ></textarea>
+              name="message"
+              placeholder="Tell us about your experience and services..."
+              value={formData.message}
+              onChange={handleChange}
+              rows={5}
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
+            />
 
-          </div>
-
-          {error && (
-            <div className="mt-6 text-red-400">
-              {error}
+            <div className="bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4">
+              <span className="text-gray-400">Selected Category: </span>
+              <span className="text-orange-400 font-semibold">
+                {formData.category || "Not Selected"}
+              </span>
             </div>
-          )}
-
-          {success && (
-            <div className="mt-6 text-green-400">
-              {success}
-            </div>
-          )}
-
-          <div className="mt-10 text-center">
 
             <button
-              onClick={handleSubmit}
+              type="submit"
               disabled={loading}
-              className="bg-blue-500 hover:bg-blue-600 px-10 py-5 rounded-2xl text-xl font-semibold transition"
+              className="w-full bg-orange-500 hover:bg-orange-600 transition-all duration-300 text-white font-bold py-4 rounded-xl text-lg"
             >
-              {loading ? "Submitting..." : "Submit Application"}
+              {loading ? "Submitting..." : "Become a Partner"}
             </button>
-
-          </div>
-
-        </motion.div>
-
+          </form>
+        </div>
       </section>
-
-      <Footer />
-
     </main>
-  )
+  );
 }
