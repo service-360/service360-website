@@ -1,54 +1,45 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/app/components/Navbar";
-import { motion } from "framer-motion";
-
-const services = [
-  "Plumbing Services",
-  "Electrician",
-  "Healthcare",
-  "Legal Assistance",
-  "Cleaning",
-  "Drivers",
-  "Pet Care",
-  "Technicians",
-  "AC Services",
-  "Tax Filing",
-  "Lifestyle",
-  "Elderly Care",
-];
+import Navbar from "../../components/Navbar";
 
 export default function ServicesPage() {
   const [selectedService, setSelectedService] = useState("");
-  const [loading, setLoading] = useState(false);
-
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     message: "",
   });
 
-  const handleServiceSelect = (service) => {
-    setSelectedService(service);
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const services = [
+    "Plumbing",
+    "Electrician",
+    "Healthcare",
+    "Legal",
+    "Cleaning",
+    "Drivers",
+    "Pet Care",
+    "Technicians",
+    "AC Services",
+    "Tax Filing",
+    "Lifestyle",
+    "Elderly Care",
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!selectedService) {
-      alert("Please select a service category");
+      alert("Please select a service");
       return;
     }
 
-    setLoading(true);
+    const payload = {
+      name: formData.name,
+      phone: formData.phone,
+      service: selectedService,
+      message: formData.message,
+    };
 
     try {
       await fetch(
@@ -59,11 +50,7 @@ export default function ServicesPage() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            type: "customer",
-            service: selectedService,
-            ...formData,
-          }),
+          body: JSON.stringify(payload),
         }
       );
 
@@ -74,7 +61,7 @@ I would like to book a service.
 Name: ${formData.name}
 Phone: ${formData.phone}
 Service: ${selectedService}
-Message: ${formData.message}`;
+Requirement: ${formData.message}`;
 
       window.open(
         `https://wa.me/919489380923?text=${encodeURIComponent(
@@ -83,7 +70,7 @@ Message: ${formData.message}`;
         "_blank"
       );
 
-      alert("Service booking submitted successfully!");
+      alert("Booking submitted successfully!");
 
       setFormData({
         name: "",
@@ -94,121 +81,102 @@ Message: ${formData.message}`;
       setSelectedService("");
     } catch (error) {
       console.error(error);
-      alert("Something went wrong!");
+      alert("Something went wrong");
     }
-
-    setLoading(false);
   };
 
   return (
     <main className="min-h-screen bg-black text-white">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-24 px-6">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/40 via-black to-orange-900/40"></div>
+      <section className="px-6 md:px-20 py-24">
+        <h1 className="text-5xl md:text-7xl font-bold mb-8">
+          Our Services
+        </h1>
 
-        <div className="relative max-w-7xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-5xl md:text-7xl font-bold mb-8"
-          >
-            Our Services
-          </motion.h1>
+        <p className="text-gray-400 text-lg max-w-3xl leading-9 mb-16">
+          Service360 connects you with trusted professionals across home
+          services, legal assistance, lifestyle support, repairs,
+          business solutions, and more — all in one seamless platform.
+        </p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="text-gray-300 text-lg md:text-2xl max-w-4xl leading-relaxed"
-          >
-            Service360 connects you with trusted professionals across home
-            services, legal assistance, lifestyle support, repairs, business
-            solutions, and more — all in one seamless platform.
-          </motion.p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+          {services.map((service, index) => (
+            <button
+              key={index}
+              onClick={() => setSelectedService(service)}
+              className={`p-8 rounded-3xl border transition-all duration-300 text-xl font-semibold ${
+                selectedService === service
+                  ? "bg-orange-500 border-orange-500"
+                  : "bg-zinc-900 border-zinc-800 hover:border-orange-500"
+              }`}
+            >
+              {service}
+            </button>
+          ))}
         </div>
-      </section>
 
-      {/* Service Categories */}
-      <section className="px-6 pb-16">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">
-            Choose a Service
-          </h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <motion.button
-                key={index}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleServiceSelect(service)}
-                className={`p-8 rounded-3xl border transition-all duration-300 text-xl font-semibold ${
-                  selectedService === service
-                    ? "bg-orange-500 border-orange-500 text-white"
-                    : "bg-zinc-900 border-zinc-800 hover:border-orange-500"
-                }`}
-              >
-                {service}
-              </motion.button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Booking Form */}
-      <section className="px-6 pb-24">
-        <div className="max-w-4xl mx-auto bg-zinc-950 border border-zinc-800 rounded-3xl p-8 md:p-12">
-          <h2 className="text-4xl font-bold mb-10 text-center">
-            Book a Service
+        <div className="bg-zinc-900 rounded-3xl p-8 md:p-12 max-w-3xl">
+          <h2 className="text-3xl font-bold mb-8">
+            Book Your Service
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <input
               type="text"
-              name="name"
               placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
               required
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
+              value={formData.name}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  name: e.target.value,
+                })
+              }
+              className="w-full p-4 rounded-xl bg-black border border-zinc-700 focus:outline-none focus:border-orange-500"
             />
 
             <input
               type="tel"
-              name="phone"
               placeholder="Phone Number"
-              value={formData.phone}
-              onChange={handleChange}
               required
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  phone: e.target.value,
+                })
+              }
+              className="w-full p-4 rounded-xl bg-black border border-zinc-700 focus:outline-none focus:border-orange-500"
+            />
+
+            <input
+              type="text"
+              value={selectedService}
+              readOnly
+              placeholder="Selected Service"
+              className="w-full p-4 rounded-xl bg-black border border-zinc-700"
             />
 
             <textarea
-              name="message"
-              placeholder="Describe your requirement..."
-              value={formData.message}
-              onChange={handleChange}
-              rows={5}
+              placeholder="Describe your requirement"
+              rows="5"
               required
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
+              value={formData.message}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  message: e.target.value,
+                })
+              }
+              className="w-full p-4 rounded-xl bg-black border border-zinc-700 focus:outline-none focus:border-orange-500"
             />
-
-            <div className="bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4">
-              <span className="text-gray-400">Selected Service: </span>
-              <span className="text-orange-400 font-semibold">
-                {selectedService || "Not Selected"}
-              </span>
-            </div>
 
             <button
               type="submit"
-              disabled={loading}
-              className="w-full bg-orange-500 hover:bg-orange-600 transition-all duration-300 text-white font-bold py-4 rounded-xl text-lg"
+              className="w-full bg-orange-500 hover:bg-orange-600 transition-all duration-300 text-white font-semibold py-4 rounded-xl text-lg"
             >
-              {loading ? "Submitting..." : "Book Now"}
+              Book Service
             </button>
           </form>
         </div>
