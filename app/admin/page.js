@@ -11,7 +11,7 @@ export default function AdminPage() {
   useEffect(() => {
 
     fetch(
-      "YOUR_GOOGLE_SCRIPT_WEB_APP_URL"
+      "https://script.google.com/macros/s/AKfycbwpmoH7FpqMxY9VpgAY1dM9x1HQ7AXf6mooI_Fs3g0XwL8EKh0mbi3mcBWRiT-jWXwupg/exec"
     )
       .then((res) => res.json())
       .then((result) => {
