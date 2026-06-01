@@ -300,21 +300,31 @@ ${message}
               "Elderly Care"
             ].map((categoryItem) => (
 
-              <motion.div
+              <motion.button
                 key={categoryItem}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ y: -8 }}
+                whileTap={{ scale: 0.97 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3 }}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 text-center hover:border-blue-500 transition"
+                onClick={() => {
+                  setCategory(categoryItem)
+
+                  document
+                    .getElementById("partner-form")
+                    ?.scrollIntoView({
+                      behavior: "smooth"
+                    })
+                }}
+                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 text-center hover:border-blue-500 transition cursor-pointer"
               >
 
                 <h3 className="text-2xl font-bold">
                   {categoryItem}
                 </h3>
 
-              </motion.div>
+              </motion.button>
 
             ))}
 
@@ -392,6 +402,7 @@ ${message}
       <section className="px-8 py-24 bg-black">
 
         <motion.div
+          id="partner-form"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -446,6 +457,7 @@ ${message}
               <option>Cleaning</option>
               <option>Drivers</option>
               <option>Pet Care</option>
+              <option>Technicians</option>
               <option>AC Services</option>
               <option>Tax Filing</option>
               <option>Lifestyle</option>
