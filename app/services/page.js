@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "../../components/Navbar";
+import Navbar from "../components/Navbar";
 
 export default function ServicesPage() {
   const [selectedService, setSelectedService] = useState("");
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -56,8 +57,6 @@ export default function ServicesPage() {
 
       const whatsappMessage = `Hello Service360,
 
-I would like to book a service.
-
 Name: ${formData.name}
 Phone: ${formData.phone}
 Service: ${selectedService}
@@ -70,7 +69,7 @@ Requirement: ${formData.message}`;
         "_blank"
       );
 
-      alert("Booking submitted successfully!");
+      alert("Service request submitted successfully!");
 
       setFormData({
         name: "",
@@ -95,9 +94,9 @@ Requirement: ${formData.message}`;
         </h1>
 
         <p className="text-gray-400 text-lg max-w-3xl leading-9 mb-16">
-          Service360 connects you with trusted professionals across home
-          services, legal assistance, lifestyle support, repairs,
-          business solutions, and more — all in one seamless platform.
+          Service360 connects you with trusted professionals across
+          home services, legal assistance, lifestyle support,
+          repairs, business solutions, and more.
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
