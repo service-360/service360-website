@@ -1,24 +1,20 @@
 "use client"
 
-import { useState } from "react"
+import Link from "next/link"
 
 export default function Navbar() {
 
-  const [menuOpen, setMenuOpen] = useState(false)
-
   return (
 
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-black/80 border-b border-zinc-800">
+    <header className="sticky top-0 z-50 bg-black/80 backdrop-blur-xl border-b border-zinc-800">
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <div className="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
 
-        <div className="flex items-center justify-between h-20">
+        {/* Logo */}
+        <Link href="/">
 
-          {/* Logo */}
-          <a
-            href="/"
-            className="text-2xl md:text-3xl font-bold tracking-tight"
-          >
+          <h1 className="text-4xl font-extrabold tracking-tight">
+
             <span className="text-white">
               Service
             </span>
@@ -26,133 +22,64 @@ export default function Navbar() {
             <span className="text-orange-500">
               360
             </span>
-          </a>
 
-          {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-10">
+          </h1>
 
-            <a
-              href="/"
-              className="text-gray-300 hover:text-orange-400 transition"
-            >
-              Home
-            </a>
+        </Link>
 
-            <a
-              href="/services"
-              className="text-gray-300 hover:text-orange-400 transition"
-            >
-              Services
-            </a>
+        {/* Navigation */}
+        <nav className="hidden md:flex items-center gap-12 text-lg font-medium">
 
-            <a
-              href="/about"
-              className="text-gray-300 hover:text-orange-400 transition"
-            >
-              About
-            </a>
+          <Link
+            href="/"
+            className="text-white hover:text-orange-400 transition duration-300"
+          >
+            Home
+          </Link>
 
-            <a
-              href="/contact"
-              className="text-gray-300 hover:text-orange-400 transition"
-            >
-              Contact
-            </a>
+          <Link
+            href="/services"
+            className="text-white hover:text-orange-400 transition duration-300"
+          >
+            Services
+          </Link>
 
-          </nav>
+          <Link
+            href="/partners"
+            className="text-white hover:text-orange-400 transition duration-300"
+          >
+            Partners
+          </Link>
 
-          {/* CTA + Mobile Button */}
-          <div className="flex items-center gap-4">
+          <Link
+            href="/about"
+            className="text-white hover:text-orange-400 transition duration-300"
+          >
+            About
+          </Link>
 
-            <a
-              href="/services"
-              className="hidden md:inline-block bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold"
-            >
-              Book Service
-            </a>
+          <Link
+            href="/contact"
+            className="text-white hover:text-orange-400 transition duration-300"
+          >
+            Contact
+          </Link>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden text-white"
-            >
+        </nav>
 
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+        {/* CTA Button */}
+        <div className="hidden md:block">
 
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d={
-                    menuOpen
-                      ? "M6 18L18 6M6 6l12 12"
-                      : "M4 6h16M4 12h16M4 18h16"
-                  }
-                />
-
-              </svg>
-
-            </button>
-
-          </div>
+          <Link
+            href="/services"
+            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition duration-300 shadow-lg shadow-orange-500/20"
+          >
+            Book Service
+          </Link>
 
         </div>
 
       </div>
-
-      {/* Mobile Menu */}
-      {menuOpen && (
-
-        <div className="md:hidden border-t border-zinc-800 bg-black">
-
-          <div className="flex flex-col px-6 py-6 space-y-5">
-
-            <a
-              href="/"
-              className="text-gray-300 hover:text-orange-400 transition"
-            >
-              Home
-            </a>
-
-            <a
-              href="/services"
-              className="text-gray-300 hover:text-orange-400 transition"
-            >
-              Services
-            </a>
-
-            <a
-              href="/about"
-              className="text-gray-300 hover:text-orange-400 transition"
-            >
-              About
-            </a>
-
-            <a
-              href="/contact"
-              className="text-gray-300 hover:text-orange-400 transition"
-            >
-              Contact
-            </a>
-
-            <a
-              href="/services"
-              className="bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-full font-semibold text-center"
-            >
-              Book Service
-            </a>
-
-          </div>
-
-        </div>
-
-      )}
 
     </header>
 
