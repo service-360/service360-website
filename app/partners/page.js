@@ -1,54 +1,50 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/app/components/Navbar";
-import { motion } from "framer-motion";
-
-const categories = [
-  "Plumbing",
-  "Electrician",
-  "Healthcare",
-  "Legal",
-  "Cleaning",
-  "Drivers",
-  "Pet Care",
-  "Technicians",
-  "AC Services",
-  "Tax Filing",
-  "Lifestyle",
-  "Elderly Care",
-];
+import Navbar from "../components/Navbar";
 
 export default function PartnersPage() {
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    category: "",
     city: "",
     experience: "",
     message: "",
   });
 
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleCategorySelect = (category) => {
-    setFormData({
-      ...formData,
-      category,
-    });
-  };
+  const categories = [
+    "Plumbing",
+    "Electrician",
+    "Healthcare",
+    "Legal",
+    "Cleaning",
+    "Drivers",
+    "Pet Care",
+    "Technicians",
+    "AC Services",
+    "Tax Filing",
+    "Lifestyle",
+    "Elderly Care",
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setLoading(true);
+    if (!selectedCategory) {
+      alert("Please select a category");
+      return;
+    }
+
+    const payload = {
+      name: formData.name,
+      phone: formData.phone,
+      category: selectedCategory,
+      city: formData.city,
+      experience: formData.experience,
+      message: formData.message,
+    };
 
     try {
       await fetch(
@@ -59,23 +55,22 @@ export default function PartnersPage() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            type: "partner",
-            ...formData,
-          }),
+          body: JSON.stringify(payload),
         }
       );
 
       const whatsappMessage = `Hello Service360,
 
-I would like to join as a partner.
+Partner Registration Request
 
 Name: ${formData.name}
 Phone: ${formData.phone}
-Category: ${formData.category}
+Category: ${selectedCategory}
 City: ${formData.city}
-Experience: ${formData.experience}
-Message: ${formData.message}`;
+Experience: ${formData.experience} years
+
+Message:
+${formData.message}`;
 
       window.open(
         `https://wa.me/919489380923?text=${encodeURIComponent(
@@ -84,151 +79,143 @@ Message: ${formData.message}`;
         "_blank"
       );
 
-      alert("Partner request submitted successfully!");
+      alert("Partner onboarding submitted successfully!");
 
       setFormData({
         name: "",
         phone: "",
-        category: "",
         city: "",
         experience: "",
         message: "",
       });
+
+      setSelectedCategory("");
     } catch (error) {
       console.error(error);
-      alert("Something went wrong!");
+      alert("Something went wrong");
     }
-
-    setLoading(false);
   };
 
   return (
     <main className="min-h-screen bg-black text-white">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-24 px-6">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/40 via-black to-orange-900/40"></div>
+      <section className="px-6 md:px-20 py-24">
+        <h1 className="text-5xl md:text-7xl font-bold mb-8">
+          Join Service360 as a Partner
+        </h1>
 
-        <div className="relative max-w-7xl mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-5xl md:text-7xl font-bold mb-8"
-          >
-            Join Service360 as a Partner
-          </motion.h1>
+        <p className="text-gray-400 text-lg max-w-4xl leading-9 mb-16">
+          Grow your business with verified customer leads,
+          flexible work opportunities, and trusted service
+          support through Service360.
+        </p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="text-gray-300 text-lg md:text-2xl max-w-4xl mx-auto leading-relaxed"
-          >
-            Grow your business with verified customer leads, flexible work
-            opportunities, and trusted service support through Service360.
-          </motion.p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+          {categories.map((category, index) => (
+            <button
+              key={index}
+              onClick={() => setSelectedCategory(category)}
+              className={`p-8 rounded-3xl border transition-all duration-300 text-xl font-semibold ${
+                selectedCategory === category
+                  ? "bg-orange-500 border-orange-500"
+                  : "bg-zinc-900 border-zinc-800 hover:border-orange-500"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </div>
-      </section>
 
-      {/* Categories */}
-      <section className="px-6 pb-16">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">
-            Choose Your Category
-          </h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {categories.map((category, index) => (
-              <motion.button
-                key={index}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleCategorySelect(category)}
-                className={`p-8 rounded-3xl border transition-all duration-300 text-xl font-semibold ${
-                  formData.category === category
-                    ? "bg-orange-500 border-orange-500 text-white"
-                    : "bg-zinc-900 border-zinc-800 hover:border-orange-500"
-                }`}
-              >
-                {category}
-              </motion.button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Form Section */}
-      <section className="px-6 pb-24">
-        <div className="max-w-4xl mx-auto bg-zinc-950 border border-zinc-800 rounded-3xl p-8 md:p-12">
-          <h2 className="text-4xl font-bold mb-10 text-center">
+        <div className="bg-zinc-900 rounded-3xl p-8 md:p-12 max-w-4xl">
+          <h2 className="text-3xl font-bold mb-8">
             Partner Registration
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <input
               type="text"
-              name="name"
               placeholder="Full Name"
-              value={formData.name}
-              onChange={handleChange}
               required
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
+              value={formData.name}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  name: e.target.value,
+                })
+              }
+              className="w-full p-4 rounded-xl bg-black border border-zinc-700 focus:outline-none focus:border-orange-500"
             />
 
             <input
               type="tel"
-              name="phone"
               placeholder="Phone Number"
-              value={formData.phone}
-              onChange={handleChange}
               required
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  phone: e.target.value,
+                })
+              }
+              className="w-full p-4 rounded-xl bg-black border border-zinc-700 focus:outline-none focus:border-orange-500"
             />
 
             <input
               type="text"
-              name="city"
+              value={selectedCategory}
+              readOnly
+              placeholder="Selected Category"
+              className="w-full p-4 rounded-xl bg-black border border-zinc-700"
+            />
+
+            <input
+              type="text"
               placeholder="City"
-              value={formData.city}
-              onChange={handleChange}
               required
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
+              value={formData.city}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  city: e.target.value,
+                })
+              }
+              className="w-full p-4 rounded-xl bg-black border border-zinc-700 focus:outline-none focus:border-orange-500"
             />
 
             <input
               type="number"
-              name="experience"
               placeholder="Years of Experience"
-              value={formData.experience}
-              onChange={handleChange}
               required
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
+              value={formData.experience}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  experience: e.target.value,
+                })
+              }
+              className="w-full p-4 rounded-xl bg-black border border-zinc-700 focus:outline-none focus:border-orange-500"
             />
 
             <textarea
-              name="message"
-              placeholder="Tell us about your experience and services..."
+              placeholder="Tell us about your services"
+              rows="5"
+              required
               value={formData.message}
-              onChange={handleChange}
-              rows={5}
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white outline-none focus:border-orange-500"
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  message: e.target.value,
+                })
+              }
+              className="w-full p-4 rounded-xl bg-black border border-zinc-700 focus:outline-none focus:border-orange-500"
             />
-
-            <div className="bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4">
-              <span className="text-gray-400">Selected Category: </span>
-              <span className="text-orange-400 font-semibold">
-                {formData.category || "Not Selected"}
-              </span>
-            </div>
 
             <button
               type="submit"
-              disabled={loading}
-              className="w-full bg-orange-500 hover:bg-orange-600 transition-all duration-300 text-white font-bold py-4 rounded-xl text-lg"
+              className="w-full bg-orange-500 hover:bg-orange-600 transition-all duration-300 text-white font-semibold py-4 rounded-xl text-lg"
             >
-              {loading ? "Submitting..." : "Become a Partner"}
+              Become a Partner
             </button>
           </form>
         </div>
