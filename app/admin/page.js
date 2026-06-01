@@ -1,156 +1,208 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-
-const bookings = [
-  {
-    name: "Arun Kumar",
-    service: "AC Service",
-    city: "Chennai",
-    phone: "+91 9876543210",
-    status: "Pending",
-  },
-  {
-    name: "Priya",
-    service: "Cleaning",
-    city: "Coimbatore",
-    phone: "+91 9123456780",
-    status: "Confirmed",
-  },
-];
-
-const partners = [
-  {
-    name: "Raj Electricals",
-    category: "Electrician",
-    city: "Chennai",
-    phone: "+91 9988776655",
-    status: "Under Review",
-  },
-  {
-    name: "Smart Plumbing",
-    category: "Plumbing",
-    city: "Madurai",
-    phone: "+91 9871234567",
-    status: "Approved",
-  },
-];
+import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 
 export default function AdminPage() {
+
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+
+    fetch(
+      "YOUR_GOOGLE_SCRIPT_WEB_APP_URL"
+    )
+      .then((res) => res.json())
+      .then((result) => {
+
+        setData(result)
+        setLoading(false)
+
+      })
+      .catch((err) => {
+
+        console.log(err)
+        setLoading(false)
+
+      })
+
+  }, [])
+
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-20">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-7xl mx-auto"
-      >
-        <h1 className="text-5xl md:text-6xl font-bold mb-4">
-          Service360 Admin Dashboard
-        </h1>
 
-        <p className="text-gray-400 text-lg mb-16">
-          Manage bookings, partner onboarding, and operations.
-        </p>
+    <main className="min-h-screen bg-black text-white px-8 py-20">
 
-        {/* BOOKINGS */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold mb-8">
-            Service Bookings
-          </h2>
+      <div className="max-w-7xl mx-auto">
 
-          <div className="grid gap-6">
-            {bookings.map((booking, index) => (
+        {/* Hero */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-20"
+        >
+
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            Service360 Admin
+          </h1>
+
+          <p className="text-gray-400 text-xl leading-9">
+            Live service bookings and partner onboarding requests.
+          </p>
+
+        </motion.div>
+
+        {/* Loading */}
+        {loading ? (
+
+          <div className="text-xl text-gray-400">
+            Loading dashboard data...
+          </div>
+
+        ) : (
+
+          <div className="grid gap-8">
+
+            {data
+              .slice()
+              .reverse()
+              .map((item, index) => (
+
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.02 }}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.25 }}
+                className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-8 hover:border-orange-500"
               >
-                <div className="grid md:grid-cols-5 gap-4">
+
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+
                   <div>
-                    <p className="text-gray-500 text-sm">Customer</p>
-                    <h3 className="text-xl font-semibold">
-                      {booking.name}
-                    </h3>
+
+                    <p className="text-gray-500 text-sm mb-2">
+                      Lead Type
+                    </p>
+
+                    <div className="inline-block bg-orange-500/20 text-orange-400 px-5 py-2 rounded-full text-sm font-medium">
+                      {item.type || "Service Booking"}
+                    </div>
+
                   </div>
 
                   <div>
-                    <p className="text-gray-500 text-sm">Service</p>
-                    <h3>{booking.service}</h3>
+
+                    <p className="text-gray-500 text-sm mb-2">
+                      Status
+                    </p>
+
+                    <div className="inline-block bg-green-500/20 text-green-400 px-5 py-2 rounded-full text-sm font-medium">
+                      New Lead
+                    </div>
+
                   </div>
 
-                  <div>
-                    <p className="text-gray-500 text-sm">City</p>
-                    <h3>{booking.city}</h3>
-                  </div>
-
-                  <div>
-                    <p className="text-gray-500 text-sm">Phone</p>
-                    <h3>{booking.phone}</h3>
-                  </div>
-
-                  <div>
-                    <p className="text-gray-500 text-sm">Status</p>
-
-                    <span className="inline-block px-4 py-2 rounded-full bg-orange-500/20 text-orange-400">
-                      {booking.status}
-                    </span>
-                  </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
 
-        {/* PARTNERS */}
-        <div>
-          <h2 className="text-3xl font-bold mb-8">
-            Partner Applications
-          </h2>
+                <div className="grid md:grid-cols-2 gap-8">
 
-          <div className="grid gap-6">
-            {partners.map((partner, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.02 }}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6"
-              >
-                <div className="grid md:grid-cols-5 gap-4">
+                  {/* Name */}
                   <div>
-                    <p className="text-gray-500 text-sm">Partner</p>
-                    <h3 className="text-xl font-semibold">
-                      {partner.name}
-                    </h3>
+
+                    <p className="text-gray-500 text-sm mb-2">
+                      Name
+                    </p>
+
+                    <h2 className="text-2xl font-bold">
+                      {item.name || "—"}
+                    </h2>
+
                   </div>
 
+                  {/* Phone */}
                   <div>
-                    <p className="text-gray-500 text-sm">Category</p>
-                    <h3>{partner.category}</h3>
+
+                    <p className="text-gray-500 text-sm mb-2">
+                      Phone Number
+                    </p>
+
+                    <h2 className="text-xl">
+                      {item.phone || "—"}
+                    </h2>
+
                   </div>
 
+                  {/* Service */}
                   <div>
-                    <p className="text-gray-500 text-sm">City</p>
-                    <h3>{partner.city}</h3>
+
+                    <p className="text-gray-500 text-sm mb-2">
+                      Service / Category
+                    </p>
+
+                    <h2 className="text-xl">
+                      {item.service || item.category || "—"}
+                    </h2>
+
                   </div>
 
+                  {/* City */}
                   <div>
-                    <p className="text-gray-500 text-sm">Phone</p>
-                    <h3>{partner.phone}</h3>
+
+                    <p className="text-gray-500 text-sm mb-2">
+                      City
+                    </p>
+
+                    <h2 className="text-xl">
+                      {item.city || "—"}
+                    </h2>
+
                   </div>
 
-                  <div>
-                    <p className="text-gray-500 text-sm">Status</p>
+                  {/* Experience */}
+                  {item.experience && (
 
-                    <span className="inline-block px-4 py-2 rounded-full bg-green-500/20 text-green-400">
-                      {partner.status}
-                    </span>
+                    <div>
+
+                      <p className="text-gray-500 text-sm mb-2">
+                        Experience
+                      </p>
+
+                      <h2 className="text-xl">
+                        {item.experience}
+                      </h2>
+
+                    </div>
+
+                  )}
+
+                  {/* Message */}
+                  <div className="md:col-span-2">
+
+                    <p className="text-gray-500 text-sm mb-2">
+                      Message / Requirement
+                    </p>
+
+                    <p className="text-gray-300 leading-8">
+                      {item.message || "No message provided"}
+                    </p>
+
                   </div>
+
                 </div>
+
               </motion.div>
+
             ))}
+
           </div>
-        </div>
-      </motion.div>
-    </div>
-  );
+
+        )}
+
+      </div>
+
+    </main>
+
+  )
 }
