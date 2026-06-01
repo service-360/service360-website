@@ -1,16 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Navbar from "../components/Navbar";
 
 export default function ServicesPage() {
-  const [selectedService, setSelectedService] = useState("");
-
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    message: "",
-  });
+  const searchParams = useSearchParams();
 
   const services = [
     "Plumbing",
@@ -27,84 +22,79 @@ export default function ServicesPage() {
     "Elderly Care",
   ];
 
+  const [selectedService, setSelectedService] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const category = searchParams.get("category");
+
+    if (category) {
+      setSelectedService(category);
+    }
+  }, [searchParams]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!selectedService) {
-      alert("Please select a service");
-      return;
-    }
-
-    const payload = {
-      name: formData.name,
-      phone: formData.phone,
-      service: selectedService,
-      message: formData.message,
-    };
 
     try {
       await fetch(
         "https://script.google.com/macros/s/AKfycbxvet7dfXC-E81foZ5ijI0SJizWhUfxzLWqSVrc-xviBnyKbyRAfaNoLNh0e6I0O9-7ww/exec",
         {
           method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
+          body: JSON.stringify({
+            type: "customer",
+            name,
+            phone,
+            service: selectedService,
+            message,
+          }),
         }
       );
-
-      const whatsappMessage = `Hello Service360,
-
-Name: ${formData.name}
-Phone: ${formData.phone}
-Service: ${selectedService}
-Requirement: ${formData.message}`;
-
-      window.open(
-        `https://wa.me/919489380923?text=${encodeURIComponent(
-          whatsappMessage
-        )}`,
-        "_blank"
-      );
-
-      alert("Service request submitted successfully!");
-
-      setFormData({
-        name: "",
-        phone: "",
-        message: "",
-      });
-
-      setSelectedService("");
     } catch (error) {
-      console.error(error);
-      alert("Something went wrong");
+      console.log(error);
     }
+
+    const whatsappMessage = `Hello Service360,
+
+I would like to book a service.
+
+Service: ${selectedService}
+Name: ${name}
+Phone: ${phone}
+Requirement: ${message}`;
+
+    window.open(
+      `https://wa.me/919489380923?text=${encodeURIComponent(
+        whatsappMessage
+      )}`,
+      "_blank"
+    );
   };
 
   return (
     <main className="min-h-screen bg-black text-white">
       <Navbar />
 
-      <section className="px-6 md:px-20 py-24">
-        <h1 className="text-5xl md:text-7xl font-bold mb-8">
+      <section className="px-6 md:px-20 py-20">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6">
           Our Services
         </h1>
 
-        <p className="text-gray-400 text-lg max-w-3xl leading-9 mb-16">
+        <p className="text-gray-400 text-lg max-w-3xl mb-16">
           Service360 connects you with trusted professionals across
           home services, legal assistance, lifestyle support,
           repairs, business solutions, and more.
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
-          {services.map((service, index) => (
+        {/* Service Categories */}
+        <div className="grid md:grid-cols-4 gap-8">
+          {services.map((service) => (
             <button
-              key={index}
+              key={service}
               onClick={() => setSelectedService(service)}
-              className={`p-8 rounded-3xl border transition-all duration-300 text-xl font-semibold ${
+              className={`p-10 rounded-3xl border text-2xl font-bold transition-all duration-300 ${
                 selectedService === service
                   ? "bg-orange-500 border-orange-500"
                   : "bg-zinc-900 border-zinc-800 hover:border-orange-500"
@@ -115,70 +105,52 @@ Requirement: ${formData.message}`;
           ))}
         </div>
 
-        <div className="bg-zinc-900 rounded-3xl p-8 md:p-12 max-w-3xl">
-          <h2 className="text-3xl font-bold mb-8">
-            Book Your Service
-          </h2>
+        {/* Booking Form */}
+        {selectedService && (
+          <div className="mt-20 bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-12">
+            <h2 className="text-4xl font-bold mb-8">
+              Book {selectedService}
+            </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <input
-              type="text"
-              placeholder="Your Name"
-              required
-              value={formData.name}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  name: e.target.value,
-                })
-              }
-              className="w-full p-4 rounded-xl bg-black border border-zinc-700 focus:outline-none focus:border-orange-500"
-            />
-
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              required
-              value={formData.phone}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  phone: e.target.value,
-                })
-              }
-              className="w-full p-4 rounded-xl bg-black border border-zinc-700 focus:outline-none focus:border-orange-500"
-            />
-
-            <input
-              type="text"
-              value={selectedService}
-              readOnly
-              placeholder="Selected Service"
-              className="w-full p-4 rounded-xl bg-black border border-zinc-700"
-            />
-
-            <textarea
-              placeholder="Describe your requirement"
-              rows="5"
-              required
-              value={formData.message}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  message: e.target.value,
-                })
-              }
-              className="w-full p-4 rounded-xl bg-black border border-zinc-700 focus:outline-none focus:border-orange-500"
-            />
-
-            <button
-              type="submit"
-              className="w-full bg-orange-500 hover:bg-orange-600 transition-all duration-300 text-white font-semibold py-4 rounded-xl text-lg"
+            <form
+              onSubmit={handleSubmit}
+              className="grid gap-6"
             >
-              Book Service
-            </button>
-          </form>
-        </div>
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                className="bg-black border border-zinc-700 rounded-xl px-5 py-4"
+              />
+
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+                className="bg-black border border-zinc-700 rounded-xl px-5 py-4"
+              />
+
+              <textarea
+                placeholder="Describe your requirement"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                rows="5"
+                className="bg-black border border-zinc-700 rounded-xl px-5 py-4"
+              />
+
+              <button
+                type="submit"
+                className="bg-orange-500 hover:bg-orange-600 transition-all rounded-xl py-4 text-lg font-semibold"
+              >
+                Continue to WhatsApp
+              </button>
+            </form>
+          </div>
+        )}
       </section>
     </main>
   );
