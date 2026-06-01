@@ -1,207 +1,209 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { useEffect, useState } from "react";
+import Navbar from "@/app/components/Navbar";
 
 export default function AdminPage() {
-
-  const [data, setData] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [customerLeads, setCustomerLeads] = useState([]);
+  const [partnerLeads, setPartnerLeads] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    fetchData();
+  }, []);
 
-    fetch(
-https://script.google.com/macros/s/AKfycbxvet7dfXC-E81foZ5ijI0SJizWhUfxzLWqSVrc-xviBnyKbyRAfaNoLNh0e6I0O9-7ww/exec    )
-      .then((res) => res.json())
-      .then((result) => {
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbxvet7dfXC-E81foZ5ijI0SJizWhUfxzLWqSVrc-xviBnyKbyRAfaNoLNh0e6I0O9-7ww/exec"
+      );
 
-        setData(result)
-        setLoading(false)
+      const data = await response.json();
 
-      })
-      .catch((err) => {
+      setCustomerLeads(data.customerLeads || []);
+      setPartnerLeads(data.partnerLeads || []);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
 
-        console.log(err)
-        setLoading(false)
-
-      })
-
-  }, [])
+    setLoading(false);
+  };
 
   return (
+    <main className="min-h-screen bg-black text-white">
+      <Navbar />
 
-    <main className="min-h-screen bg-black text-white px-8 py-20">
-
-      <div className="max-w-7xl mx-auto">
-
-        {/* Hero */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-20"
-        >
-
+      {/* Hero */}
+      <section className="py-20 px-6 border-b border-zinc-800">
+        <div className="max-w-7xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             Service360 Admin
           </h1>
 
-          <p className="text-gray-400 text-xl leading-9">
+          <p className="text-gray-400 text-xl">
             Live service bookings and partner onboarding requests.
           </p>
+        </div>
+      </section>
 
-        </motion.div>
+      {/* Loading */}
+      {loading ? (
+        <div className="py-32 text-center text-2xl">
+          Loading dashboard...
+        </div>
+      ) : (
+        <>
+          {/* Customer Leads */}
+          <section className="py-16 px-6">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex items-center justify-between mb-10">
+                <h2 className="text-4xl font-bold">
+                  Customer Leads
+                </h2>
 
-        {/* Loading */}
-        {loading ? (
-
-          <div className="text-xl text-gray-400">
-            Loading dashboard data...
-          </div>
-
-        ) : (
-
-          <div className="grid gap-8">
-
-            {data
-              .slice()
-              .reverse()
-              .map((item, index) => (
-
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.25 }}
-                className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-8 hover:border-orange-500"
-              >
-
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-
-                  <div>
-
-                    <p className="text-gray-500 text-sm mb-2">
-                      Lead Type
-                    </p>
-
-                    <div className="inline-block bg-orange-500/20 text-orange-400 px-5 py-2 rounded-full text-sm font-medium">
-                      {item.type || "Service Booking"}
-                    </div>
-
-                  </div>
-
-                  <div>
-
-                    <p className="text-gray-500 text-sm mb-2">
-                      Status
-                    </p>
-
-                    <div className="inline-block bg-green-500/20 text-green-400 px-5 py-2 rounded-full text-sm font-medium">
-                      New Lead
-                    </div>
-
-                  </div>
-
+                <div className="bg-orange-500 px-5 py-2 rounded-full font-semibold">
+                  {customerLeads.length} Leads
                 </div>
+              </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+              <div className="overflow-x-auto rounded-3xl border border-zinc-800">
+                <table className="w-full">
+                  <thead className="bg-zinc-900">
+                    <tr>
+                      <th className="p-5 text-left">Name</th>
+                      <th className="p-5 text-left">Phone</th>
+                      <th className="p-5 text-left">Service</th>
+                      <th className="p-5 text-left">Message</th>
+                      <th className="p-5 text-left">Date</th>
+                      <th className="p-5 text-left">WhatsApp</th>
+                    </tr>
+                  </thead>
 
-                  {/* Name */}
-                  <div>
+                  <tbody>
+                    {customerLeads.map((lead, index) => (
+                      <tr
+                        key={index}
+                        className="border-t border-zinc-800 hover:bg-zinc-900/50"
+                      >
+                        <td className="p-5">{lead.name}</td>
 
-                    <p className="text-gray-500 text-sm mb-2">
-                      Name
-                    </p>
+                        <td className="p-5">{lead.phone}</td>
 
-                    <h2 className="text-2xl font-bold">
-                      {item.name || "—"}
-                    </h2>
+                        <td className="p-5 text-orange-400">
+                          {lead.service}
+                        </td>
 
+                        <td className="p-5 max-w-sm">
+                          {lead.message}
+                        </td>
+
+                        <td className="p-5 text-gray-400">
+                          {lead.timestamp || lead.date}
+                        </td>
+
+                        <td className="p-5">
+                          <a
+                            href={`https://wa.me/91${lead.phone}`}
+                            target="_blank"
+                            className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg text-sm font-semibold"
+                          >
+                            Chat
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                {customerLeads.length === 0 && (
+                  <div className="text-center py-16 text-gray-500">
+                    No customer leads yet.
                   </div>
+                )}
+              </div>
+            </div>
+          </section>
 
-                  {/* Phone */}
-                  <div>
+          {/* Partner Leads */}
+          <section className="pb-24 px-6">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex items-center justify-between mb-10">
+                <h2 className="text-4xl font-bold">
+                  Partner Leads
+                </h2>
 
-                    <p className="text-gray-500 text-sm mb-2">
-                      Phone Number
-                    </p>
-
-                    <h2 className="text-xl">
-                      {item.phone || "—"}
-                    </h2>
-
-                  </div>
-
-                  {/* Service */}
-                  <div>
-
-                    <p className="text-gray-500 text-sm mb-2">
-                      Service / Category
-                    </p>
-
-                    <h2 className="text-xl">
-                      {item.service || item.category || "—"}
-                    </h2>
-
-                  </div>
-
-                  {/* City */}
-                  <div>
-
-                    <p className="text-gray-500 text-sm mb-2">
-                      City
-                    </p>
-
-                    <h2 className="text-xl">
-                      {item.city || "—"}
-                    </h2>
-
-                  </div>
-
-                  {/* Experience */}
-                  {item.experience && (
-
-                    <div>
-
-                      <p className="text-gray-500 text-sm mb-2">
-                        Experience
-                      </p>
-
-                      <h2 className="text-xl">
-                        {item.experience}
-                      </h2>
-
-                    </div>
-
-                  )}
-
-                  {/* Message */}
-                  <div className="md:col-span-2">
-
-                    <p className="text-gray-500 text-sm mb-2">
-                      Message / Requirement
-                    </p>
-
-                    <p className="text-gray-300 leading-8">
-                      {item.message || "No message provided"}
-                    </p>
-
-                  </div>
-
+                <div className="bg-blue-500 px-5 py-2 rounded-full font-semibold">
+                  {partnerLeads.length} Partners
                 </div>
+              </div>
 
-              </motion.div>
+              <div className="overflow-x-auto rounded-3xl border border-zinc-800">
+                <table className="w-full">
+                  <thead className="bg-zinc-900">
+                    <tr>
+                      <th className="p-5 text-left">Name</th>
+                      <th className="p-5 text-left">Phone</th>
+                      <th className="p-5 text-left">Category</th>
+                      <th className="p-5 text-left">City</th>
+                      <th className="p-5 text-left">Experience</th>
+                      <th className="p-5 text-left">Message</th>
+                      <th className="p-5 text-left">Date</th>
+                      <th className="p-5 text-left">WhatsApp</th>
+                    </tr>
+                  </thead>
 
-            ))}
+                  <tbody>
+                    {partnerLeads.map((lead, index) => (
+                      <tr
+                        key={index}
+                        className="border-t border-zinc-800 hover:bg-zinc-900/50"
+                      >
+                        <td className="p-5">{lead.name}</td>
 
-          </div>
+                        <td className="p-5">{lead.phone}</td>
 
-        )}
+                        <td className="p-5 text-blue-400">
+                          {lead.category}
+                        </td>
 
-      </div>
+                        <td className="p-5">{lead.city}</td>
 
+                        <td className="p-5">
+                          {lead.experience} yrs
+                        </td>
+
+                        <td className="p-5 max-w-sm">
+                          {lead.message}
+                        </td>
+
+                        <td className="p-5 text-gray-400">
+                          {lead.timestamp || lead.date}
+                        </td>
+
+                        <td className="p-5">
+                          <a
+                            href={`https://wa.me/91${lead.phone}`}
+                            target="_blank"
+                            className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg text-sm font-semibold"
+                          >
+                            Chat
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                {partnerLeads.length === 0 && (
+                  <div className="text-center py-16 text-gray-500">
+                    No partner leads yet.
+                  </div>
+                )}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
     </main>
-
-  )
+  );
 }
